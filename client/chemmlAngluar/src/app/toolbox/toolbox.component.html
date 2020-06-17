@@ -1,0 +1,40 @@
+    <div id="leftcard">
+        <div id="closecard" onclick="document.getElementById('leftcard').style.opacity=1 - document.getElementById('leftcard').style.opacity;">
+            <img src="assets/closeleft.svg">
+        </div>
+        <p id="header">Pipeline Toolbox</p>
+        <div id="search">
+            <img src="assets/search.svg">
+            <input type="text" placeholder="Search Pipeline Toolbox">
+        </div>
+        <div id="subnav">
+            <div id="actions"  [ngClass]="selectedToolSet==='Data' ? 'navactive' : 'navdisabled'" class="side"   (click)="selectedToolSet = 'Data'">Data</div>
+            <div id="actions" class="side" [ngClass]="selectedToolSet==='Represent' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Represent'">Represent</div>
+            <div id="actions" class="side" [ngClass]="selectedToolSet==='Preprocessing' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Preprocessing'">Preprocessing</div>
+            <div id="loggers" class="side" [ngClass]="selectedToolSet==='Model' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Model'">Model</div>
+            <div id="loggers" class="side" [ngClass]="selectedToolSet==='Postprocessing' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Postprocessing'">Postprocessing</div>
+        </div>
+        <div class = "toolset_container">
+            <div class = "toolset-holder" tooltype="Represent" [hidden]="selectedToolSet !=='Represent'">
+                <app-toolbox-component tooltype="Represent" tool="error" title="Dimentionality Reduction" description="Drag the tool to perform FactorAnalysis, PCA etc."></app-toolbox-component>
+                <app-toolbox-component tooltype="Represent" tool="error"  title="Chemical Representation" description="Drag the tool to represent data using chemml chemical representations"></app-toolbox-component>
+            </div>
+            <div class = "toolset-holder" tooltype="Data" [hidden]="selectedToolSet !=='Data'">
+                <app-toolbox-component tooltype="Data" tool="csv" title="Import data from CSV" description="Drag the button to add a CSV Data tool to the pipeline"></app-toolbox-component>
+                <app-toolbox-component tooltype="Data" tool="chemical_data" title="Import chemical data" description="Drag the button to add a chemistry Data tool to the pipeline"></app-toolbox-component>
+            </div>
+            <div class = "toolset-holder" tooltype="Preprocessing" [hidden]="selectedToolSet !=='Preprocessing'">
+                <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add MaxAbs Scaler" description="Scale each feature by its maximum absolute value."></app-toolbox-component>
+                <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add MinMax Scaler" description="Transform features by scaling each feature to a given range."></app-toolbox-component>
+                <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add Normalizer" description="Normalize samples individually to unit norm."></app-toolbox-component>
+                <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add OneHot Encoder" description="Encode categorical features as a one-hot numeric array."></app-toolbox-component>
+                <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add Standard Scaler" description="Standardize features by removing the mean and scaling to unit variance/"></app-toolbox-component>
+            </div>
+            <div class = "toolset-holder" tooltype="Model" [hidden]="selectedToolSet !=='Model'">
+                <app-toolbox-component tooltype="Model"  tool="error" title="Import data from CSV" description="Drag the button to add a CSV Data tool to the pipeline"></app-toolbox-component>
+            </div>
+            <div class = "toolset-holder" tooltype="Postprocessing" [hidden]="selectedToolSet !=='Postprocessing'">
+                <app-toolbox-component tooltype="Postprocessing"  tool="error" title="Import data from CSV" description="Drag the button to add a CSV Data tool to the pipeline"></app-toolbox-component>
+            </div>
+        </div>
+    </div> 

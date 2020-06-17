@@ -1,0 +1,103 @@
+
+#blocklist {
+    height: calc(100% - 195px);
+    overflow: auto;
+}
+.blockelem:first-child {
+    margin-top: 20px
+}
+.blockelem {
+    padding-top: 10px;
+    width: 90%;
+    border: 1px solid transparent;
+    transition-property: box-shadow, height;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.05,.03,.35,1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px rgba(22, 33, 74, 0);
+    box-sizing: border-box;
+}
+.grabme, .blockico {
+    display: inline-block;
+}
+.grabme {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: -14px;
+    width: 15px;
+}
+.blockelem:hover {
+    box-shadow: 0px 4px 30px rgba(22, 33, 74, 0.08);
+    border-radius: 5px;
+    background-color: #FFF;
+    cursor: pointer;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }
+.blockin {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 12px;
+}
+.blockico {
+    width: 36px;
+    height: 36px;
+    background-color: #F1F4FC;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+.blockico span {
+    height: 100%;
+    width: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.blockico img {
+    vertical-align: middle;
+    margin-left: auto;
+    width: 52%;
+    margin-right: auto;
+    display: inline-block;
+}
+.blocktext {
+    display: inline-block;
+    width: 220px;
+    vertical-align: top;
+    margin-left: 12px
+}
+.blocktitle {
+    margin: 0px!important;
+    padding: 0px!important;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    color: #393C44;
+}
+.blockdesc {
+    margin-top: 5px;
+    font-family: Roboto;
+    color: #808292;
+    font-size: 14px;
+    line-height: 21px;
+}
+.blockdisabled {
+    background-color: #F0F2F9;
+    opacity: .5;
+}
+
+#proplist {
+    height: calc(100% - 305px);
+    overflow: auto;
+    margin-top: -30px;
+    padding-top: 13px;
+}
+
+

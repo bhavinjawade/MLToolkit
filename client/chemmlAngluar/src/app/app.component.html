@@ -1,0 +1,18 @@
+    <div id="navigation">
+        <div id="leftside">
+            <div id="details">
+            <div id="back"><img src="assets/arrow.svg"></div>
+            <div id="names">
+                <p id="title">Machine Learning Pipeline</p>
+                <p id="subtitle">Portal</p>
+            </div>
+        </div>            
+        </div>
+        <nav-button description="Home" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
+        <nav-button description="New Project" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
+        <nav-button description="Open Project" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
+        <div id="buttonsright">
+            <div id="publish">Run Pipeline</div>
+        </div>
+    </div>
+    <app-toolbox></app-toolbox>
