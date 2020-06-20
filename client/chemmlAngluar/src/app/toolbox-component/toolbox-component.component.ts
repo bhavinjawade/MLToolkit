@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 declare var flowy;
 
 @Component({
@@ -13,6 +13,6 @@ export class ToolboxComponentComponent {
   @Input() title: string;
   @Input() toot_type: string;
   @Input() tool: string;
-  
-  constructor() { }
+
+  constructor() {}
 }

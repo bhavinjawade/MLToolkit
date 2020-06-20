@@ -1,0 +1,31 @@
+    <div id="propwrap">
+        <div id="properties">
+            <div id="close">
+                <img src="assets/close.svg">
+            </div>
+            <p id="header2">Properties</p>
+            <div id="propswitch">
+                <div id="dataprop">Data</div>
+                <div id="alertprop">Preview</div>
+                <div id="logsprop">Logs</div>
+            </div>
+            <div id="proplist">
+                <p class="inputlabel">Select file:</p>
+                <input type="file" id="csv_load" hidden multiple/> 
+                <div class="select_file_btn" 
+                    onclick="document.getElementById('csv_load').click()" 
+                    type="file" id="myfile" name="myfile" >Select File</div>
+                <p id="filename"></p>
+                <br><br>
+                <table id = "table_preview">
+                
+                </table>
+            </div>
+
+            <div id="divisionthing"></div>
+        
+            <div id="removeblock">Delete Pipeline Toolbox</div>
+            <div id="visualize_btn">Visualize Node Output</div>
+
+        </div>
+    </div>

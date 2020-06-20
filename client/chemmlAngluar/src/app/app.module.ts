@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
 import { ToolboxComponent } from './toolbox/toolbox.component';
 import { ToolboxComponentComponent } from './toolbox-component/toolbox-component.component';
+import { ToolConfigComponent } from './tool-config/tool-config.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavButtonComponent,
     ToolboxComponent,
-    ToolboxComponentComponent
+    ToolboxComponentComponent,
+    ToolConfigComponent
   ],
   imports: [
     BrowserModule,
