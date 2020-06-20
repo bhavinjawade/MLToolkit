@@ -1,11 +1,13 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+declare var flowy;
 
 @Component({
   selector: 'app-toolbox-component',
   templateUrl: './toolbox-component.component.html',
   styleUrls: ['./toolbox-component.component.css']
 })
-export class ToolboxComponentComponent implements OnInit {
+
+export class ToolboxComponentComponent {
 
   @Input() description: string;
   @Input() title: string;
@@ -13,9 +15,4 @@ export class ToolboxComponentComponent implements OnInit {
   @Input() tool: string;
   
   constructor() { }
-
-  ngOnInit(): void {
-    
-  }
-
 }

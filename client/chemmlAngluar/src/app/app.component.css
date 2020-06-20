@@ -71,6 +71,7 @@
     position: fixed;
     top: 0;
     margin: 2%;
+    z-index: 100;
 }
 #back {
     width: 40px;
@@ -343,9 +344,36 @@
 .blockelem:first-child {
     margin-top: 20px
 }
+
+.block{
+    padding-top: 10px;
+    width: 350px;
+    border: 1px solid transparent;
+    transition-property: box-shadow, height;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.05,.03,.35,1);
+    border-radius: 5px;
+    box-shadow: 11px 11px 30px #e2e2e2;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.blockintree{
+    padding-top: 10px;
+    width: 350px;
+    border: 1px solid transparent;
+    transition-property: box-shadow, height;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.05,.03,.35,1);
+    border-radius: 5px;
+    box-shadow: 11px 11px 30px #e2e2e2;
+    box-sizing: border-box;
+    background-color: white;
+}
+
 .blockelem {
     padding-top: 10px;
-    width: 90%;
+    width: 350px;
     border: 1px solid transparent;
     transition-property: box-shadow, height;
     transition-duration: .2s;

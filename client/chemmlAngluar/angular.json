@@ -24,9 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/flowy.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/flowy.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,9 +91,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/flowy.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/flowy.min.js"
+            ]
           }
         },
         "lint": {
