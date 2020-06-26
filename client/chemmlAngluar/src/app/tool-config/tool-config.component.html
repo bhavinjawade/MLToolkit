@@ -1,6 +1,6 @@
-    <div id="propwrap">
+    <div id="propwrap" *ngIf="show">
         <div id="properties">
-            <div id="close">
+            <div id="close" (click) = "show = false">
                 <img src="assets/close.svg">
             </div>
             <p id="header2">Properties</p>
@@ -10,7 +10,7 @@
                 <div id="logsprop">Logs</div>
             </div>
             <div id="proplist">
-                <p class="inputlabel">Select file:</p>
+                <p class="inputlabel">Select file</p>
                 <input type="file" id="csv_load" hidden multiple/> 
                 <div class="select_file_btn" 
                     onclick="document.getElementById('csv_load').click()" 

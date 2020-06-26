@@ -13,7 +13,7 @@ declare var flowy: any;
 export class AppComponent implements AfterViewInit {
   render: any;
   title = 'chemmlAngluar';
-  globalCounter = 0;
+  globalCounter: any;
   toolConfigMapping = [];
 
   @ViewChild('appenHere', {static : false, read : ViewContainerRef}) target: ViewContainerRef;
@@ -21,24 +21,25 @@ export class AppComponent implements AfterViewInit {
 
 
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver){
+    this.globalCounter = 0;
   }
 
   
   ngAfterViewInit() {
 
     this.elementRef.nativeElement.addEventListener('click', (evt) => {
-      console.log(evt);
-      evt.srcElement.id = evt.srcElement.id + this.globalCounter;
-      this.globalCounter += 1;
-      let componentFactory = this.CFR.resolveComponentFactory(ToolConfigComponent);
-      this.componentRef = this.target.createComponent(componentFactory)
-      this.toolConfigMapping.push({
-        key: evt.srcElement.id,
-        value: this.componentRef
-      })
-      console.log(this.toolConfigMapping);
+      let id = evt.target.id
+      let isTool = false
+      if(id.substring(0,4) == 'tool'){
+        isTool = true
+        console.log(evt.target);
+        if(id in this.toolConfigMapping){
+          let toolConfigComponent = this.toolConfigMapping[id];
+          toolConfigComponent.instance.show = true;
+          console.log(toolConfigComponent.instance.show);
+        }
+      }
     });
-      
     flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping);
   }
 
@@ -52,9 +53,22 @@ export class AppComponent implements AfterViewInit {
     console.log("RELEASE")
   }
 
-  snapping(block,first,parent){
+  snapping = (block,first,parent) => {
+    console.log("Snapping", this);
     block.classList.add("blockintree");
-    console.log("SNAP", block);
+    
+    if(!(block.id in this.toolConfigMapping)){
+    
+      let componentFactory = this.CFR.resolveComponentFactory(ToolConfigComponent);
+      this.componentRef = this.target.createComponent(componentFactory)
+      block.id += "_" + this.globalCounter
+      this.globalCounter += 1;
+      this.toolConfigMapping[block.id] = this.componentRef;
+      var children = block.childNodes;
+      for (var i = 0; i < children.length; i++) {
+        children[i].id = block.id;
+      }
+    }
     return true;
   }
 

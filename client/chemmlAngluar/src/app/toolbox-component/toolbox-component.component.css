@@ -7,9 +7,7 @@
     margin-top: 20px
 }
 .blockelem {
-    padding-top: 10px;
     width: 350px;
-    border: 1px solid transparent;
     transition-property: box-shadow, height;
     transition-duration: .2s;
     background-color: white;
@@ -22,17 +20,28 @@
 }
 
 .grabme {
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: -14px;
-    width: 15px;
+    height: 49px;
+    padding-top: 1%;
+    width: 4%;
+    background-color: #ffffff;
+    padding: 2%;
+    padding-top: 10%;
+    vertical-align: middle;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
+
 .blockelem:hover {
     box-shadow: 0px 4px 30px rgba(22, 33, 74, 0.08);
     border-radius: 5px;
     background-color: #FFF;
     cursor: pointer;
 }
+
+.grabme:hover{
+    background-color: #F1F4FC;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
@@ -46,6 +55,7 @@
     display: inline-block;
     vertical-align: top;
     margin-left: 12px;
+    padding-top: 3%;
 }
 .blockico {
     width: 36px;
@@ -88,6 +98,7 @@
     color: #808292;
     font-size: 14px;
     line-height: 21px;
+    width: 233px;
 }
 .blockdisabled {
     background-color: #F0F2F9;

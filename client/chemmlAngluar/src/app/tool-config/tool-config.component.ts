@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tool-config',
@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tool-config.component.css']
 })
 export class ToolConfigComponent implements OnInit {
-
-  constructor() { 
+  @Input() show: boolean;
+  constructor() {
+    this.show = false;
     console.log("toolconfig created");
   }
 
