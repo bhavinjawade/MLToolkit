@@ -1,6 +1,10 @@
-import { Component, HostListener, AfterViewInit, ViewChild, ViewContainerRef, ComponentRef, ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
+import { Component, HostListener, AfterViewInit, ViewChild, ViewContainerRef, 
+        ComponentRef, ComponentFactoryResolver, ElementRef, Renderer2 } 
+        from '@angular/core';
 
 import { ToolConfigComponent } from './tool-config/tool-config.component';
+
+import { API_URLS } from './helpers/api_urls';
 
 declare var flowy: any;
 
@@ -36,14 +40,12 @@ export class AppComponent implements AfterViewInit {
         if(id in this.toolConfigMapping){
           let toolConfigComponent = this.toolConfigMapping[id];
           toolConfigComponent.instance.show = true;
-          console.log(toolConfigComponent.instance.show);
+          console.log("Opening Tool-config of block: ", toolConfigComponent.instance.type);
         }
       }
     });
     flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping);
   }
-
-
 
   drag(block){
     console.log("DRAG", block);
@@ -54,7 +56,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   snapping = (block,first,parent) => {
-    console.log("Snapping", this);
+    console.log("Snapping", block);
     block.classList.add("blockintree");
     
     if(!(block.id in this.toolConfigMapping)){
@@ -64,6 +66,12 @@ export class AppComponent implements AfterViewInit {
       block.id += "_" + this.globalCounter
       this.globalCounter += 1;
       this.toolConfigMapping[block.id] = this.componentRef;
+      this.componentRef.instance.toolid = block.id;
+
+      let type = block.id.split("_");
+      type = type[type.length-2];
+      console.log(type);
+      this.componentRef.instance.tooltype = type;
       var children = block.childNodes;
       for (var i = 0; i < children.length; i++) {
         children[i].id = block.id;
@@ -74,5 +82,10 @@ export class AppComponent implements AfterViewInit {
 
   onButtonClicked(event) {
     console.log(event); // handle button clicked here.
+  }
+
+  newProject(event){
+    console.log(event);
+    console.log("Calling URL: ", API_URLS.newProject);
   }
 }

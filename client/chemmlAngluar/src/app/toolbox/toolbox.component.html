@@ -1,6 +1,6 @@
     <div id="leftcard">
-        <div id="closecard" onclick="document.getElementById('leftcard').style.opacity=1 - document.getElementById('leftcard').style.opacity;">
-            <img src="assets/closeleft.svg">
+        <div id="closecard" (click)="toolbox_show()">
+            <img id = "close_img" src="assets/closeleft.svg">
         </div>
         <p id="header">Pipeline Toolbox</p>
         <div id="search">
@@ -21,7 +21,7 @@
             </div>
             <div class = "toolset-holder" tooltype="Data" [hidden]="selectedToolSet !=='Data'">
                 <app-toolbox-component tooltype="Data" tool="csv" title="Import data from CSV" description="Drag the button to add a CSV Data tool to the pipeline"></app-toolbox-component>
-                <app-toolbox-component tooltype="Data" tool="chemical_data" title="Import chemical data" description="Drag the button to add a chemistry Data tool to the pipeline"></app-toolbox-component>
+                <app-toolbox-component tooltype="Data" tool="chemical-data" title="Import chemical data" description="Drag the button to add a chemistry Data tool to the pipeline"></app-toolbox-component>
             </div>
             <div class = "toolset-holder" tooltype="Preprocessing" [hidden]="selectedToolSet !=='Preprocessing'">
                 <app-toolbox-component tooltype="Preprocessing"  tool="error" title="Add MaxAbs Scaler" description="Scale each feature by its maximum absolute value."></app-toolbox-component>
