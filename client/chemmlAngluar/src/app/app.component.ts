@@ -19,6 +19,8 @@ export class AppComponent implements AfterViewInit {
   title = 'chemmlAngluar';
   globalCounter: any;
   toolConfigMapping = [];
+  showNewProjectBox = false;
+  openProjectBox = false;
 
   @ViewChild('appenHere', {static : false, read : ViewContainerRef}) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;
@@ -80,12 +82,14 @@ export class AppComponent implements AfterViewInit {
     return true;
   }
 
-  onButtonClicked(event) {
+  openProject(event) {
     console.log(event); // handle button clicked here.
+    this.openProjectBox = true;
   }
 
   newProject(event){
     console.log(event);
+    this.showNewProjectBox = true;
     console.log("Calling URL: ", API_URLS.newProject);
   }
 }

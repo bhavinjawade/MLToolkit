@@ -10,11 +10,14 @@
         </div>
         <nav-button description="Home" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
         <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
-        <nav-button description="Open Project" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
+        <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
         <div id="buttonsright">
             <div id="publish">Run Pipeline</div>
         </div>
     </div>
     <div id="canvas"></div>
     <div class="config_box" #appenHere></div>
+    <app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
+    <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>
+
     <app-toolbox></app-toolbox>
