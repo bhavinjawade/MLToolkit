@@ -9,6 +9,8 @@ import { ToolConfigComponent } from './tool-config/tool-config.component';
 import { NewProjectBoxComponent } from './new-project-box/new-project-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OpenProjectComponent } from './open-project/open-project.component';
+import { TimePipePipe } from './time-pipe.pipe';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { OpenProjectComponent } from './open-project/open-project.component';
     ToolboxComponentComponent,
     ToolConfigComponent,
     NewProjectBoxComponent,
-    OpenProjectComponent
+    OpenProjectComponent,
+    TimePipePipe,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

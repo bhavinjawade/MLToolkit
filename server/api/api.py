@@ -4,6 +4,8 @@ import datetime
 from bson import json_util
 from flask import Flask, request, jsonify
 from flask.templating import render_template
+import flask
+from celery_task import run_pipeline
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/"
@@ -38,7 +40,11 @@ def new_project(project_name):
     if(collection.insert_one(dic)):
         status = "200"
     
-    return json.dumps({"data": dic, "status": status_codes[status]},default=json_util.default)
+    response = flask.Response(json.dumps({"data": dic,
+                    "status": status_codes[status]},
+                    default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 @app.route("/projects/a/")
 def get_projects_list():
@@ -51,8 +57,24 @@ def get_projects_list():
     if(len(project_list) >= 0):
         status = "200"
     
-    return json.dumps({"data": project_list, 
+    response = flask.Response(json.dumps({"data": project_list, 
                         "status": status_codes[status]},
-                        default=json_util.default)
+                        default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@app.route('/execute/<project_name>')
+def execute_pipeline(project_name):
+    content = request.json
+    json_data = content["data"]
+    print(json_data)
+    result = run_pipeline.delay(json_data)
+    output = result.get(propagate = False)
+    status = "200"
+    response = flask.Response(json.dumps({"data": output,
+                    "status": status_codes[status]},
+                    default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
 app.run()

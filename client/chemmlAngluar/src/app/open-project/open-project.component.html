@@ -4,15 +4,19 @@
     <div class = "btm_container">
         <div id="search">
             <img src="assets/search.svg">
-            <input type="text" placeholder="Search Pipeline Toolbox">
+            <input type="text" (keydown)="searchFilter($event)" placeholder="Search Pipeline Toolbox">
         </div>
         <div class = "project_list_container">
-            <div class = "project_list_item">My Project 1</div>
-            <div class = "project_list_item">My Project 2</div>
-            <div class = "project_list_item">My Project 3</div>
-            <div class = "project_list_item">My Project 4</div>
+            <div class = "project_list_header" style="cursor:default;">
+                <span>Project Name</span>
+                <span class="created_date">Created Date</span>
+            </div>
+            <div  *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (click)="selectProject('project_'+i, project)" class = "project_list_item">
+                <span class="project_name">{{project.project_name}}</span>
+                <span class="created_date">{{project.created_date.$date | timePipe}}</span>
+            </div>
         </div>
-        <div class = "submit-btn" (click)="createProject()">Open Project</div>
+        <div class = "submit-btn" (click)="openProject()">Open Project</div>
         <div class = "close-btn" (click)="closeBox()">Cancel</div>
     </div>
 </div>

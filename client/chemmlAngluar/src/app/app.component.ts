@@ -1,7 +1,7 @@
 import { Component, HostListener, AfterViewInit, ViewChild, ViewContainerRef, 
         ComponentRef, ComponentFactoryResolver, ElementRef, Renderer2 } 
         from '@angular/core';
-
+import { CurrentProjectService } from './current-project.service';
 import { ToolConfigComponent } from './tool-config/tool-config.component';
 
 import { API_URLS } from './helpers/api_urls';
@@ -21,13 +21,23 @@ export class AppComponent implements AfterViewInit {
   toolConfigMapping = [];
   showNewProjectBox = false;
   openProjectBox = false;
+  currentProject: any;
+  projectName: any;
+  showLandingPage = true;
 
   @ViewChild('appenHere', {static : false, read : ViewContainerRef}) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;
 
 
-  constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver){
+  constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
+              private currentProjectService: CurrentProjectService){
     this.globalCounter = 0;
+    this.currentProjectService.execChange.subscribe((value) => { 
+      this.currentProject = value;
+      this.projectName = this.currentProject.project_name;
+    });  
+    this.currentProject = this.currentProjectService.getCurrentProject();
+    this.projectName = this.currentProject["project_name"];
   }
 
   
@@ -39,6 +49,7 @@ export class AppComponent implements AfterViewInit {
       if(id.substring(0,4) == 'tool'){
         isTool = true
         console.log(evt.target);
+        console.log(id,this.toolConfigMapping);
         if(id in this.toolConfigMapping){
           let toolConfigComponent = this.toolConfigMapping[id];
           toolConfigComponent.instance.show = true;
@@ -85,6 +96,10 @@ export class AppComponent implements AfterViewInit {
   openProject(event) {
     console.log(event); // handle button clicked here.
     this.openProjectBox = true;
+  }
+
+  goHome(event){
+    console.log(event);
   }
 
   newProject(event){

@@ -1,0 +1,44 @@
+<div class="landingPage">
+    <div id="navigation">
+        <div id="leftside">
+            <div id="details">
+            <div id="names">
+                <div id="logo">
+                    <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+                    <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+                </div>
+            </div>
+        </div>            
+        </div>
+    </div>
+    <div class="options">
+    <div class = "input_box">
+            <input #projectname placeholder = "Name for your project" class = "project_name_input" type="text"/>
+            <div class = "newProjectButton" (click)="createProject(projectname.value)">Create Project</div>
+    </div>
+    </div>
+    <div class="projects">
+        <div class ="table-container">
+        <div class="header-container">
+            <div class = "table-item-header">Project Name</div>
+            <div class = "table-item-header">Created Date</div>
+            <div class = "table-item-header">Author</div>
+            <div class = "table-item-header">Delete</div>
+            <div class = "table-item-header">Open in new tab</div>
+            <div class = "table-item-header">Duplicate Project</div>
+        </div>
+        <div class="table-body">
+        <div *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (click)="selectProject('project_'+i, project)" class = "project_list_item">
+            <div class="table-item project_name">{{project.project_name}}</div>
+            <div class="table-item created_date">{{project.created_date.$date | timePipe}}</div>
+            <div class=" table-item project_author">Bhavin</div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/bin.svg"/> </div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/tab.svg"/> </div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/copy.svg"/> </div>
+        </div>
+        </div>
+        </div>
+    <div class = "submit-btn" (click)="openProject()">Open Project</div>
+    </div>
+
+</div>

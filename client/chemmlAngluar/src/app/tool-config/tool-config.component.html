@@ -21,7 +21,11 @@
                 <br><br>
                 <table id = "table_preview">
                 </table> -->
-            <div class = "paramContainer" *ngFor="let param of parameterList">
+            <div class = "config-block">
+                <div class="config-title">Node Type</div>
+                <div class="node-function-name" *ngFor="let param of nodes; let i = index;" [ngClass]="select_node_type==i ? 'selected_button' : ''" id="node_{{i}}'" [attr.value]="param.name" (click) = "selectNodeType(i)">{{param.name}}</div>
+            </div>
+            <!--
                 <div class = "paramName"> {{param.name | titlecase}} </div>
                 <div class = "paramInput" *ngIf="param.param_type[0] == 'object'">
                     <input type="file" id="csv_load" hidden multiple/> 
@@ -35,10 +39,32 @@
                 <div class = "paramInput" *ngIf="param.param_type[0] != 'object'">
                     <input placeholder = "{{param.default_value}}" class = "input_text" type="text"/>
                 </div>
-            </div>
-            
+                -->
+            <div class="config-block">            
+                <div class="config-title">Class Type</div>
+                <div class="node-function-name" *ngFor="let param of filter_methods(); let i = index;" id="class_method_{{i}}" [ngClass]="select_method_type==i ? 'selected_button' : ''" [attr.value]="param.name" (click) = "selectClassMethod(i)">{{param.name}}</div>
             </div>
 
+            <div class="config-block">            
+                <div class="config-title">Base Parameters</div>
+                <div class="base_parameters_container" *ngFor="let param of input_parameters; let i = index;">
+                    <div class="parameter_name">{{param.name | titlecase}}</div>
+                        <div *ngIf="param.param_type[0] == 'object'" style="width: 105%;">
+                            <input type="file" id="csv_load" hidden multiple/> 
+                        <div id = "input_filename">
+                            Select a CSV file. 
+                        </div> 
+                        <div class="select_file_btn" onclick="document.getElementById('csv_load').click()" type="file" id="myfile" name="myfile">Select File</div>   
+                    <p id="filename"></p>
+                    </div>
+                    <div class = "paramInput" *ngIf="param.param_type[0] != 'object'">
+                        <input class="input_text" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            
             <div id="divisionthing"></div>
         
             <div id="removeblock">Visualize Output From Node</div>

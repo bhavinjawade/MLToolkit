@@ -3,10 +3,11 @@
     left: 42%;
     top: 40%;
     background-color: white;
-    padding: 3%;
+    padding: 2%;
     border-radius: 11px;
     box-shadow: 2px 2px 25px 2px #292929;
     z-index: 1000;
+    border-top: 19px solid #227ce8;
 }
 
 .title{

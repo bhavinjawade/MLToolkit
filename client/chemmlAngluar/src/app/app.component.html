@@ -1,23 +1,26 @@
-    <div id="navigation">
-        <div id="leftside">
-            <div id="details">
-            <div id="back"><img src="assets/arrow.svg"></div>
-            <div id="names">
-                <p id="title">Machine Learning Pipeline</p>
-                <p id="subtitle">Portal</p>
+    <!-- <app-landing-page (closeBoxEmit)="showLandingPage=false;" *ngIf="showLandingPage"></app-landing-page> -->
+    <div *ngIf="showLandingPage">
+        <div id="navigation">
+            <div id="leftside">
+                <div id="details">
+                <div id="back"><img src="assets/arrow.svg"></div>
+                <div id="names">
+                    <p id="title">{{projectName}}</p>
+                    <p id="subtitle">Portal</p>
+                </div>
+            </div>            
             </div>
-        </div>            
+            <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
+            <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
+            <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
+            <div id="buttonsright">
+                <div id="publish">Run Pipeline</div>
+            </div>
         </div>
-        <nav-button description="Home" class="button" (callFunction)="onButtonClicked($event)" ></nav-button>
-        <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
-        <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
-        <div id="buttonsright">
-            <div id="publish">Run Pipeline</div>
-        </div>
-    </div>
-    <div id="canvas"></div>
-    <div class="config_box" #appenHere></div>
-    <app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
-    <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>
+        <div id="canvas"></div>
+        <div class="config_box" #appenHere></div>
+        <app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
+        <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>
 
-    <app-toolbox></app-toolbox>
+        <app-toolbox></app-toolbox>
+    </div>

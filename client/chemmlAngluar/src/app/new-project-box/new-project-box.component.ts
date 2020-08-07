@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ConfigService }  from '../config/config.service';
-import { HttpClient } from '@angular/common/http';
+import { DataServiceService } from '../data-service.service';
+import { CurrentProjectService } from '../current-project.service';
 
 @Component({
   selector: 'app-new-project-box',
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./new-project-box.component.css']
 })
 export class NewProjectBoxComponent implements OnInit {
+  currentProject: any;
 
   @Output() closeBoxEmit: EventEmitter<any> = new EventEmitter<any>();
   closeBox(): void{
@@ -15,12 +16,21 @@ export class NewProjectBoxComponent implements OnInit {
   }
 
   config: any;
-  constructor() { 
+  constructor(private dataServiceService: DataServiceService, private currentProjectService: CurrentProjectService) {
+    this.currentProjectService.execChange.subscribe((value) => { 
+      this.currentProject = value;
+    });
   }
 
   ngOnInit(): void {
   }
 
-  createProject(): void{
-  }
+  createProject(project_name: string): void{
+      this.dataServiceService.createProject(project_name)
+      .subscribe(response => {
+        this.currentProject = response.data;
+        this.currentProjectService.updateProjectInfo(this.currentProject);
+      });
+      this.closeBox();
+    }
 }
