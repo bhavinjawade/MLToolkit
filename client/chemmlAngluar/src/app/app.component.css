@@ -17,6 +17,7 @@
     transition: all .3s cubic-bezier(.05,.03,.35,1);
 }
 
+
 .select_file_btn:hover{
     background-color: #217CE8;
     color: white;
@@ -72,6 +73,7 @@
     top: 0;
     margin: 2%;
     z-index: 100;
+    margin-top: 5%;
 }
 #back {
     width: 40px;
@@ -81,12 +83,22 @@
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    margin-top: 15px;    
-    margin-right: 10px
+    border-width: 2px;
+    border: 3px solid #f1f4fc;
+    margin-top: 11px;    
+    margin-right: 10px;
+    cursor: pointer;
 }
+
+#back:hover {
+    background-color: white;
+}
+
 #back img {
-    margin-top: 13px;
+    margin-top: 24%;
+    width: 48%;
 }
+
 #names {
     display: inline-block;
     vertical-align: top;
@@ -188,10 +200,12 @@
     color:white;
     border: 2px solid #217CE8;
 }
+
 #buttonsright {
     float: right;
     margin-top: 15px;
 }
+
 #leftcard {
     width: 370px;
     background-color: #FFF;
@@ -239,12 +253,59 @@
     width: 18px;
     margin-left: 12px;
 }
+
 #header {
-    font-size: 20px;
-    font-family: Roboto;
-    font-weight: bold;
-    color: #393C44;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: white;
+    border-bottom: 1px solid #e2e2e2;
+    z-index: 1000;
 }
+
+.ub_logo{
+    width: 8%;
+    display: inline-block;    
+}
+
+.made_logo{
+    display: inline-block;
+    float: right;
+    margin: 0;
+    margin-top: 2%;
+    font-family: Roboto;
+    font-weight: 800;
+    font-size: 1.3em;
+    color: #393c44;
+    width: 100%;
+    padding-left: 5%;
+    border-left: 2px solid #d4d4d4;
+}
+
+.show_canvas{
+    display: block;
+    z-index: 0 !important;
+}
+
+.not_show_canvas{
+    display: none;
+    z-index: -1000 !important;
+}
+
+.nsf_logo{
+    width: 53px;
+    position: absolute;
+    top: -10px;
+    left: -86px;
+    padding-right: 10px;
+}
+
+.header-left{
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+
 #subnav {
     border-bottom: 1px solid #E8E8EF;
     width: calc(100% + 20px);
@@ -264,6 +325,7 @@
 .navactive {
     color: #393C44!important;
 }
+
 #triggers {
     margin-left: 20px;
     font-family: Roboto;
@@ -369,6 +431,7 @@
     box-shadow: 11px 11px 30px #e2e2e2;
     box-sizing: border-box;
     background-color: white;
+    margin-bottom: 20%;
 }
 
 .blockelem {
@@ -381,6 +444,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 30px rgba(22, 33, 74, 0);
     box-sizing: border-box;
+    margin-bottom: 20%;
 }
 .blockelem:hover {
     box-shadow: 0px 4px 30px rgba(22, 33, 74, 0.08);
@@ -477,15 +541,11 @@
 #canvas {
     position: absolute;
     width: calc(100% - 361px);
-    height: calc(100% - 71px);
-    top: 71px;
+    height: calc(100% - 184px);
+    top: 184px;
     left: 361px;
     z-index: 0;
     overflow: auto;
-}
-
-#header{
-    margin-left: 1% !important;
 }
 
 #search{

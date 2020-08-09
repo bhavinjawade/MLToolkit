@@ -220,7 +220,7 @@ body, html {
     position: absolute;
     z-index: 2;
     vertical-align: middle;
-    margin-top: 250px;
+    margin-top: 8%;
     border-radius: 16px;
     margin-left: 2%;
     box-shadow: 2px 2px 25px 2px #e2e2e2;
@@ -260,6 +260,7 @@ body, html {
     font-family: Roboto;
     font-weight: bold;
     color: #393C44;
+    z-index: 1000 !important;
 }
 #subnav {
     border-bottom: 1px solid #E8E8EF;

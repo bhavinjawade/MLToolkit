@@ -57,6 +57,26 @@ export class AppComponent implements AfterViewInit {
         }
       }
     });
+    flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping, this.rearrange);
+
+    // flowy constructor parameters: canvas, grab, release, snapping, rearrange, spacing_x, spacing_y
+  }
+
+  reRender() {
+    this.elementRef.nativeElement.addEventListener('click', (evt) => {
+      let id = evt.target.id
+      let isTool = false
+      if(id.substring(0,4) == 'tool'){
+        isTool = true
+        console.log(evt.target);
+        console.log(id,this.toolConfigMapping);
+        if(id in this.toolConfigMapping){
+          let toolConfigComponent = this.toolConfigMapping[id];
+          toolConfigComponent.instance.show = true;
+          console.log("Opening Tool-config of block: ", toolConfigComponent.instance.type);
+        }
+      }
+    });
     flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping);
   }
 
@@ -64,12 +84,16 @@ export class AppComponent implements AfterViewInit {
     console.log("DRAG", block);
   }
   
-  release(){
+  release = () => {
     console.log("RELEASE")
   }
 
+  rearrange = () => {
+    return true;
+  }
+
   snapping = (block,first,parent) => {
-    console.log("Snapping", block);
+    console.log("Snapping", block, first, parent);
     block.classList.add("blockintree");
     
     if(!(block.id in this.toolConfigMapping)){
@@ -90,6 +114,14 @@ export class AppComponent implements AfterViewInit {
         children[i].id = block.id;
       }
     }
+
+    if(!first){
+    var child_id = block.id;
+    var parent_id = parent.id;
+    console.log(block);
+    console.log(parent);
+  }
+
     return true;
   }
 

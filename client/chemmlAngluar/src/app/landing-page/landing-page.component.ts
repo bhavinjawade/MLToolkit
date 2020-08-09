@@ -72,4 +72,12 @@ export class LandingPageComponent implements OnInit {
     this.currentProjectService.updateProjectInfo(this.selectedProject);
     this.goToProjectCanvas();
   }
+
+  newProject(): void{
+
+  }
+
+  goHome(event): void{
+
+  }
 }

@@ -1,22 +1,30 @@
 <div class="landingPage">
+    <div id="header">
+        <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+        <div class = "header-left">
+            <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+            <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+        </div>
+    </div>
+
     <div id="navigation">
         <div id="leftside">
             <div id="details">
+            <div id="back"><img src="assets/arrow.svg"></div>
             <div id="names">
-                <div id="logo">
-                    <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
-                    <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
-                </div>
+                <p id="title">Toolkit Toolbar</p>
+                <p id="subtitle">Portal</p>
             </div>
         </div>            
         </div>
+        <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
+        <nav-button description="New Project" class="button" (callFunction)="newProject()" ></nav-button>
+        <nav-button description="Open Project" class="button" (callFunction)="openProject()" ></nav-button>
+        <div id="buttonsright">
+            <div id="publish" (click)="openProject()">Open Selected Project</div>
+        </div>
     </div>
-    <div class="options">
-    <div class = "input_box">
-            <input #projectname placeholder = "Name for your project" class = "project_name_input" type="text"/>
-            <div class = "newProjectButton" (click)="createProject(projectname.value)">Create Project</div>
-    </div>
-    </div>
+
     <div class="projects">
         <div class ="table-container">
         <div class="header-container">
@@ -38,7 +46,6 @@
         </div>
         </div>
         </div>
-    <div class = "submit-btn" (click)="openProject()">Open Project</div>
     </div>
-
+    <app-global-footer></app-global-footer>
 </div>

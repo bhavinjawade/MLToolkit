@@ -1,9 +1,16 @@
-    <!-- <app-landing-page (closeBoxEmit)="showLandingPage=false;" *ngIf="showLandingPage"></app-landing-page> -->
-    <div *ngIf="showLandingPage">
-        <div id="navigation">
+    <app-landing-page (closeBoxEmit)="showLandingPage=false;" *ngIf="showLandingPage"></app-landing-page>
+    <div>
+        <div id="header" *ngIf="!showLandingPage">
+            <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+            <div class = "header-left">
+                <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+                <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+            </div>
+        </div>
+        <div id="navigation" *ngIf="!showLandingPage">
             <div id="leftside">
                 <div id="details">
-                <div id="back"><img src="assets/arrow.svg"></div>
+                <div id="back"><img src="assets/open-menu.svg"></div>
                 <div id="names">
                     <p id="title">{{projectName}}</p>
                     <p id="subtitle">Portal</p>
@@ -17,10 +24,14 @@
                 <div id="publish">Run Pipeline</div>
             </div>
         </div>
-        <div id="canvas"></div>
-        <div class="config_box" #appenHere></div>
+        <div id="canvas" [ngClass] = "!showLandingPage ? 'show_canvas': 'not_show_canvas'"></div>
+        <div class="config_box" #appenHere *ngIf="!showLandingPage"></div>
         <app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
         <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>
+        
+        <div class="botton">
+        </div>
 
-        <app-toolbox></app-toolbox>
+        <app-toolbox *ngIf="!showLandingPage"></app-toolbox>
+    <app-global-footer></app-global-footer>
     </div>

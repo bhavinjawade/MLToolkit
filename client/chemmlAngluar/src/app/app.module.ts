@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { OpenProjectComponent } from './open-project/open-project.component';
 import { TimePipePipe } from './time-pipe.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { GlobalFooterComponent } from './global-footer/global-footer.component';
+import { LeftMenuComponentComponent } from './left-menu-component/left-menu-component.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     NewProjectBoxComponent,
     OpenProjectComponent,
     TimePipePipe,
-    LandingPageComponent
+    LandingPageComponent,
+    GlobalFooterComponent,
+    LeftMenuComponentComponent
   ],
   imports: [
     BrowserModule,
