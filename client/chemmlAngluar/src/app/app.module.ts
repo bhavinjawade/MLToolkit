@@ -13,6 +13,8 @@ import { TimePipePipe } from './time-pipe.pipe';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { GlobalFooterComponent } from './global-footer/global-footer.component';
 import { LeftMenuComponentComponent } from './left-menu-component/left-menu-component.component';
+import { InputOutputConfigComponent } from './input-output-config/input-output-config.component';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { LeftMenuComponentComponent } from './left-menu-component/left-menu-comp
     TimePipePipe,
     LandingPageComponent,
     GlobalFooterComponent,
-    LeftMenuComponentComponent
+    LeftMenuComponentComponent,
+    InputOutputConfigComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule//,
+//    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -44,11 +44,10 @@
     background-color: #6d6d6f;
     color: white;
     padding-left: 2.5%;
-    border-radius: 60px;
     border-radius: 33px;
     padding-right: 2.5%;
-    font-size: 0.8em;
     padding-top: 1.2%;
+    font-size: 0.8em;
 }
 
 .paramName{
@@ -119,27 +118,10 @@
 }
 
 #proplist{
-    height: 60%;
+    height: 68%;
     overflow: scroll;
     padding-right: 11%;
     padding-left: 3%;
-    /* position: relative; */
-    margin-bottom: 0%;
-}
-
-.tool-config-footer{
-    position: absolute;
-    bottom: 5%;
-    z-index: 1000;
-    background-color: white;
-    height: fit-content;
-    width: 91%;
-    padding: 3%;
-    /* padding: 0%; */
-    clear: both;
-    left: 0;
-    background-color: white;
-    border-top: 1px solid #e2e2e2;
 }
 
 .parameter_name{
@@ -159,6 +141,18 @@
     border: 1px solid #e2e2e2;
     outline: None !important;
     font-family: Roboto;
+}
+
+.config-input{
+    margin-top: 2%;
+    display: block;
+    height: 110px;
+    border-top: 1px solid #e2e2e2;
+    padding-top: 3%;
+}
+
+.config-subtitle{
+    font-weight: 600;
 }
 
 .config-title{
@@ -304,7 +298,7 @@
 
 #removeblock {
     border-radius: 5px;
-    /* position: absolute; */
+    position: absolute;
     bottom: 20px;
     font-family: Roboto;
     font-size: 14px;
@@ -315,12 +309,11 @@
     color: #253134;
     border: 1px solid #E8E8EF;
     transition: all .3s cubic-bezier(.05,.03,.35,1);
-    display: inline-block;
 }
 
 #visualize_btn {
     border-radius: 5px;
-    /* position: absolute; */
+    position: absolute;
     bottom: 20px;
     font-family: Roboto;
     font-size: 14px;
@@ -334,8 +327,6 @@
     background-color: #247ce8;
     transition: all .3s cubic-bezier(.05,.03,.35,1);
     cursor: pointer;
-    display: inline-block;
-    float: right;
 }
 
 #input_filename{
@@ -343,5 +334,5 @@
     font-family: Roboto;
     border: 1px solid #e2e2e2;
     padding: 2%;
-    width: 78%;
+    width: 74%;
 }

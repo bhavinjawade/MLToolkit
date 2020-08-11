@@ -13,24 +13,24 @@
 }
 
 .made_logo{
-    display: inline-block  !important;
-    float: right  !important;
-    margin: 0  !important;
-    margin-top: 2%  !important;
-    font-family: Roboto  !important;
-    font-weight: 800  !important;
-    font-size: 1.3em  !important;
-    color: #393c44  !important;
-    width: 100%  !important;
-    padding-left: 5%  !important;
-    border-left: 2px solid #d4d4d4  !important;
+    display: inline-block !important;
+    float: right !important;
+    margin: 0 !important;
+    margin-top: 1% !important;
+    font-family: Roboto !important;
+    font-weight: 800 !important;
+    font-size: 1.3em !important;
+    color: #393c44 !important;
+    width: 108% !important;
+    padding-left: 5% !important;
+    border-left: 2px solid #d4d4d4 !important;
 }
 
 .nsf_logo{
-    width: 53px !important;
+    width: 65px !important;
     position: absolute !important;
-    top: -10px !important;
-    left: -86px !important;
+    top: -12px !important;
+    left: -101px !important;
     padding-right: 10px !important;
 }
 
@@ -171,13 +171,14 @@ table {
     font-size: 16px;
     color: #393C44;
     margin-bottom: 0px;
+    margin-top: 14%;
 }
 
 #subtitle {
     font-family: Roboto;
     color: #808292;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 #leftside {
@@ -250,8 +251,9 @@ table {
     width: auto;
     padding-left: 16px;
     padding-right: 16px;
-    height: 38px;
-    margin-left: 10px;
+    height: 45px;
+    padding-top: 1%;
+    margin-left: 18px;
     display: inline-block;
     vertical-align: top;
     text-align: center;
@@ -676,13 +678,14 @@ table {
 
 .header-container{
     position: fixed;
-    height: 2%;
+    height: 5%;
     padding: 1%;
     background-color: #f1f4fc;
     border-radius: 12px;
     margin-bottom: 0%;
     width: 92%;
     margin-top: -4%;
+    padding-top: 0.9%;
 }
 
 #closecard {

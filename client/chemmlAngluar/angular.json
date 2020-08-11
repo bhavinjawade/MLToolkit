@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/flowy.min.css"
             ],
@@ -125,6 +126,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "chemmlAngluar"
 }

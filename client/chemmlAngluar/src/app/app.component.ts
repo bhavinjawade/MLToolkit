@@ -3,7 +3,7 @@ import { Component, HostListener, AfterViewInit, ViewChild, ViewContainerRef,
         from '@angular/core';
 import { CurrentProjectService } from './current-project.service';
 import { ToolConfigComponent } from './tool-config/tool-config.component';
-
+import { InputOutputConfigComponent } from './input-output-config/input-output-config.component'
 import { API_URLS } from './helpers/api_urls';
 
 declare var flowy: any;
@@ -24,9 +24,13 @@ export class AppComponent implements AfterViewInit {
   currentProject: any;
   projectName: any;
   showLandingPage = true;
+  inputOutputConfigMapping = [];
 
   @ViewChild('appenHere', {static : false, read : ViewContainerRef}) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;
+
+  @ViewChild('inputOutputAppend', {static : false, read : ViewContainerRef}) inputOutputTarget: ViewContainerRef;
+  private inputOutputComponentRef: ComponentRef<any>;
 
 
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
@@ -57,7 +61,7 @@ export class AppComponent implements AfterViewInit {
         }
       }
     });
-    flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping, this.rearrange);
+    flowy(document.getElementById("canvas"), this.drag, this.release, this.arrowClicking, this.snapping, this.rearrange);
 
     // flowy constructor parameters: canvas, grab, release, snapping, rearrange, spacing_x, spacing_y
   }
@@ -77,7 +81,37 @@ export class AppComponent implements AfterViewInit {
         }
       }
     });
-    flowy(document.getElementById("canvas"), this.drag, this.release, this.snapping);
+    flowy(document.getElementById("canvas"), this.drag, this.release, this.arrowClicking, this.snapping);
+  }
+
+  arrowClicking = (child, parent) => {
+    if(child in this.inputOutputConfigMapping){
+      if(parent in this.inputOutputConfigMapping[child]){
+        var inputOutputConfigComponent = this.inputOutputConfigMapping[child][parent];
+        inputOutputConfigComponent.instance.show = true;
+        // console.log('arrow'+'_'+parent + "~" + child);
+        // document.getElementById('arrow'+'_'+parent + "~" + child).classList.add('arrow_svg_hover_class');
+      }
+      else{
+        let componentFactory = this.CFR.resolveComponentFactory(InputOutputConfigComponent);
+        this.inputOutputComponentRef = this.inputOutputTarget.createComponent(componentFactory);
+        this.inputOutputConfigMapping[child][parent] =  this.inputOutputComponentRef;     
+        var inputOutputConfigComponent = this.inputOutputConfigMapping[child][parent];
+        inputOutputConfigComponent.instance.show = true;
+        // console.log('arrow'+'_'+parent + "~" + child);
+        // document.getElementById('arrow'+'_'+parent + "~" + child).classList.add('arrow_svg_hover_class');
+      }
+    }
+    else {
+      let componentFactory = this.CFR.resolveComponentFactory(InputOutputConfigComponent);
+      this.inputOutputComponentRef = this.inputOutputTarget.createComponent(componentFactory);
+      this.inputOutputConfigMapping[child] = [];
+      this.inputOutputConfigMapping[child][parent] =  this.inputOutputComponentRef;
+      var inputOutputConfigComponent = this.inputOutputConfigMapping[child][parent];
+      this.inputOutputComponentRef.instance.parentId = parent;
+      this.inputOutputComponentRef.instance.childId = child;
+      console.log(this.inputOutputConfigMapping);
+    }
   }
 
   drag(block){

@@ -10,8 +10,17 @@ export class CurrentProjectService {
   defaultProjectInfo = {
     "project_name" : "Default ChemML Project"
   };
+
+  chemMLJsonChange: Subject<any> = new Subject<any>();
+  chemMLJson = {
+    nodes : {
+
+    }
+  }
+
   constructor() { 
     this.execChange.next(this.defaultProjectInfo)
+    this.chemMLJsonChange.next(this.chemMLJson);
   }
 
   updateProjectInfo(newProjectInfo: any) {
@@ -21,4 +30,13 @@ export class CurrentProjectService {
   getCurrentProject(){
     return this.defaultProjectInfo;
   }
+
+  updateCurrentChemMLJson(newJson: any) {
+    this.chemMLJsonChange.next(newJson);
+  }
+
+  getCurrentChemMLJson(){
+    return this.chemMLJson;
+  }
+
 }
