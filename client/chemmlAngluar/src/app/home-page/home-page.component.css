@@ -1,0 +1,136 @@
+.links{
+    clear:both;
+}
+
+.portal{
+    display: inline-block;
+    width: calc(88% / 3);
+    margin: 2%;
+    font-family: Roboto;
+    height: 200px;
+    background-color: #ffffff;
+    border: 5px solid #217CE8 !important;
+    padding: 1%;
+    padding-top: 4%;
+    padding-left: 1%;
+    padding-bottom: 8%;
+    text-align: -webkit-center;
+    padding-right: 1%;
+    color: black;
+}
+
+
+.link-block-text{
+    font-size: 1.4em;
+    font-weight: 800;
+    text-align: center;
+    background-color: #217CE8;
+    width: fit-content;
+    text-align: -webkit-center;
+    padding: 1%;
+    border-radius: 32px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 3%;
+    color: white;
+}
+
+.link-block{
+    display: inline-block;
+    width: calc(85% / 3);
+    margin: 2%;
+    margin-top: 0%;
+    margin-left: 50px;
+    font-family: Roboto;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    padding: 1%;
+    padding-top: 4%;
+    padding-left: 1%;
+    padding-bottom: 8%;
+    text-align: -webkit-center;
+    padding-right: 1%;
+    box-shadow: 1px 3px 20px -4px #e2e2e2;
+    cursor: pointer;
+}
+
+.left-image{
+    display: inline-block;
+    float: left;
+}
+
+.ml-image{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.right-text{
+    display: inline-block;
+    float: right;
+    width: 49%;
+    padding: 2%;
+    margin: 3%;
+}
+
+.text-title{
+    font-size: 3em;
+    font-family: Roboto;
+    font-weight: 500;
+}
+
+.text-subtitle{
+    font-size: 1.5em;
+    font-family: Roboto;
+    font-weight: 200;
+}
+
+.text-info{
+    font-family: Roboto;
+    font-size: 1.2em;
+    margin-top: 5%;
+    padding-right: 7%;
+    text-align: justify;
+}
+
+#header {
+    padding: 1%  !important;
+    padding-left: 2%  !important;
+    padding-right: 2%  !important;
+    background-color: white  !important;
+    border-bottom: 1px solid #e2e2e2  !important;
+    z-index: 1000 !important;
+}
+
+.ub_logo{
+    width: 8% !important;
+    display: inline-block  !important;    
+}
+
+.made_logo{
+    display: inline-block !important;
+    float: right !important;
+    margin: 0 !important;
+    margin-top: 0% !important;
+    font-family: Roboto !important;
+    font-weight: 800 !important;
+    font-size: 1.3em !important;
+    color: #393c44 !important;
+    width: 108% !important;
+    padding-left: 5% !important;
+    border-left: 2px solid #d4d4d4 !important;
+}
+
+.nsf_logo{
+    width: 65px !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: -101px !important;
+    padding-right: 10px !important;
+}
+
+.header-left{
+    display: inline-block;
+    float: right;
+    position: relative;
+}

@@ -1,0 +1,338 @@
+
+#propwrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    padding-left: 20px;
+    overflow: hidden;
+    z-index: 1000;
+}
+#properties {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    right: -9%;
+    opacity: 1;
+    padding-right: 0%;
+    z-index: 2;
+    box-shadow: 0px 2px 25px #eae6e6;
+    padding-left: 20px;
+    transition: all .25s cubic-bezier(.05,.03,.35,1);
+    border-left: 5px solid #f1f1f1;
+}
+
+.config-block{
+    clear: both;
+    /* height: inherit; */
+    display: block;
+    padding-top: 3% !important;
+    padding-right: 8%;
+}
+
+.itson {
+    z-index: 2!important;
+}
+
+#tooltype{
+    width: auto;
+    display: inline-block;
+    margin-bottom: 2%;
+    padding: 0.8%;
+    background-color: #6d6d6f;
+    color: white;
+    padding-left: 2.5%;
+    border-radius: 33px;
+    padding-right: 2.5%;
+    padding-top: 1.2%;
+    font-size: 0.8em;
+}
+
+.paramName{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.paramInput{
+    display: inline-block;
+    width: 100%;
+}
+
+.expanded {
+    right: 0!important;
+    opacity: 1!important;
+    box-shadow: -4px 0px 40px rgba(26, 26, 73, 0.05);
+        z-index: 2;
+}
+#header2 {
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #393C44;
+    margin-top: 101px;
+}
+#close {
+    margin-top: 100px;
+    position: absolute;
+    right: 10%;
+    z-index: 9999;
+    transition: all .25s cubic-bezier(.05,.03,.35,1);
+    padding: 1%;
+    border-radius: 9px;
+    border: 2px solid #ffffff;
+    padding: 4px;
+    padding-top: 9px;
+    padding-right: 9px;
+    padding-left: 9px;
+}
+#close:hover {
+    cursor: pointer;
+    border: 2px solid #e9e8ef;
+    background-color: #fbfbfb;
+}
+
+.paramContainer{
+    margin: 1%;
+    margin-bottom: 2%;
+}
+
+.select_file_btn{
+    display: inline-block;
+    width: 17%;
+    padding: 1.65%;
+    /* padding-left: 2%; */
+    border: 4px solid #227ce8;
+    border-radius: 0px;
+    color: white;
+    font-family: Roboto;
+    background-color: #227ce8;
+    font-size: 1.0em;
+    text-align: center;
+    cursor: pointer;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#proplist{
+    height: 68%;
+    overflow: scroll;
+    padding-right: 11%;
+    padding-left: 3%;
+}
+
+.parameter_name{
+    font-size: 1.2em;
+    font-family: Roboto;
+    padding-top: 3%;
+    padding-bottom: 1%;
+}
+
+.input_text{
+    padding: 2%;
+    width: 100%;
+    font-size: 1.2em;
+    display: inline-block;
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    outline: None !important;
+    font-family: Roboto;
+}
+
+.config-input{
+    margin-top: 2%;
+    display: block;
+    height: 110px;
+    border-top: 1px solid #e2e2e2;
+    padding-top: 3%;
+}
+
+.config-subtitle{
+    font-weight: 600;
+}
+
+.config-title{
+    font-size: 20px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #393C44;
+    margin-bottom: 1%;
+}
+
+.node-function-name{
+    font-family: Roboto;
+    padding: 1.5%;
+    background-color: #f1f4fc;
+    border-radius: 50px;
+    padding-left: 3%;
+    font-size: 1.1em;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-right: 3%;
+    display: inline-block;
+    cursor: pointer;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    color: #525252;
+    border-radius: 29px;
+    border: 1px solid #E8E8EF;
+    transition: 0.2s;
+}
+
+.node-function-name:hover{
+    background-color: #FBFBFB;
+}
+
+.selected_button{
+    color: white !important;
+    background-color: #217CE8 !important;
+}
+
+#propswitch {
+    border-bottom: 1px solid #E8E8EF;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: -20px;
+    margin-bottom: 30px;
+}
+#dataprop {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #393C44;
+    width: calc(88% / 3);
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+    float: left;
+    margin-left: 20px;
+}
+#dataprop:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: #217CE8;
+    margin-top: -4px;
+}
+#alertprop {
+    display: inline-block;
+    font-family: Roboto;
+    font-weight: 500;
+    color: #808292;
+    font-size: 14px;
+    height: 48px;
+    line-height: 48px;
+    width: calc(88% / 3);
+    text-align: center;
+    float: left;
+}
+#logsprop {
+    width: calc(88% / 3);
+    display: inline-block;
+    font-family: Roboto;
+    font-weight: 500;
+    color: #808292;
+    font-size: 14px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+}
+.inputlabel {
+    font-family: Roboto;
+    font-size: 1.1em;
+    color: #253134;
+    display: inline-block;
+    font-weight: 800;
+}
+
+.dropme {
+    background-color: #FFF;
+    border-radius: 5px;
+    border: 1px solid #E8E8EF;
+    box-shadow: 0px 2px 8px rgba(34, 34, 87, 0.05);
+    font-family: Roboto;
+    font-size: 14px;
+    color: #253134;
+    text-indent: 20px;
+    height: 40px;
+    line-height: 40px;
+    width: 287px;
+    margin-bottom: 25px;
+}
+.dropme img {
+    margin-top: 17px;
+    float: right;
+    margin-right: 15px;
+}
+.checkus {
+    margin-bottom: 10px;
+}
+.checkus img {
+    display: inline-block;
+    vertical-align: middle;
+}
+.checkus p {
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 14px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+#divisionthing {
+    height: 1px;
+    width: 100%;
+    background-color: #E8E8EF;
+    position: absolute;
+    right: 0px;
+    bottom: 85px;
+}
+
+#removeblock {
+    border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: center;
+    width: 287px;
+    height: 38px;
+    line-height: 38px;
+    color: #253134;
+    border: 1px solid #E8E8EF;
+    transition: all .3s cubic-bezier(.05,.03,.35,1);
+}
+
+#visualize_btn {
+    border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
+    font-family: Roboto;
+    font-size: 14px;
+    text-align: center;
+    width: 15%;
+    height: 38px;
+    line-height: 38px;
+    color: white;
+    right: 12%;
+    border: 1px solid #E8E8EF;
+    background-color: #247ce8;
+    transition: all .3s cubic-bezier(.05,.03,.35,1);
+    cursor: pointer;
+}
+
+#input_filename{
+    display: inline-block;
+    font-family: Roboto;
+    border: 1px solid #e2e2e2;
+    padding: 2%;
+    width: 74%;
+}

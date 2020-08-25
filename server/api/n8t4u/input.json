@@ -1,0 +1,84 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./temp/Boston.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_dim-reduction_1": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {
+          "X": "@tool_csv_0@df"
+        },
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true
+        }
+      },
+      "module": "decomposition",
+      "name": "PCA",
+      "outputs": {}
+    },
+    "tool_helper-functions_4": {
+      "inputs": {
+        "file_path": "metrics/error.txt"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_linear-model_3@obj"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveFile",
+      "outputs": {}
+    },
+    "tool_linear-model_3": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {
+          "X": "@tool_preprocessing-node_2@X_new"
+        },
+        "name": "fit",
+        "outputs": {
+          "obj": true
+        }
+      },
+      "module": "linear_model",
+      "name": "LinearRegression",
+      "outputs": {}
+    },
+    "tool_preprocessing-node_2": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {
+          "X": "@tool_csv_0@df"
+        },
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true
+        }
+      },
+      "module": "preprocessing",
+      "name": "StandardScaler",
+      "outputs": {}
+    }
+  }
+}

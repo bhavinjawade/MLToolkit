@@ -1,0 +1,40 @@
+<!-- <router-outlet></router-outlet> -->
+<app-landing-page (closeBoxEmit)="showLandingPage=false;" *ngIf="showLandingPage"></app-landing-page>
+    <div>
+        <div id="header" *ngIf="!showLandingPage">
+            <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+            <div class = "header-left">
+                <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+                <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+            </div>
+        </div>
+        <app-left-files-bar-component (emitter)="closeFilesMenu($event)" *ngIf="showFilesMenu" [currentProject] = "currentProject" [show]="showFilesMenu"></app-left-files-bar-component>
+        <div id="navigation" *ngIf="!showLandingPage && exitMainPage">
+            <div id="leftside">
+                <div id="details">
+                <div id="back" (click)="showFilesMenu=true;"><img src="assets/open-menu.svg"></div>
+                <div id="names">
+                    <p id="title">{{projectName}}</p>
+                    <p id="subtitle">Portal</p>
+                </div>
+            </div>            
+            </div>
+            <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
+            <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
+            <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
+            <div id="buttonsright">
+                <div id="publish" (click) = "runPipeline();">Run Pipeline</div>
+            </div>
+        </div>
+        <div id="canvas" [ngClass] = "!showLandingPage ? 'show_canvas': 'not_show_canvas'"></div>
+        <div class="config_box" #appenHere *ngIf="!showLandingPage"></div>
+        <app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
+        <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>
+        
+        <div class="input_output_toolConfig" #inputOutputAppend></div>
+        <div class="botton">
+        </div>
+
+        <app-toolbox *ngIf="!showLandingPage"></app-toolbox>
+    <app-global-footer></app-global-footer>
+    </div>

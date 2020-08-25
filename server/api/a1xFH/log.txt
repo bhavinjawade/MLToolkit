@@ -1,0 +1,86 @@
+08/19/2020 06:47:07 PM =================================================
+08/19/2020 06:47:07 PM ChemMLWrapper 0.6.0 (August 2019)
+08/19/2020 06:47:07 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+08/19/2020 06:47:07 PM Johannes Hachmann (hachmann@buffalo.edu)
+08/19/2020 06:47:07 PM =================================================
+08/19/2020 06:47:07 PM Wed Aug 19 18:47:07 2020
+08/19/2020 06:47:07 PM 
+08/19/2020 06:47:07 PM parsing the input dictionary ...
+
+08/19/2020 06:47:07 PM 1   tool_csv_0: read_csv (pandas)
+08/19/2020 06:47:07 PM         method = data
+08/19/2020 06:47:07 PM         <<<<<<< receive from:
+08/19/2020 06:47:07 PM         nothing to receive!
+08/19/2020 06:47:07 PM         >>>>>>> send to:
+08/19/2020 06:47:07 PM         tool_preprocessing-node_1
+08/19/2020 06:47:07 PM         
+08/19/2020 06:47:07 PM 2   tool_preprocessing-node_1: StandardScaler (sklearn)
+08/19/2020 06:47:07 PM         method = fit_transform
+08/19/2020 06:47:07 PM         <<<<<<< receive from:
+08/19/2020 06:47:07 PM         tool_csv_0
+08/19/2020 06:47:07 PM         >>>>>>> send to:
+08/19/2020 06:47:07 PM         tool_helper-functions_2
+08/19/2020 06:47:07 PM         
+08/19/2020 06:47:07 PM 3   tool_helper-functions_2: SaveFile (chemml)
+08/19/2020 06:47:07 PM         method = write
+08/19/2020 06:47:07 PM         <<<<<<< receive from:
+08/19/2020 06:47:07 PM         tool_preprocessing-node_1
+08/19/2020 06:47:07 PM         >>>>>>> send to:
+08/19/2020 06:47:07 PM         nothing to send!
+08/19/2020 06:47:07 PM         
+08/19/2020 06:47:07 PM =================================================
+08/19/2020 06:47:07 PM * Based on the dependencies, we run nodes in the 
+08/19/2020 06:47:07 PM   following order:
+08/19/2020 06:47:07 PM   ['tool_csv_0']
+08/19/2020 06:47:07 PM   ['tool_preprocessing-node_1']
+08/19/2020 06:47:07 PM   ['tool_helper-functions_2']
+08/19/2020 06:47:07 PM * The outputs will be stored in the following 
+08/19/2020 06:47:07 PM directory: ./a1xFH
+08/19/2020 06:47:07 PM 
+
+08/19/2020 06:47:07 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+08/19/2020 06:47:07 PM | run ...
+
+08/19/2020 06:47:07 PM ... preparing outputs:
+08/19/2020 06:47:07 PM       name: obj
+08/19/2020 06:47:07 PM       size: 60864 bytes (total: 60864 bytes)
+08/19/2020 06:47:07 PM       type: <class 'pandas.core.frame.DataFrame'>
+08/19/2020 06:47:07 PM       shape: (506, 15)
+08/19/2020 06:47:07 PM       -----
+08/19/2020 06:47:07 PM 
+
+08/19/2020 06:47:07 PM | ... done!
+08/19/2020 06:47:07 PM | execution time: 0.02s (0h 0m 0.02s)
+08/19/2020 06:47:07 PM =======
+
+
+08/19/2020 06:47:07 PM ======= node ID#tool_preprocessing-node_1: (StandardScaler, sklearn)
+08/19/2020 06:47:07 PM | run ...
+
+08/19/2020 06:47:07 PM ... preparing outputs:
+08/19/2020 06:47:07 PM       name: obj
+08/19/2020 06:47:07 PM       size: 112 bytes (total: 112 bytes)
+08/19/2020 06:47:07 PM       type: <class 'numpy.ndarray'>
+08/19/2020 06:47:07 PM       shape: (506, 15)
+08/19/2020 06:47:07 PM       -----
+08/19/2020 06:47:07 PM 
+
+08/19/2020 06:47:07 PM | ... done!
+08/19/2020 06:47:07 PM | execution time: 0.01s (0h 0m 0.01s)
+08/19/2020 06:47:07 PM =======
+
+
+08/19/2020 06:47:07 PM ======= node ID#tool_helper-functions_2: (SaveFile, chemml)
+08/19/2020 06:47:07 PM | run ...
+
+08/19/2020 06:47:07 PM 
+
+08/19/2020 06:47:07 PM | ... done!
+08/19/2020 06:47:07 PM | execution time: 0.00s (0h 0m 0.00s)
+08/19/2020 06:47:07 PM =======
+
+
+08/19/2020 06:47:07 PM Total execution time: 0.05s (0h 0m 0.05s)
+08/19/2020 06:47:07 PM 2020-08-19 18:47:07
+
+08/19/2020 06:47:07 PM =================================================

@@ -1,0 +1,66 @@
+<div id="propwrap" *ngIf="show">
+    <div id="properties">
+        <div id="close" (click) = "show = false">
+            <img src="assets/close.svg">
+        </div>
+        <div id="header2">
+                <p id="tooltype"> {{parentToolType | uppercase}} - {{childToolType | uppercase}} </p>
+                <div> Properties </div> 
+        </div>
+        <div id="propswitch">
+            <div id="dataprop">Data</div>
+            <div id="alertprop">Preview</div>
+            <div id="logsprop">Logs</div>
+        </div>
+        <div id="proplist">
+            <!-- <p class="inputlabel">Select file</p>
+                <input type="file" id="csv_load" hidden multiple/> 
+                <div class="select_file_btn" 
+                    onclick="document.getElementById('csv_load').click()" 
+                    type="file" id="myfile" name="myfile" >Select File</div>
+            <br><br>
+            <table id = "table_preview">
+            </table> -->
+        <div class = "config-block">
+            <div class="config-title">Parent Node Outputs</div>
+            <div class="node-function-name" *ngFor="let param of parentOutputs; let i = index;" [ngClass]="select_output_type==i ? 'selected_button' : ''" id="node_{{i}}'" [attr.value]="param.name" (click) = "selectOutputType(i,param.name)">{{param.name}}</div>
+        </div>
+
+        <div class="config-block">            
+            <div class="config-title">Child Node Inputs</div>
+            <div class="config-input" *ngFor="let paramchild of childInputs; let i = index">
+                <div class="config-subtitle">
+                    {{paramchild.name}}
+                </div>
+                <div class="node-function-name" *ngFor="let paramvalue of parentOutputs; let j = index;" [ngClass]="select_input_type[i]==j ? 'selected_button' : ''" id="node_{{j}}'" [attr.value]="paramvalue.name" (click) = "selectInputType(i,j,paramchild.name,paramvalue.name)">{{paramvalue.name}}</div>
+            </div>
+        </div>
+
+        <!-- 
+        <div class="config-block">            
+            <div class="config-title">Base Parameters</div>
+            <div class="base_parameters_container" *ngFor="let param of input_parameters; let i = index;">
+                <div class="parameter_name">{{param.name | titlecase}}</div>
+                    <div *ngIf="param.param_type[0] == 'object'" style="width: 105%;">
+                        <input type="file" id="csv_load" hidden multiple/> 
+                    <div id = "input_filename">
+                        Select a CSV file. 
+                    </div> 
+                    <div class="select_file_btn" onclick="document.getElementById('csv_load').click()" type="file" id="myfile" name="myfile">Select File</div>   
+                <p id="filename"></p>
+                </div>
+                <div class = "paramInput" *ngIf="param.param_type[0] != 'object'">
+                    <input class="input_text" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
+                </div>
+            </div>
+        </div> -->
+
+        </div>
+        
+        <div id="divisionthing"></div>
+    
+        <div id="removeblock">Visualize Output From Node</div>
+        <div id="visualize_btn" (click) = "show = false">Done</div>
+
+    </div>
+</div>

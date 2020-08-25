@@ -1,0 +1,45 @@
+<div id="leftcard">
+    <div id="closecard" (click)="toolbox_show()">
+        <img id = "close_img" src="assets/closeleft.svg">
+    </div>
+    <p id="header">Pipeline Toolbox</p>
+    <div id="search">
+        <img src="assets/search.svg">
+        <input type="text" placeholder="Search Pipeline Toolbox">
+    </div>
+    <div id="subnav">
+        <div id="actions"  [ngClass]="selectedToolSet==='Data' ? 'navactive' : 'navdisabled'" class="side"   (click)="selectedToolSet = 'Data'">Data</div>
+        <div id="actions" class="side" [ngClass]="selectedToolSet==='Represent' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Represent'">Represent</div>
+        <div id="actions" class="side" [ngClass]="selectedToolSet==='Preprocessing' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Preprocessing'">Prepare</div>
+        <div id="loggers" class="side" [ngClass]="selectedToolSet==='Model' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Model'">Model</div>
+        <div id="loggers" class="side" [ngClass]="selectedToolSet==='Optimize' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Optimize'">Optimize</div>
+        <div id="loggers" class="side" [ngClass]="selectedToolSet==='Helper' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Helper'">Helper Functions</div>
+    </div>
+    <div class = "toolset_container">
+        <div class = "toolset-holder" tooltype="Represent" [hidden]="selectedToolSet !=='Represent'">
+            <app-toolbox-component tooltype="Represent" tool="dim-reduction" title="Dimentionality Reduction" description="Drag the tool to perform FactorAnalysis, PCA etc."></app-toolbox-component>
+            <app-toolbox-component tooltype="Represent" tool="chemml-represent"  title="Chemical Representation" description="Drag the tool to represent data using chemml chemical representations"></app-toolbox-component>
+        </div>
+        <div class = "toolset-holder" tooltype="Data" [hidden]="selectedToolSet !=='Data'">
+            <app-toolbox-component tooltype="Data" tool="csv" title="Import data from CSV" description="Drag the button to add a CSV Data tool to the pipeline"></app-toolbox-component>
+            <app-toolbox-component tooltype="Data" tool="chemical-data" title="Import chemical data" description="Drag the button to add a chemistry Data tool to the pipeline"></app-toolbox-component>
+        </div>
+        <div class = "toolset-holder" tooltype="Preprocessing" [hidden]="selectedToolSet !=='Preprocessing'">
+            <app-toolbox-component tooltype="Preprocessing"  tool="preprocessing-node" title="Preprocessing" description="Perform preprocessing like scaling each feature"></app-toolbox-component>
+            <app-toolbox-component tooltype="Preprocessing"  tool="data-splitting" title="Data Splitting" description="Split your data for test, training and validation"></app-toolbox-component>
+        </div>
+        <div class = "toolset-holder" tooltype="Model" [hidden]="selectedToolSet !=='Model'">
+            <app-toolbox-component tooltype = "Model"  tool = "linear-model" title = "Linear Model" description = "Drag the button to add a Linear Model"></app-toolbox-component>
+            <app-toolbox-component tooltype = "Model"  tool = "nn-model" title = "Neural Network" description = "Drag the button to add a Neural Network"></app-toolbox-component>
+            <app-toolbox-component tooltype = "Model"  tool = "svm-model" title = "Support Vector Machines" description = "Drag the button to add a Support Vector Machines"></app-toolbox-component>
+        </div>
+        <div class = "toolset-holder" tooltype="Model" [hidden]="selectedToolSet !=='Optimize'">
+            <app-toolbox-component tooltype = "Optimize"  tool = "model-selection" title = "Model Selection" description = "Drag the button to add a search and evaluate models"></app-toolbox-component>
+            <app-toolbox-component tooltype = "Optimize"  tool = "model-metrics" title = "Model Metrics" description = "Drag the button to add a select metrics"></app-toolbox-component>
+        </div>
+
+        <div class = "toolset-holder" tooltype="Helper" [hidden]="selectedToolSet !=='Helper'">
+            <app-toolbox-component tooltype="Helper"  tool="helper-functions" title="Saving Results" description="Drag this tool to save your results in a file"></app-toolbox-component>
+        </div>
+    </div>
+</div> 

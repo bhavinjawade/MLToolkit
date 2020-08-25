@@ -1,0 +1,151 @@
+.container{
+    position: absolute;
+    top: 70px;
+    padding: 0px;
+    height: 86%;
+    width: 22%;
+    background-color: white;
+    z-index: 1000;
+    border-right: 1px solid #e2e2e2;
+    padding-top: 0;
+}
+
+.header{
+    font-size: 1.5em;
+    font-family: Roboto;
+    padding: 3%;
+    padding-left: 5%;
+    background-color: #f1f4fc;
+    color: #3f4248;
+    border-bottom: 1px solid #e2e2;
+    font-weight: 800;
+}
+
+.sub-title{
+    padding-top: 1%;
+    font-size: 0.6em;
+    font-family: Roboto;
+    color: #747474;
+    font-weight: 200;
+}
+
+#propswitch {
+    width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 1%;
+    padding-top: 2%;
+}
+
+.upload-btn{
+    width: 80%;
+    text-align: center;
+    padding: 4%;
+    margin: 11%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border: 2px solid #217CE8;
+    border-radius: 6px;
+    color: #217CE8;
+    font-weight: 500;
+    font-family: Roboto;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.upload-btn:hover{
+    background-color:#217CE8;
+    color:white;
+}
+
+#projectfilesprop {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    color: #393C44;
+    width: calc(92% / 2);
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+    float: left;
+    margin-left: 20px;
+}
+
+#projectfilesprop:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 4px;
+    background-color: #217CE8;
+    margin-top: -4px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2%;
+    margin-right: 3%;
+    padding: 3%;
+    padding-top: 1.2%;
+    padding-bottom: 1.1%;
+    background-color: #b9b9b9;
+    color: white;
+    border-radius: 3px;
+    margin-right: 2%;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.close-btn:hover{
+    background-color: #9f9f9f;
+}
+
+.body{
+    clear: both;
+    padding: 5%;
+    padding-top: 1%;
+    overflow: scroll;
+    height: 66%;
+}
+
+.body-element{
+    margin-top: 3%;
+}
+
+.file{
+    padding: 2%;
+    padding-left: 4%;
+    border-bottom: 1px solid #e2e2e2;
+    cursor:pointer;
+}
+
+.file:hover{
+    background-color:#e2e2e2;
+}
+
+.file-type{
+    clear: both;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 3%;
+    margin-top: 8%;
+}
+
+#samplefilesprop {
+    display: inline-block;
+    font-family: Roboto;
+    font-weight: 500;
+    color: #808292;
+    font-size: 14px;
+    height: 48px;
+    line-height: 48px;
+    width: calc(92% / 2);
+    text-align: center;
+    float: left;
+}

@@ -1,0 +1,44 @@
+<div class = "container">
+    <div class = "close-btn" (click)="closeMenu()">
+        X
+    </div>
+    <div class = "header">
+        <div clas = "title">
+            Files
+        </div>
+        <div class = "sub-title">
+            Upload files here to import them to your project
+        </div>
+    </div>
+    <div class = "btns-menu">
+        <div class = "upload-btn" id="file" (click)="selectFiles()">
+            Upload Files
+        </div>
+        <input id="file-input" type="file" name="name" hidden multiple (change) = "UploadFiles($event.target.files);"/>
+    </div>
+    <div class = "tabs-menu">
+        <div id="propswitch">
+            <div class="tab" id="projectfilesprop">Project Files</div>
+            <div class="tab" id="samplefilesprop">Sample Files</div>
+        </div>
+    </div>
+    <div class = "body">
+        <div class = "body-element">
+            <div class = "file-type" id = "documentType">
+                Documents
+            </div>
+            <div class = "files-body">
+                <div *ngFor = "let file_name of documentFiles; let i = index;"  class = "file" id = "{{file_name}}" >{{file_name}}</div>
+            </div>
+        </div>
+        <div class = "body-element">
+            <div class = "file-type" id = "imageType">
+                Images
+            </div>
+            <div class = "files-body">
+                <div *ngFor = "let file_name of imageFiles; let i = index;"  class = "file" id = "{{file_name}}" >{{file_name}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

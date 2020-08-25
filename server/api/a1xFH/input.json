@@ -1,0 +1,54 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./temp/Boston.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true,
+        "obj": true
+      }
+    },
+    "tool_helper-functions_2": {
+      "inputs": {
+        "file_path": "metric/error.txt"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_preprocessing-node_1@obj"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveFile",
+      "outputs": {}
+    },
+    "tool_preprocessing-node_1": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {
+          "X": "@tool_csv_0@obj"
+        },
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true,
+          "obj": true
+        }
+      },
+      "module": "preprocessing",
+      "name": "StandardScaler",
+      "outputs": {}
+    }
+  }
+}

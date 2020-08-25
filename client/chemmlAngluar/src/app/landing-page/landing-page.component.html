@@ -1,0 +1,51 @@
+<div class="landingPage">
+    <div id="header">
+        <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+        <div class = "header-left">
+            <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+            <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+        </div>
+    </div>
+
+    <div id="navigation">
+        <div id="leftside">
+            <div id="details">
+            <div id="back"><img src="assets/arrow.svg"></div>
+            <div id="names">
+                <p id="title">Toolkit Toolbar</p>
+                <p id="subtitle">Portal</p>
+            </div>
+        </div>            
+        </div>
+        <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
+        <nav-button description="New Project" class="button" (callFunction)="newProject()" ></nav-button>
+        <nav-button description="Open Project" class="button" (callFunction)="openProject()" ></nav-button>
+        <div id="buttonsright">
+            <div id="publish" (click)="openProject()">Open Selected Project</div>
+        </div>
+    </div>
+
+    <div class="projects">
+        <div class ="table-container">
+        <div class="header-container">
+            <div class = "table-item-header">Project Name</div>
+            <div class = "table-item-header">Created Date</div>
+            <div class = "table-item-header">Author</div>
+            <div class = "table-item-header">Delete</div>
+            <div class = "table-item-header">Open in new tab</div>
+            <div class = "table-item-header">Duplicate Project</div>
+        </div>
+        <div class="table-body">
+        <div *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (click)="selectProject('project_'+i, project)" class = "project_list_item">
+            <div class="table-item project_name">{{project.project_name}}</div>
+            <div class="table-item created_date">{{project.created_date.$date | timePipe}}</div>
+            <div class=" table-item project_author">Bhavin</div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/bin.svg"/> </div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/tab.svg"/> </div>
+            <div class="table-item"> <img class = "row_icon" src="../assets/copy.svg"/> </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <app-global-footer></app-global-footer>
+</div>

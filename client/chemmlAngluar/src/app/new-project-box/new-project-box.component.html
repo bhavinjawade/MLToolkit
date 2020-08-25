@@ -1,0 +1,7 @@
+<div class ="overlay"></div>
+<div class = "np-box-container">
+    <div class="title">Start New Project</div>
+    <input #projectname placeholder = "Name for your project" class = "input_text" type="text"/>
+    <div class = "submit-btn" (click)="createProject(projectname.value)">Create Project</div>
+    <div class = "close-btn" (click)="closeBox()">Cancel</div>
+</div>

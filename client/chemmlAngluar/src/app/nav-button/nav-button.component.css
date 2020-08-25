@@ -1,0 +1,27 @@
+button{
+    font-family: Roboto;
+    color: #808292;
+    border-radius: 29px;
+    border: 1px solid #E8E8EF;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 39px;
+    text-align: center;
+    padding: 0%;
+    background-color: #F1F4FC;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-right: 2%;
+    outline: None !important;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #FBFBFB;
+    font-family: Roboto;
+    text-decoration: None;
+    outline: None;
+    color: #393C44;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+}

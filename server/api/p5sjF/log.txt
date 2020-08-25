@@ -1,0 +1,10 @@
+08/19/2020 06:45:44 PM =================================================
+08/19/2020 06:45:44 PM ChemMLWrapper 0.6.0 (August 2019)
+08/19/2020 06:45:44 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+08/19/2020 06:45:44 PM Johannes Hachmann (hachmann@buffalo.edu)
+08/19/2020 06:45:44 PM =================================================
+08/19/2020 06:45:44 PM Wed Aug 19 18:45:44 2020
+08/19/2020 06:45:44 PM 
+08/19/2020 06:45:44 PM parsing the input dictionary ...
+
+08/19/2020 06:45:44 PM The input is not valid. There is a broken pipe in the graph construction.
