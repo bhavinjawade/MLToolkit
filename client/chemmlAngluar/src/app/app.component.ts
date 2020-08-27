@@ -82,8 +82,9 @@ export class AppComponent implements AfterViewInit {
 
     this.elementRef.nativeElement.addEventListener('click', (evt) => {
       let id = evt.target.id
+      let classes = evt.target.classList;
       let isTool = false
-      if(id.substring(0,4) == 'tool'){
+      if(id.substring(0,4) == 'tool' && classes.contains('grabme')){
         isTool = true
         console.log(evt.target);
         console.log(id,this.toolConfigMapping);
