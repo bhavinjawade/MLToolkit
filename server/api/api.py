@@ -47,7 +47,9 @@ def new_project(project_name):
         },
         "project_properties": {},
         "users": "bhavinjawade",
-        "files": {}
+        "files": {},
+        "results": {},
+        "graph": {}
         }    
     if(collection.insert_one(dic)):
         status = "200"
@@ -75,6 +77,24 @@ def get_projects_list():
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
+@app.route("/projects/g/<project_name>")
+def get_project(project_name):
+    cursor = collection.find({'project_name':project_name})
+    project = []
+
+    for i in cursor:
+        project = i
+
+    if(len(project) >= 0):
+        status = "200"
+    
+    response = flask.Response(json.dumps({"data": project, 
+                        "status": status_codes[status]},
+                        default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+
 @app.route('/execute/<project_name>',methods=['GET','POST'])
 def execute_pipeline(project_name):
     print(project_name,flush=True)
@@ -83,8 +103,94 @@ def execute_pipeline(project_name):
     content = json_data
     json_data = content["data"]
     print(json_data)
+
+    cursor = collection.find({'project_name':project_name})
+    run_number = 0
+    for project in cursor:
+        status = "pending"
+        run_number = len(project["results"]) + 1
+        project["results"][str(run_number)] = {
+            "result": "Pipeline is still running. Results will be available after execution.",
+            "run_status": status,
+            "scheduled_time": datetime.datetime.now(),
+            "time_exection": "not available",
+            "pipeline_json": json_data
+        }
+        collection.update(
+                        { "_id": project["_id"] },
+                        { "$set":
+                            {
+                                "results": project["results"]
+                            },
+                            "$currentDate":{"lastModified":True}
+                        }
+                        )
+
     result = run_pipeline.delay(json_data)
     output = result.get(propagate = False)
+    cursor = collection.find({'project_name':project_name})
+  
+    for project in cursor:
+        status = "success"
+        project["results"][str(run_number)]["result"] = output
+        project["results"][str(run_number)]["run_status"] = status
+        
+        collection.update(
+                        { "_id": project["_id"] },
+                        { "$set":
+                            {
+                                "results": project["results"]
+                            },
+                            "$currentDate":{"lastModified":True}
+                        }
+                        )
+
+    status = "200"
+    response_output = "Pipeline scheduled successfully"
+    response = flask.Response(json.dumps({"data": response_output,
+                    "status": status_codes[status]},
+                    default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@app.route('/save_graph/<project_name>',methods=['GET','POST'])
+def save_graph(project_name):
+    json_data = json.loads(str(request.data, encoding='utf-8'))
+    content = json_data
+    json_data = content["data"]
+    
+    cursor = collection.find({'project_name':project_name})
+    run_number = 0
+    for project in cursor:
+        run_number = len(project["graph"]) + 1
+        project["graph"][str(run_number)] = {
+            "scheduled_time": datetime.datetime.now(),
+            "saved_graph": json_data
+        }
+        collection.update(
+                        { "_id": project["_id"] },
+                        { "$set":
+                            {
+                                "graph": project["graph"]
+                            },
+                            "$currentDate":{"lastModified":True}
+                        }
+                        )
+
+    status = "200"
+    response_output = "Graph Saved Successfully"
+    response = flask.Response(json.dumps({"data": response_output,
+                    "status": status_codes[status]},
+                    default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@app.route('/get_results/<project_name>',methods=['GET','POST'])
+def get_results(project_name):
+    print("Get results of", project_name,flush=True)
+    cursor = collection.find({'project_name':project_name})
+    for project in cursor:
+        output = project["results"]
     status = "200"
     response = flask.Response(json.dumps({"data": output,
                     "status": status_codes[status]},

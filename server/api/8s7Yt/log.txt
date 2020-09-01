@@ -1,0 +1,21 @@
+09/01/2020 04:31:25 AM =================================================
+09/01/2020 04:31:25 AM ChemMLWrapper 0.6.0 (August 2019)
+09/01/2020 04:31:25 AM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+09/01/2020 04:31:25 AM Johannes Hachmann (hachmann@buffalo.edu)
+09/01/2020 04:31:25 AM =================================================
+09/01/2020 04:31:25 AM Tue Sep  1 04:31:25 2020
+09/01/2020 04:31:25 AM 
+09/01/2020 04:31:25 AM parsing the input dictionary ...
+
+09/01/2020 04:31:25 AM =================================================
+09/01/2020 04:31:25 AM * Based on the dependencies, we run nodes in the 
+09/01/2020 04:31:25 AM   following order:
+09/01/2020 04:31:25 AM   []
+09/01/2020 04:31:25 AM * The outputs will be stored in the following 
+09/01/2020 04:31:25 AM directory: ./8s7Yt
+09/01/2020 04:31:25 AM 
+
+09/01/2020 04:31:25 AM Total execution time: 0.00s (0h 0m 0.00s)
+09/01/2020 04:31:25 AM 2020-09-01 04:31:25
+
+09/01/2020 04:31:25 AM =================================================

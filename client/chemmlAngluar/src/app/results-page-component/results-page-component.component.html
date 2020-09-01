@@ -1,0 +1,29 @@
+<div class="background">
+    <div id="main_container" class="main_container">
+        <div class="header">
+            Results
+            <div class="close">
+                X
+            </div>
+        </div>
+        <div class="runs">
+            <div class="body" *ngFor="let result of results; let i = index;">
+                <div class="run_row">
+                    <div class="title">
+                        Result {{i+1}}
+                    </div>
+                    <div class="status">
+                        {{result.run_status}}
+                    </div>
+                    <div class="expand_icon"></div>
+                    <div class="schedule_time">
+                        {{result.scheduled_time?(result.scheduled_time.$date|date:'mmmm dS, yyyy, HH:mm:ss TT'):"Execution Time"}}
+                    </div>
+                    <div class="run_result_body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

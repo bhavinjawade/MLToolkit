@@ -1,0 +1,110 @@
+08/28/2020 02:50:32 AM =================================================
+08/28/2020 02:50:32 AM ChemMLWrapper 0.6.0 (August 2019)
+08/28/2020 02:50:32 AM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+08/28/2020 02:50:32 AM Johannes Hachmann (hachmann@buffalo.edu)
+08/28/2020 02:50:32 AM =================================================
+08/28/2020 02:50:32 AM Fri Aug 28 02:50:32 2020
+08/28/2020 02:50:32 AM 
+08/28/2020 02:50:32 AM parsing the input dictionary ...
+
+08/28/2020 02:50:32 AM 1   tool_csv_0: read_csv (pandas)
+08/28/2020 02:50:32 AM         method = data
+08/28/2020 02:50:32 AM         <<<<<<< receive from:
+08/28/2020 02:50:32 AM         nothing to receive!
+08/28/2020 02:50:32 AM         >>>>>>> send to:
+08/28/2020 02:50:32 AM         tool_preprocessing-node_1
+08/28/2020 02:50:32 AM         
+08/28/2020 02:50:32 AM 2   tool_preprocessing-node_1: StandardScaler (sklearn)
+08/28/2020 02:50:32 AM         method = fit_transform
+08/28/2020 02:50:32 AM         <<<<<<< receive from:
+08/28/2020 02:50:32 AM         tool_csv_0
+08/28/2020 02:50:32 AM         >>>>>>> send to:
+08/28/2020 02:50:32 AM         tool_dim-reduction_2
+08/28/2020 02:50:32 AM         
+08/28/2020 02:50:32 AM 3   tool_dim-reduction_2: PCA (sklearn)
+08/28/2020 02:50:32 AM         method = fit_transform
+08/28/2020 02:50:32 AM         <<<<<<< receive from:
+08/28/2020 02:50:32 AM         tool_preprocessing-node_1
+08/28/2020 02:50:32 AM         >>>>>>> send to:
+08/28/2020 02:50:32 AM         tool_helper-functions_3
+08/28/2020 02:50:32 AM         
+08/28/2020 02:50:32 AM 4   tool_helper-functions_3: SaveCSV (chemml)
+08/28/2020 02:50:32 AM         method = write
+08/28/2020 02:50:32 AM         <<<<<<< receive from:
+08/28/2020 02:50:32 AM         tool_dim-reduction_2
+08/28/2020 02:50:32 AM         >>>>>>> send to:
+08/28/2020 02:50:32 AM         nothing to send!
+08/28/2020 02:50:32 AM         
+08/28/2020 02:50:32 AM =================================================
+08/28/2020 02:50:32 AM * Based on the dependencies, we run nodes in the 
+08/28/2020 02:50:32 AM   following order:
+08/28/2020 02:50:32 AM   ['tool_csv_0']
+08/28/2020 02:50:32 AM   ['tool_preprocessing-node_1']
+08/28/2020 02:50:32 AM   ['tool_dim-reduction_2']
+08/28/2020 02:50:32 AM   ['tool_helper-functions_3']
+08/28/2020 02:50:32 AM * The outputs will be stored in the following 
+08/28/2020 02:50:32 AM directory: ./GhbyH
+08/28/2020 02:50:32 AM 
+
+08/28/2020 02:50:32 AM ======= node ID#tool_csv_0: (read_csv, pandas)
+08/28/2020 02:50:32 AM | run ...
+
+08/28/2020 02:50:32 AM ... preparing outputs:
+08/28/2020 02:50:32 AM       name: obj
+08/28/2020 02:50:32 AM       size: 60864 bytes (total: 60864 bytes)
+08/28/2020 02:50:32 AM       type: <class 'pandas.core.frame.DataFrame'>
+08/28/2020 02:50:32 AM       shape: (506, 15)
+08/28/2020 02:50:32 AM       -----
+08/28/2020 02:50:32 AM 
+
+08/28/2020 02:50:32 AM | ... done!
+08/28/2020 02:50:32 AM | execution time: 0.01s (0h 0m 0.01s)
+08/28/2020 02:50:32 AM =======
+
+
+08/28/2020 02:50:32 AM ======= node ID#tool_preprocessing-node_1: (StandardScaler, sklearn)
+08/28/2020 02:50:32 AM | run ...
+
+08/28/2020 02:50:32 AM ... preparing outputs:
+08/28/2020 02:50:32 AM       name: X_new
+08/28/2020 02:50:32 AM       size: 112 bytes (total: 112 bytes)
+08/28/2020 02:50:32 AM       type: <class 'numpy.ndarray'>
+08/28/2020 02:50:32 AM       shape: (506, 15)
+08/28/2020 02:50:32 AM       -----
+08/28/2020 02:50:32 AM 
+
+08/28/2020 02:50:32 AM | ... done!
+08/28/2020 02:50:32 AM | execution time: 0.00s (0h 0m 0.00s)
+08/28/2020 02:50:32 AM =======
+
+
+08/28/2020 02:50:32 AM ======= node ID#tool_dim-reduction_2: (PCA, sklearn)
+08/28/2020 02:50:32 AM | run ...
+
+08/28/2020 02:50:32 AM ... preparing outputs:
+08/28/2020 02:50:32 AM       name: X_new
+08/28/2020 02:50:32 AM       size: 112 bytes (total: 112 bytes)
+08/28/2020 02:50:32 AM       type: <class 'numpy.ndarray'>
+08/28/2020 02:50:32 AM       shape: (506, 15)
+08/28/2020 02:50:32 AM       -----
+08/28/2020 02:50:32 AM 
+
+08/28/2020 02:50:32 AM | ... done!
+08/28/2020 02:50:32 AM | execution time: 0.00s (0h 0m 0.00s)
+08/28/2020 02:50:32 AM =======
+
+
+08/28/2020 02:50:32 AM ======= node ID#tool_helper-functions_3: (SaveCSV, chemml)
+08/28/2020 02:50:32 AM | run ...
+
+08/28/2020 02:50:32 AM 
+
+08/28/2020 02:50:32 AM | ... done!
+08/28/2020 02:50:32 AM | execution time: 0.02s (0h 0m 0.02s)
+08/28/2020 02:50:32 AM =======
+
+
+08/28/2020 02:50:32 AM Total execution time: 0.04s (0h 0m 0.04s)
+08/28/2020 02:50:32 AM 2020-08-28 02:50:32
+
+08/28/2020 02:50:32 AM =================================================

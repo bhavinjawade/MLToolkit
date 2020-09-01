@@ -16,6 +16,7 @@ import { LeftMenuComponentComponent } from './left-menu-component/left-menu-comp
 import { InputOutputConfigComponent } from './input-output-config/input-output-config.component';
 import { LeftFilesBarComponentComponent } from './left-files-bar-component/left-files-bar-component.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ResultsPageComponentComponent } from './results-page-component/results-page-component.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     LeftMenuComponentComponent,
     InputOutputConfigComponent,
     LeftFilesBarComponentComponent,
-    HomePageComponent
+    HomePageComponent,
+    ResultsPageComponentComponent
   ],
   imports: [
     BrowserModule,

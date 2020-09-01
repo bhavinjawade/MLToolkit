@@ -36,9 +36,21 @@ export class DataServiceService {
     );
   }
   
+  getResults(project_name): Observable<any> {
+    return this.http.get(API_URLS.getResults + project_name).pipe(
+      catchError(this.handleError<any>('getResults', []))
+    );
+  }
+  
   createProject(project_name: string): Observable<any> {
     return this.http.get(API_URLS.newProject + project_name).pipe(
       catchError(this.handleError<any>('newProject', []))
+    );
+  }
+
+  getProject(project_name): Observable<any> {
+    return this.http.get(API_URLS.getProject + project_name).pipe(
+      catchError(this.handleError<any>('getProject', []))
     );
   }
 
@@ -49,6 +61,16 @@ export class DataServiceService {
     return this.http.post(API_URLS.runPipeline + project_name,
       JSON.stringify(packet)).pipe(
       catchError(this.handleError<any>('runPipeline', []))
+    );
+  }
+
+  saveGraph(project_name: string, body: any): Observable<any> {
+    var packet:any = {
+      data : body
+    }
+    return this.http.post(API_URLS.saveGraph + project_name,
+      JSON.stringify(packet)).pipe(
+      catchError(this.handleError<any>('saveGraph', []))
     );
   }
 

@@ -66,6 +66,10 @@
     height: 100%;
     background-color: #000000b8;
     z-index: 999;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .selectedProject{

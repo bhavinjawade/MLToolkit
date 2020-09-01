@@ -7,6 +7,7 @@ import { InputOutputConfigComponent } from './input-output-config/input-output-c
 import { API_URLS } from './helpers/api_urls';
 import { DataServiceService } from './data-service.service';
 import { Router, Event, NavigationError, NavigationStart, NavigationEnd } from '@angular/router';
+import { ToolboxComponentComponent } from './toolbox-component/toolbox-component.component';
 
 declare var flowy: any;
 
@@ -26,16 +27,20 @@ export class AppComponent implements AfterViewInit {
   showFilesMenu = false;
   currentProject: any;
   projectName: any;
-  showLandingPage = false;
+  showLandingPage = true;
   inputOutputConfigMapping = [];
   chemMLJson: any;
-  exitMainPage: boolean = false;
+  showResultsPage = false;
+  exitMainPage: boolean = true;
 
   @ViewChild('appenHere', {static : false, read : ViewContainerRef}) target: ViewContainerRef;
   private componentRef: ComponentRef<any>;
 
   @ViewChild('inputOutputAppend', {static : false, read : ViewContainerRef}) inputOutputTarget: ViewContainerRef;
   private inputOutputComponentRef: ComponentRef<any>;
+
+  @ViewChild('canvasAppend', {static : false, read : ViewContainerRef}) canvasAppendTarget: ViewContainerRef;
+  private canvasAppendRef: ComponentRef<any>;
 
 
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
@@ -80,6 +85,7 @@ export class AppComponent implements AfterViewInit {
     this.currentProject = this.currentProjectService.getCurrentProject();
     this.projectName = this.currentProject["project_name"];
 
+    this.currentProjectService.updateProjectInfo(this.currentProject);
     this.elementRef.nativeElement.addEventListener('click', (evt) => {
       let id = evt.target.id
       let classes = evt.target.classList;
@@ -96,7 +102,6 @@ export class AppComponent implements AfterViewInit {
       }
     });
     flowy(document.getElementById("canvas"), this.drag, this.release, this.arrowClicking, this.snapping, this.rearrange);
-
     // flowy constructor parameters: canvas, grab, release, snapping, rearrange, spacing_x, spacing_y
   }
 
@@ -200,6 +205,51 @@ export class AppComponent implements AfterViewInit {
     return true;
   }
 
+  projectOpened(){
+    this.showLandingPage=false; 
+    this.dataServiceService.getProject(this.projectName)
+    .subscribe(response => {
+      console.log("projectInfo",response);
+      this.loadSavedProject(response);
+    });
+  }
+
+  loadSavedProject(response){
+    var canvas_div = document.getElementById("canvas");
+    var savedGraphs = response.data.graph;
+    var latestGraph = savedGraphs[Object.keys(response.data.graph).length]
+    var blocks = latestGraph.saved_graph.blocks
+    for(var key in blocks){
+      console.log(blocks[key]);
+      var id = key.split("_")[0] + "_" + key.split("_")[1];
+      var element = document.getElementById(id);
+      var top = blocks[key].top;
+      var left = blocks[key].left;
+      var blockelemtag = blocks[key].blockelemtag;
+      var blockid = blocks[key].blockid;
+      console.log(element);
+      var newElement = element.cloneNode(true);
+      newElement.style.top = top;
+      newElement.style.left = left;
+      canvas_div.appendChild(newElement);
+      newElement.innerHTML += blockelemtag;
+      newElement.innerHTML += blockid;
+      newElement.classList.add("blockintree");
+      newElement.classList.remove("create-flowy");
+      newElement.classList.add("block");
+      newElement.classList.add("blockintree");
+      var toolheader = newElement.querySelector(".tool_header");
+      toolheader.style.display = "block";
+      var toolfooter = newElement.querySelector(".tool_footer");
+      toolfooter.style.display = "block";
+    }
+    var arrows = latestGraph.saved_graph.Arrows;
+    for(var i = 0; i < arrows.length; i++){
+      canvas_div.innerHTML += arrows[i];
+    }
+
+  }
+
   openProject(event) {
     console.log(event); // handle button clicked here.
     this.openProjectBox = true;
@@ -209,6 +259,10 @@ export class AppComponent implements AfterViewInit {
     console.log(event);
   }
 
+  openResultsPage(event){
+    this.showResultsPage = true; 
+  }
+
   newProject(event){
     console.log(event);
     this.showNewProjectBox = true;
@@ -216,6 +270,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   runPipeline(){
+    this.saveGraph();
+    console.log(flowy.output());
     this.currentProjectService.updateProjectInfo(this.currentProject);
     this.dataServiceService.runPipeline(this.projectName,this.chemMLJson)
       .subscribe(response => {
@@ -231,4 +287,37 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  saveGraph(){
+    var blocks = document.querySelectorAll(".blockintree");
+    var graph = {
+      "blocks": {}
+    };
+    for(var i = 0; i < blocks.length; i++){
+      var top = blocks[i].style.top;
+      var left = blocks[i].style.left;
+      var blockelemtag = blocks[i].querySelector(".blockelemtype");
+      var blockid = blocks[i].querySelector(".blockid");
+      console.log(blockelemtag);
+      console.log(blockid);
+      graph["blocks"][blocks[i].id] = {
+        "top": top,
+        "left": left,
+        "blockelemtag": blockelemtag.outerHTML,
+        "blockid": blockid.outerHTML 
+      };
+    }
+    var Arrows = document.getElementsByClassName("arrowblock");
+    var graph_arrows = []
+    for(var i = 0; i < Arrows.length; i++){
+      graph_arrows.push(Arrows[i].outerHTML);
+    }
+    graph["Arrows"] = graph_arrows;
+    var flowy_output = flowy.output();
+    graph["blockarr"] = flowy_output.blockarr;
+    console.log(graph);
+    this.dataServiceService.saveGraph(this.projectName,graph)
+      .subscribe(response => {
+        console.log("Saved Result",response);
+      });
+  }
 }
