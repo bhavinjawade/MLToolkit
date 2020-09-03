@@ -87,7 +87,9 @@ export class AppComponent implements AfterViewInit {
 
     this.currentProjectService.updateProjectInfo(this.currentProject);
     this.elementRef.nativeElement.addEventListener('click', (evt) => {
-      let id = evt.target.id
+      console.log("LISTENING TO CLICK EVENTS");
+      let id = evt.target.id;
+      id = id.split("_")[0] + "_" + id.split("_")[1] + "_" + id.split("_")[2];
       let classes = evt.target.classList;
       let isTool = false
       if(id.substring(0,4) == 'tool' && classes.contains('grabme')){
@@ -232,6 +234,8 @@ export class AppComponent implements AfterViewInit {
       newElement.style.top = top;
       newElement.style.left = left;
       canvas_div.appendChild(newElement);
+      
+      //console.log("Appended Element:", newElement);
       newElement.innerHTML += blockelemtag;
       newElement.innerHTML += blockid;
       newElement.classList.add("blockintree");
@@ -242,12 +246,28 @@ export class AppComponent implements AfterViewInit {
       toolheader.style.display = "block";
       var toolfooter = newElement.querySelector(".tool_footer");
       toolfooter.style.display = "block";
+      newElement.id = key;
+      if(!(key in this.toolConfigMapping)){
+        let componentFactory = this.CFR.resolveComponentFactory(ToolConfigComponent);
+        this.componentRef = this.target.createComponent(componentFactory)
+        this.globalCounter += 1;
+        this.toolConfigMapping[key] = this.componentRef;
+        this.componentRef.instance.toolid = key;
+        var type = id.split("_")[1]
+        this.componentRef.instance.tooltype = type;
+        var children = newElement.childNodes;
+        for (var i = 0; i < children.length; i++) {
+          children[i].id = newElement.id+"_toremove";
+        }
+      }
+  
+    
     }
     var arrows = latestGraph.saved_graph.Arrows;
     for(var i = 0; i < arrows.length; i++){
       canvas_div.innerHTML += arrows[i];
     }
-
+    flowy.import_graph(latestGraph.saved_graph);
   }
 
   openProject(event) {

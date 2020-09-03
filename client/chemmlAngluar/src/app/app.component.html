@@ -38,5 +38,5 @@
 
     <app-toolbox *ngIf="!showLandingPage"></app-toolbox>
     <app-global-footer></app-global-footer>
-    <app-results-page-component *ngIf = "showResultsPage" [project_name] = "projectName"></app-results-page-component>
+    <app-results-page-component (closeEvent) = 'showResultsPage=false' *ngIf = "showResultsPage" [project_name] = "projectName"></app-results-page-component>
     </div>

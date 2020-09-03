@@ -40,9 +40,7 @@ python api.py &
 If MongoDB and celery are installed, then run:
 
 ```
-
 celery -A celery_task worker --loglevel=info --pool=eventlet
-
 ```
 
 To install celery:

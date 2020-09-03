@@ -1,6 +1,5 @@
 .container{
     position: absolute;
-    top: 70px;
     padding: 0px;
     height: 86%;
     width: 22%;
@@ -121,7 +120,8 @@
     padding: 2%;
     padding-left: 4%;
     border-bottom: 1px solid #e2e2e2;
-    cursor:pointer;
+    cursor: pointer;
+    overflow: hidden;
 }
 
 .file:hover{
