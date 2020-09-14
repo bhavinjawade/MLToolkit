@@ -13,6 +13,7 @@ import sklearnModelMetrics from '../helpers/jsons/sklearnMetrics';
 import chemmlWrapperProcessing from '../helpers/jsons/chemmlWrapperPreprocessingUI';
 
 import { CurrentProjectService } from '../current-project.service';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
   selector: 'app-tool-config',
@@ -24,21 +25,32 @@ export class ToolConfigComponent implements OnInit {
   @Input() tooltype: string;
   @Input() tool: string;
   @Input() toolid: string;
+  @Input() project_name: string;
   docstring: string;
   nodes: any;
   parameterList: any;
   select_node_type: any;
   select_method_type: any;
   classOutputList: any;
+  selected_file: any;
   isSelected: boolean;
   toolConfigParamtersUi: any;
   class_methods: any;
+  select_file = -1; 
   input_parameters: any;
-
+  @Input() currentProject: any;
+  projectFiles: any;
+  image_extensions = ['png','jpg','jpeg','svg']
+  document_extensions = ['pdf','csv','txt','tsv']
+  imageFiles = [];
+  documentFiles = [];
+  csvFiles = []
+  show_visualize = false;
+  
   chemMLJson: any;
 
   jsonToolTypeMap = {
-    csv: {
+    'csv': {
       json: pandasReadCSV,
       parsing_method: 0,
     },
@@ -107,7 +119,7 @@ export class ToolConfigComponent implements OnInit {
 
   selectedNodeFunction: any;
 
-  constructor(private currentProjectService: CurrentProjectService){
+  constructor(private currentProjectService: CurrentProjectService, private dataServiceService: DataServiceService){
       this.currentProjectService.chemMLJsonChange.subscribe((value) => { 
         this.chemMLJson = value;
       });  
@@ -133,6 +145,25 @@ export class ToolConfigComponent implements OnInit {
       this.input_parameters = this.toolConfigParamtersUi.node_functions[
         this.select_node_type
       ].inputs;
+      if(this.tooltype == "csv"){
+        console.log("THIS TOOLTYPE",this.tooltype, this.project_name);
+        this.dataServiceService.getProjectFilesWithDetails(this.project_name).subscribe(project_files => {
+          this.projectFiles = project_files["data"];
+          for(var i in this.projectFiles){
+            console.log(this.projectFiles[i].file_name.split(".").pop())
+            if(this.image_extensions.indexOf(this.projectFiles[i].file_name.split(".").pop()) > -1 ){
+              this.imageFiles.push(this.projectFiles[i]);
+            }
+            else if(this.projectFiles[i].file_name.split(".").pop() == 'csv'){
+              this.csvFiles.push(this.projectFiles[i])
+            }
+            if(this.document_extensions.indexOf(this.projectFiles[i].file_name.split(".").pop()) > -1 ){
+              this.documentFiles.push(this.projectFiles[i]);
+            }
+          }
+          console.log(project_files);
+        });
+      }
     } else if (this.jsonToolTypeMap[this.tooltype]['parsing_method'] == 1) {
       this.nodes = this.toolConfigParamtersUi.nodes;
       this.class_methods = this.toolConfigParamtersUi.nodes[
@@ -160,6 +191,13 @@ export class ToolConfigComponent implements OnInit {
     this.selectClassMethod(0,this.filter_methods()[0].name);
     this.nodeJson.library =  this.toolConfigParamtersUi.library;  
     this.nodeJson.module =  this.toolConfigParamtersUi.module;  
+  }
+
+  selectFileType(parameterName, file, file_index){
+    //document.getElementById("csv_load").setAttribute("value",file.file_path);
+    this.select_file = file_index;
+    this.selected_file = file;
+    this.nodeJson.inputs[parameterName] = file.file_path;
   }
 
   filter_methods() {
@@ -207,4 +245,10 @@ export class ToolConfigComponent implements OnInit {
     console.log("Current Json", JSON.stringify(this.chemMLJson));
     this.chemMLJson.nodes[this.toolid] = this.nodeJson;
   }
+  
+  visualizeOutput(){
+    this.show = false;
+    this.show_visualize = true;
+  }
+
 }

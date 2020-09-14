@@ -1,0 +1,31 @@
+<div class = "main_container">
+    <div class = "config_bar">
+        <div class = "filenames">{{preselected_file.file_name}}</div>
+        <div class = "graph_types">Line Plot</div>
+    </div>
+    <div class = "columns_bar">
+        <div class = "title">Column Names</div>
+        <div class = "body">
+            <div class = "column_names_csv">id</div>
+            <div class = "column_names_csv">name</div>
+            <div class = "column_names_csv">score</div>
+            <div class = "column_names_csv">desc</div>
+            <div class = "column_names_csv">price</div>
+        </div>
+    </div>
+    <div class="xy_bar">
+        <div class = "x_column"></div>
+        <div class = "y_column"></div>
+    </div>
+    <div class="graph" style="display: block;position: relative; height:40vh; width:80vw">
+        <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+      </canvas>    
+    </div>
+</div>

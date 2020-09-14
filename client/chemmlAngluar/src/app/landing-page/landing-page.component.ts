@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataServiceService } from '../data-service.service';
 import { CurrentProjectService } from '../current-project.service';
+import { API_URLS } from '../helpers/api_urls';
 
 @Component({
   selector: 'app-landing-page',
@@ -12,6 +13,8 @@ export class LandingPageComponent implements OnInit {
   projectsList: any;
   renderList: any;
   selectedProject: any;
+  openProjectBox = false;
+  showNewProjectBox = false;
 
   @Output() closeBoxEmit: EventEmitter<any> = new EventEmitter<any>();
   goToProjectCanvas(): void{
@@ -67,14 +70,16 @@ export class LandingPageComponent implements OnInit {
       this.renderList = this.projectsList;
     }
   }
-
+  
   openProject(): void{
     this.currentProjectService.updateProjectInfo(this.selectedProject);
     this.goToProjectCanvas();
   }
 
-  newProject(): void{
-
+  newProject(event){
+    console.log(event);
+    this.showNewProjectBox = true;
+    console.log("Calling URL: ", API_URLS.newProject);
   }
 
   goHome(event): void{

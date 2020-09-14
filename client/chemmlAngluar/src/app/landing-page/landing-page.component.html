@@ -17,9 +17,7 @@
             </div>
         </div>            
         </div>
-        <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
-        <nav-button description="New Project" class="button" (callFunction)="newProject()" ></nav-button>
-        <nav-button description="Open Project" class="button" (callFunction)="openProject()" ></nav-button>
+        <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
         <div id="buttonsright">
             <div id="publish" (click)="openProject()">Open Selected Project</div>
         </div>
@@ -29,23 +27,31 @@
         <div class ="table-container">
         <div class="header-container">
             <div class = "table-item-header">Project Name</div>
+            <div class = "table-item-header project_desc" style="width:25.4%">Project description</div>
             <div class = "table-item-header">Created Date</div>
-            <div class = "table-item-header">Author</div>
-            <div class = "table-item-header">Delete</div>
-            <div class = "table-item-header">Open in new tab</div>
-            <div class = "table-item-header">Duplicate Project</div>
+            <div class = "table-item-header project_author">Author</div>
+            <div class = "table-item-header project_tags">Tags</div>
+            <div class = "table-item-header project_icons">Delete</div>
+            <div class = "table-item-header project_icons">Open in new tab</div>
+            <div class = "table-item-header project_icons">Duplicate Project</div>
         </div>
         <div class="table-body">
         <div *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (click)="selectProject('project_'+i, project)" class = "project_list_item">
-            <div class="table-item project_name">{{project.project_name}}</div>
+            <div class="table-item project_name bold">{{project.project_name}}</div>
+            <div class="table-item project_desc">{{project.project_desc}}</div>
             <div class="table-item created_date">{{project.created_date.$date | timePipe}}</div>
             <div class=" table-item project_author">Bhavin</div>
-            <div class="table-item"> <img class = "row_icon" src="../assets/bin.svg"/> </div>
-            <div class="table-item"> <img class = "row_icon" src="../assets/tab.svg"/> </div>
-            <div class="table-item"> <img class = "row_icon" src="../assets/copy.svg"/> </div>
+            <div class=" table-item project_tags">
+                <div class="proj_tag" *ngFor="let proj_tag of project.project_properties.tag_list">{{proj_tag}}</div>
+            </div>
+            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/bin.svg"/> </div>
+            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/tab.svg"/> </div>
+            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/copy.svg"/> </div>
         </div>
         </div>
         </div>
     </div>
     <app-global-footer></app-global-footer>
 </div>
+<app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
+<app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>

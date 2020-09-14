@@ -99,6 +99,7 @@ export class AppComponent implements AfterViewInit {
         if(id in this.toolConfigMapping){
           let toolConfigComponent = this.toolConfigMapping[id];
           toolConfigComponent.instance.show = true;
+          toolConfigComponent.instance.project_name = this.projectName;
           console.log("Opening Tool-config of block: ", toolConfigComponent.instance.type);
         }
       }
@@ -118,6 +119,7 @@ export class AppComponent implements AfterViewInit {
         if(id in this.toolConfigMapping){
           let toolConfigComponent = this.toolConfigMapping[id];
           toolConfigComponent.instance.show = true;
+          toolConfigComponent.instance.project_name = this.projectName;
           console.log("Opening Tool-config of block: ", toolConfigComponent.instance.type);
         }
       }
@@ -253,6 +255,7 @@ export class AppComponent implements AfterViewInit {
         this.globalCounter += 1;
         this.toolConfigMapping[key] = this.componentRef;
         this.componentRef.instance.toolid = key;
+        this.componentRef.instance.project_name = this.projectName;
         var type = id.split("_")[1]
         this.componentRef.instance.tooltype = type;
         var children = newElement.childNodes;
@@ -260,8 +263,6 @@ export class AppComponent implements AfterViewInit {
           children[i].id = newElement.id+"_toremove";
         }
       }
-  
-    
     }
     var arrows = latestGraph.saved_graph.Arrows;
     for(var i = 0; i < arrows.length; i++){
@@ -276,6 +277,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   goHome(event){
+    window.location.reload();
     console.log(event);
   }
 
@@ -291,7 +293,7 @@ export class AppComponent implements AfterViewInit {
 
   runPipeline(){
     this.saveGraph();
-    console.log(flowy.output());
+    console.log(this.chemMLJson);
     this.currentProjectService.updateProjectInfo(this.currentProject);
     this.dataServiceService.runPipeline(this.projectName,this.chemMLJson)
       .subscribe(response => {

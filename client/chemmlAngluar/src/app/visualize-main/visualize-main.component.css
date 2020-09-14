@@ -1,0 +1,67 @@
+.main_container{
+    position: absolute;
+    left: 0;
+    z-index: 500;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.column_names_csv{
+    width: 100px;
+    padding: 8%;
+}
+
+.column_names_csv:hover{
+    background-color: #e2e2e2;
+}
+
+.columns_bar{
+    border: 1px solid #e2e2e2;
+    width: 13%;
+    border-radius: 5px;
+    margin: 1%;
+}
+
+.filenames{
+    display: inline-block;
+    float: left;
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid #e2e2e2;
+    border-radius: 9px;
+}
+
+.graph_types{
+    display: inline-block;
+    padding: 1%;
+    margin: 1%;
+    border: 1px solid #e2e2e2;
+    border-radius: 9px;
+}
+
+.config_bar{
+    height: 12%;
+    padding-left: 17%;
+    padding-top: 1%;
+}
+
+.columns_bar > .body{
+    padding: 1%;
+    /* border: 1px solid #e2e2e2; */
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    /* width: fit-content; */
+    border-radius: 5px;
+
+}
+
+.columns_bar > .title{
+    padding: 6%;
+    padding-bottom: 6%;
+    clear: both;
+    font-size: 1.4em;
+    font-weight: 800;
+    border-bottom: 1px solid #e2e2e2;
+    font-family: Roboto;
+}

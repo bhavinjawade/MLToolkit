@@ -159,13 +159,22 @@ export class InputOutputConfigComponent implements OnInit {
       }
     }
     console.log(this.parentOutputs,this.childInputs);
-
-}
+  }
 
   selectOutputType(i,parameterName){
     this.select_output_type = i;
     if(parameterName == 'data'){
       parameterName = 'df';
+    }
+    if(this.parentToolType == 'mddel-selection'){
+      if (this.chemMLJson.nodes[this.parentId].name == 'train_test_split'){
+        this.chemMLJson.nodes[this.parentId].outputs = {
+          "test1": true,
+          "test2": true,
+          "train1": true,
+          "train2": true
+        }
+      }
     }
     if(this.parentToolType == 'csv' || this.parentToolType == 'chemical-data'){
       this.chemMLJson.nodes[this.parentId].outputs[parameterName]= true

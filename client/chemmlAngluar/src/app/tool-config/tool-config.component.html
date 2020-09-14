@@ -48,13 +48,14 @@
                 <div class="config-title">Base Parameters</div>
                 <div class="base_parameters_container" *ngFor="let param of input_parameters; let i = index;">
                     <div class="parameter_name">{{param.name | titlecase}}</div>
-                        <div *ngIf="param.param_type[0] == 'object'" style="width: 105%;">
-                            <input type="file" id="csv_load" (change) = "getParameterValue($event,param.name)" value="./temp/Boston.csv" hidden multiple/> 
-                        <div id = "input_filename">
-                            Select a CSV file. 
-                        </div> 
-                        <div class="select_file_btn" onclick="document.getElementById('csv_load').click()" type="file" id="myfile" name="myfile">Select File</div>   
-                    <p id="filename"></p>
+                        <div *ngIf="param.param_type[0] == 'object' || param.name == 'Filepath_or_buffer'" style="width: 105%;">
+                            <div class="node-function-name" *ngFor="let file of csvFiles; let file_index = index;" [ngClass]="select_file==file_index ? 'selected_button' : ''" id="file_{{file_index}}'" [attr.value]="file.file_name" (click) = "selectFileType(param.name,file,file_index)">{{file.file_name}}</div>
+                            <!-- <input type="file" id="csv_load" (change) = "getParameterValue($event,param.name)" value="./temp/Boston.csv" hidden multiple/> 
+                            <div id = "input_filename">
+                                Select a CSV file.
+                            </div> 
+                            <div class="select_file_btn" onclick="document.getElementById('csv_load').click()" type="file" id="myfile" name="myfile">Select File</div>   
+                            <p id="filename"></p> -->
                     </div>
                     <div class = "paramInput" *ngIf="param.param_type[0] != 'object'">
                         <input class="input_text" (focusout) = "getParameterValue($event,param.name)" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
@@ -65,8 +66,9 @@
             </div>
             
             <div class="tool-config-footer">        
-            <div id="removeblock">Visualize Output From Node</div>
+            <div id="removeblock" (click) = "visualizeOutput()">Visualize Output From Node</div>
             <div id="visualize_btn" (click) = "saveConfig()">Done</div>
             </div>
         </div>
     </div>
+    <app-visualize-main *ngIf="show_visualize" [preselected_file]="selected_file"></app-visualize-main>

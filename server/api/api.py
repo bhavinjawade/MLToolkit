@@ -36,16 +36,23 @@ status_codes = {
             }
 }
 
-@app.route("/projects/n/<project_name>")
+@app.route("/projects/n/<project_name>",methods=['GET','POST'])
 def new_project(project_name):
     today = datetime.datetime.today()
+    json_data = json.loads(str(request.data, encoding='utf-8'))
+    content = json_data
+    json_data = content["data"]
+    tag_list = content["tags"]
     dic = {
         "project_name": project_name,
+        "project_desc": json_data,
         "created_date": today,
         "config": {
             "file": "/users/chemml/file.txt"
         },
-        "project_properties": {},
+        "project_properties": {
+            "tag_list": tag_list
+        },
         "users": "bhavinjawade",
         "files": {},
         "results": {},
@@ -286,6 +293,22 @@ def get_project_files(project_name):
 
     return "Nothing happend"
 
+@app.route('/get_project_files/<project_name>', methods=['GET'])
+def get_project_files_with_details(project_name):
+    if request.method == 'GET':
+        cursor = collection.find({'project_name':project_name})
+        files = []
+        for project in cursor:
+            files = project["files"]
+            break
+        status = "200"
+        response = flask.Response(json.dumps({"data":files,
+            "status": status_codes[status]},
+            default=json_util.default))
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response 
+
+    return "Nothing happend"
 
 app.secret_key = 'BhavinJAwadeKey'
 app.run()

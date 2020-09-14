@@ -1,0 +1,253 @@
+09/03/2020 02:55:29 PM =================================================
+09/03/2020 02:55:29 PM ChemMLWrapper 0.6.0 (August 2019)
+09/03/2020 02:55:29 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+09/03/2020 02:55:29 PM Johannes Hachmann (hachmann@buffalo.edu)
+09/03/2020 02:55:29 PM =================================================
+09/03/2020 02:55:29 PM Thu Sep  3 14:55:29 2020
+09/03/2020 02:55:29 PM 
+09/03/2020 02:55:29 PM parsing the input dictionary ...
+
+09/03/2020 02:55:29 PM 1   ID1: read_csv (pandas)
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         nothing to receive!
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID2
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 2   ID2: StandardScaler (sklearn)
+09/03/2020 02:55:29 PM         method = fit_transform
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID1
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID3
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 3   ID3: PCA (sklearn)
+09/03/2020 02:55:29 PM         method = fit_transform
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID2
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID4
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 4   ID4: SplitColumns (chemml)
+09/03/2020 02:55:29 PM         method = fit
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID3
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 5   ID5: train_test_split (sklearn)
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID4
+09/03/2020 02:55:29 PM         ID4
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID6
+09/03/2020 02:55:29 PM         ID6
+09/03/2020 02:55:29 PM         ID7
+09/03/2020 02:55:29 PM         ID8
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 6   ID6: LinearRegression (sklearn)
+09/03/2020 02:55:29 PM         method = fit
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID7
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 7   ID7: LinearRegression (sklearn)
+09/03/2020 02:55:29 PM         method = predict
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID6
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID8
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 8   ID8: mean_absolute_error (sklearn)
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID7
+09/03/2020 02:55:29 PM         ID5
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         ID9
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM 9   ID9: SaveFile (chemml)
+09/03/2020 02:55:29 PM         method = write
+09/03/2020 02:55:29 PM         <<<<<<< receive from:
+09/03/2020 02:55:29 PM         ID8
+09/03/2020 02:55:29 PM         >>>>>>> send to:
+09/03/2020 02:55:29 PM         nothing to send!
+09/03/2020 02:55:29 PM         
+09/03/2020 02:55:29 PM =================================================
+09/03/2020 02:55:29 PM * Based on the dependencies, we run nodes in the 
+09/03/2020 02:55:29 PM   following order:
+09/03/2020 02:55:29 PM   ['ID1']
+09/03/2020 02:55:29 PM   ['ID2']
+09/03/2020 02:55:29 PM   ['ID3']
+09/03/2020 02:55:29 PM   ['ID4']
+09/03/2020 02:55:29 PM   ['ID5']
+09/03/2020 02:55:29 PM   ['ID6']
+09/03/2020 02:55:29 PM   ['ID7']
+09/03/2020 02:55:29 PM   ['ID8']
+09/03/2020 02:55:29 PM   ['ID9']
+09/03/2020 02:55:29 PM * The outputs will be stored in the following 
+09/03/2020 02:55:29 PM directory: ./s7cpf
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM ======= node ID#ID1: (read_csv, pandas)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: df
+09/03/2020 02:55:29 PM       size: 60736 bytes (total: 60736 bytes)
+09/03/2020 02:55:29 PM       type: <class 'pandas.core.frame.DataFrame'>
+09/03/2020 02:55:29 PM       shape: (506, 14)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.01s (0h 0m 0.01s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID2: (StandardScaler, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: X_new
+09/03/2020 02:55:29 PM       size: 112 bytes (total: 112 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (506, 14)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.01s (0h 0m 0.01s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID3: (PCA, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: X_new
+09/03/2020 02:55:29 PM       size: 112 bytes (total: 112 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (506, 14)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID4: (SplitColumns, chemml)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: X1
+09/03/2020 02:55:29 PM       size: 112 bytes (total: 112 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (506, 1)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM       name: X2
+09/03/2020 02:55:29 PM       size: 112 bytes (total: 224 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (506, 13)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID5: (train_test_split, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: test1
+09/03/2020 02:55:29 PM       size: 10720 bytes (total: 10720 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (102, 13)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM       name: test2
+09/03/2020 02:55:29 PM       size: 928 bytes (total: 11648 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (102, 1)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM       name: train1
+09/03/2020 02:55:29 PM       size: 42128 bytes (total: 53776 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (404, 13)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM       name: train2
+09/03/2020 02:55:29 PM       size: 3344 bytes (total: 57120 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (404, 1)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.01s (0h 0m 0.01s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID6: (LinearRegression, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: obj
+09/03/2020 02:55:29 PM       size: 48 bytes (total: 11696 bytes)
+09/03/2020 02:55:29 PM       type: <class 'sklearn.linear_model._base.LinearRegression'>
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID7: (LinearRegression, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: C
+09/03/2020 02:55:29 PM       size: 928 bytes (total: 1856 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.ndarray'>
+09/03/2020 02:55:29 PM       shape: (102, 1)
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID8: (mean_absolute_error, sklearn)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM ... preparing outputs:
+09/03/2020 02:55:29 PM       name: loss
+09/03/2020 02:55:29 PM       size: 32 bytes (total: 32 bytes)
+09/03/2020 02:55:29 PM       type: <class 'numpy.float64'>
+09/03/2020 02:55:29 PM       -----
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM ======= node ID#ID9: (SaveFile, chemml)
+09/03/2020 02:55:29 PM | run ...
+
+09/03/2020 02:55:29 PM 
+
+09/03/2020 02:55:29 PM | ... done!
+09/03/2020 02:55:29 PM | execution time: 0.00s (0h 0m 0.00s)
+09/03/2020 02:55:29 PM =======
+
+
+09/03/2020 02:55:29 PM Total execution time: 0.05s (0h 0m 0.05s)
+09/03/2020 02:55:29 PM 2020-09-03 14:55:29
+
+09/03/2020 02:55:29 PM =================================================

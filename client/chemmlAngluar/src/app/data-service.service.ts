@@ -42,8 +42,12 @@ export class DataServiceService {
     );
   }
   
-  createProject(project_name: string): Observable<any> {
-    return this.http.get(API_URLS.newProject + project_name).pipe(
+  createProject(project_name: string, project_desc: string, tagslist): Observable<any> {
+    var packet:any = {
+      data : project_desc,
+      tags : tagslist
+    }
+    return this.http.post(API_URLS.newProject + project_name, JSON.stringify(packet)).pipe(
       catchError(this.handleError<any>('newProject', []))
     );
   }
@@ -85,6 +89,12 @@ export class DataServiceService {
   getProjectFiles(project_name: string): Observable<any> {
     return this.http.get(API_URLS.getProjectFiles + project_name).pipe(
       catchError(this.handleError<any>('getProjectFiles', []))
+    );
+  }
+
+  getProjectFilesWithDetails(project_name: string): Observable<any> {
+    return this.http.get(API_URLS.getProjectFilesWithDetails + project_name).pipe(
+      catchError(this.handleError<any>('getProjectFilesWithDetails', []))
     );
   }
 }

@@ -23,6 +23,10 @@
     border-left: 5px solid #f1f1f1;
 }
 
+.base_parameters_container{
+    clear: both;
+}
+
 .config-block{
     clear: both;
     display: block;

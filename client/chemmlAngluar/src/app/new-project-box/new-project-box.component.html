@@ -1,7 +1,12 @@
 <div class ="overlay"></div>
 <div class = "np-box-container">
-    <div class="title">Start New Project</div>
+    <div class="title_start">Start New Project</div>
+    <label class="title">Project Name</label>
     <input #projectname placeholder = "Name for your project" class = "input_text" type="text"/>
-    <div class = "submit-btn" (click)="createProject(projectname.value)">Create Project</div>
+    <label class="title">Project Description</label>
+    <textarea #projectdesc textarea rows="4" cols="50" class = "input_text_area"></textarea>
+    <label class="title">Tags</label>
+    <div #tags id="tags" (keydown)="onKeydownEvent($event)" contenteditable="true" placeholder = "enter comma seperated tags" class = "input_text" type="text"></div>
+    <div class = "submit-btn" (click)="createProject(projectname.value,projectdesc.value)">Create Project</div>
     <div class = "close-btn" (click)="closeBox()">Cancel</div>
 </div>

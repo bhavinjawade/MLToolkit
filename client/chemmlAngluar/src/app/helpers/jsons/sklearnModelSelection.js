@@ -57,8 +57,26 @@ export default {
       ],
       outputs: [
         {
-          name: 'splitting',
-          docstring: 'List containing train-test split of inputs.',
+          name: 'train1',
+          docstring: 'Train X attribute',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'test1',
+          docstring: 'Test X attribue',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'train2',
+          docstring: 'Train Y attribute',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'test2',
+          docstring: 'Test Y attribute',
           param_type: ['array', 'list'],
           returned: true
         }
@@ -123,8 +141,26 @@ export default {
           ],
           outputs: [
             {
-              name: 'splitting',
-              docstring: 'List containing train-test split of inputs.',
+              name: 'train1',
+              docstring: 'Train X attribute',
+              param_type: ['array', 'list'],
+              returned: true
+            },
+            {
+              name: 'test1',
+              docstring: 'Test X attribue',
+              param_type: ['array', 'list'],
+              returned: true
+            },
+            {
+              name: 'train2',
+              docstring: 'Train Y attribute',
+              param_type: ['array', 'list'],
+              returned: true
+            },
+            {
+              name: 'test2',
+              docstring: 'Test Y attribute',
               param_type: ['array', 'list'],
               returned: true
             }
@@ -180,8 +216,26 @@ export default {
       ],
       outputs: [
         {
-          name: 'splitting',
-          docstring: 'List containing train-test split of inputs.',
+          name: 'train1',
+          docstring: 'Train X attribute',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'test1',
+          docstring: 'Test X attribue',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'train2',
+          docstring: 'Train Y attribute',
+          param_type: ['array', 'list'],
+          returned: true
+        },
+        {
+          name: 'test2',
+          docstring: 'Test Y attribute',
           param_type: ['array', 'list'],
           returned: true
         }

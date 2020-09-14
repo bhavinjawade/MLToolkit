@@ -705,6 +705,11 @@ table {
 #closecard img {
     margin-top: 15px
 }
+
+.project_author{
+    width: 7%;
+}
+
 #canvas {
     position: absolute;
     width: calc(100% - 361px);
@@ -713,6 +718,21 @@ table {
     left: 361px;
     z-index: 0;
     overflow: auto;
+}
+
+.project_icons{
+    width: 9%;
+}
+
+.project_desc{
+    width: 25%;
+    min-height: 0;
+    padding-right: 2%;
+    text-align: left;
+    line-height: 1.4em;
+    height: fit-content;
+    overflow: scroll;
+    max-height: 3.8em;
 }
 
 #search{
@@ -1055,8 +1075,31 @@ table {
     cursor: pointer;
 }
 
+.project_tags{
+    width: 12%;
+    margin-right: 2%;
+}
+
+.proj_tag{
+    width: fit-content;
+    margin-bottom: 2%;
+    display: inline-block;
+    float: left;
+    margin-right: 7px;
+    background-color: #949494;
+    padding: 3%;
+    padding-left: 5%;
+    border-radius: 55px;
+    padding-right: 5%;
+    color: white;
+}
+
+.bold{
+    font-weight: 800;
+}
+
 .row_icon{
-    width: 10%;
+    width: 13%;
 }
 
 .submit-btn:hover{

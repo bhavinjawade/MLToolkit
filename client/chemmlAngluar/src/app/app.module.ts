@@ -17,6 +17,9 @@ import { InputOutputConfigComponent } from './input-output-config/input-output-c
 import { LeftFilesBarComponentComponent } from './left-files-bar-component/left-files-bar-component.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ResultsPageComponentComponent } from './results-page-component/results-page-component.component';
+import { VisualizeMainComponent } from './visualize-main/visualize-main.component';
+import { ChartsModule } from 'ng2-charts';
+
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -35,12 +38,15 @@ import { ResultsPageComponentComponent } from './results-page-component/results-
     InputOutputConfigComponent,
     LeftFilesBarComponentComponent,
     HomePageComponent,
-    ResultsPageComponentComponent
+    ResultsPageComponentComponent,
+    VisualizeMainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule//,
+    HttpClientModule,
+    ChartsModule
+    //,
 //    NgbModule
   ],
   providers: [],
