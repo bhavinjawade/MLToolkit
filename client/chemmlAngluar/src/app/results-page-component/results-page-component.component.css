@@ -111,6 +111,13 @@ th, td{
     padding-bottom: 2%;
 }
 
+.noResult{
+    padding: 3%;
+    font-family: Roboto;
+    font-size: 1.4em;
+    background-color: #f4f4f4;
+}
+
 .body{
     padding: 1%;
     font-family: Roboto;

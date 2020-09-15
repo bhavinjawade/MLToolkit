@@ -584,6 +584,31 @@
     margin-bottom: 7% !important;
 }
 
+.icon{
+    clear: both;
+    text-align: left;
+    vertical-align: middle;
+    stroke: azure;
+    width: 42px;
+    margin-top: 4%;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.icon:hover{
+    opacity: 0.7;
+}
+
+#project_info{
+    vertical-align: middle;
+    width: 52px;
+    margin: 0% !important;
+    clear: both;
+    display: inline-block;
+    margin-right: 16px !important;
+    stroke: beige;
+}
+
 #propwrap {
     position: absolute;
     right: 0;

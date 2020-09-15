@@ -14,6 +14,7 @@ export class ResultsPageComponentComponent implements AfterViewInit {
   results: any[] = [];
   expanded = 0;
   csv_data: any;
+  noResults = false;
   csv_header: any;
 
   @Output() closeEvent = new EventEmitter();
@@ -30,6 +31,9 @@ export class ResultsPageComponentComponent implements AfterViewInit {
     .subscribe(response => {
       var results = response["data"];
       var keys = Object.keys(results);
+      if(keys.length==0){
+        this.noResults = true;
+      }
       for(var i = 0; i < keys.length; i++){
         this.results.push(results[keys[i]]);
       }

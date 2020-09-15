@@ -19,6 +19,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ResultsPageComponentComponent } from './results-page-component/results-page-component.component';
 import { VisualizeMainComponent } from './visualize-main/visualize-main.component';
 import { ChartsModule } from 'ng2-charts';
+import { ProjectInfoComponentComponent } from './project-info-component/project-info-component.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -39,7 +40,8 @@ import { ChartsModule } from 'ng2-charts';
     LeftFilesBarComponentComponent,
     HomePageComponent,
     ResultsPageComponentComponent,
-    VisualizeMainComponent
+    VisualizeMainComponent,
+    ProjectInfoComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,10 @@
             </div>
         </div>
         <div class="runs">
+            <div class = "noResult" *ngIf="noResults==true">
+                This project has not been executed. Click on Run Pipeline to execute your pipeline and see results.
+            </div>
+            <div class = "results" *ngIf="noResults==false">
             <div class="body" *ngFor="let result of results; let i = index;" (click)="expanded=i;checkForCSV(result);">
                 <div class="run_row">
                     <div class="title">
@@ -43,6 +47,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

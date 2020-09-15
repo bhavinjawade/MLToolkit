@@ -919,6 +919,10 @@ table {
     transition: all .3s cubic-bezier(.05,.03,.35,1);
 }
 
+.landingPage{
+    height:100%;
+}
+
 #table_preview {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;

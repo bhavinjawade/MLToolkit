@@ -27,6 +27,7 @@ export class AppComponent implements AfterViewInit {
   showFilesMenu = false;
   currentProject: any;
   projectName: any;
+  showProjectInfo: false;
   showLandingPage = true;
   inputOutputConfigMapping = [];
   chemMLJson: any;
@@ -211,6 +212,7 @@ export class AppComponent implements AfterViewInit {
 
   projectOpened(){
     this.showLandingPage=false; 
+    this.showProjectInfo=false;
     this.dataServiceService.getProject(this.projectName)
     .subscribe(response => {
       console.log("projectInfo",response);
@@ -277,7 +279,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   goHome(event){
-    window.location.reload();
+    this.showLandingPage = true;
+    //    window.location.reload();
+
     console.log(event);
   }
 

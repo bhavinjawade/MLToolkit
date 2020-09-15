@@ -12,7 +12,7 @@
         <div id="navigation" *ngIf="!showLandingPage && exitMainPage">
             <div id="leftside">
                 <div id="details">
-                <div id="back" (click)="showFilesMenu=true;"><img src="assets/open-menu.svg"></div>
+                <div id="back" (click)="showFilesMenu=true;"><img src="assets/open-menu.svg"/></div>
                 <div id="names">
                     <p id="title">{{projectName}}</p>
                     <p id="subtitle">Portal</p>
@@ -24,6 +24,7 @@
             <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
             <nav-button description="Results" class="button" (callFunction)="openResultsPage($event)" ></nav-button>
             <div id="buttonsright">
+                <div id="project_info" (click)="showProjectInfo=true;" ><img class = "icon" src="assets/settings.svg"/></div>
                 <div id="publish" (click) = "runPipeline();">Run Pipeline</div>
             </div>
         </div>
@@ -34,6 +35,8 @@
         
         <div class="input_output_toolConfig" #inputOutputAppend></div>
         <div class="botton">
+        <app-project-info-component (closeBoxEmit)="showProjectInfo=false" *ngIf="showProjectInfo"></app-project-info-component>
+
         </div>
 
     <app-toolbox *ngIf="!showLandingPage"></app-toolbox>
