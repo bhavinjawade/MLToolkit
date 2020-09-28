@@ -10,4 +10,6 @@ export abstract class API_URLS{
   static getResults:string = API_URLS.baseURL + "/get_results/";
   static getProject:string = API_URLS.baseURL + "/projects/g/";
   static getProjectFilesWithDetails:string = API_URLS.baseURL + "/get_project_files/";
+  static updateProjectInfo:string = API_URLS.baseURL + "/projects/u/"
+  static getFile:string = API_URLS.baseURL + '/get_file/'
 }

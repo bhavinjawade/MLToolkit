@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-    <app-visualize-main *ngIf="show_visualize" [preselected_file]="selected_file"></app-visualize-main>
+    <app-visualize-main [project_name] = "project_name" (closeBoxEmit)="show_visualize=false;" *ngIf="show_visualize" [preselected_file]="selected_file"></app-visualize-main>

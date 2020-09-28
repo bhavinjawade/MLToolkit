@@ -27,7 +27,7 @@ export class AppComponent implements AfterViewInit {
   showFilesMenu = false;
   currentProject: any;
   projectName: any;
-  showProjectInfo: false;
+  showProjectInfo = false;
   showLandingPage = true;
   inputOutputConfigMapping = [];
   chemMLJson: any;
@@ -234,7 +234,8 @@ export class AppComponent implements AfterViewInit {
       var blockelemtag = blocks[key].blockelemtag;
       var blockid = blocks[key].blockid;
       console.log(element);
-      var newElement = element.cloneNode(true);
+      var ele = element.cloneNode(true);
+      var newElement = (<HTMLElement>ele)
       newElement.style.top = top;
       newElement.style.left = left;
       canvas_div.appendChild(newElement);
@@ -246,9 +247,11 @@ export class AppComponent implements AfterViewInit {
       newElement.classList.remove("create-flowy");
       newElement.classList.add("block");
       newElement.classList.add("blockintree");
-      var toolheader = newElement.querySelector(".tool_header");
+      var th = newElement.querySelector(".tool_header");
+      var toolheader = (<HTMLElement>th)
       toolheader.style.display = "block";
-      var toolfooter = newElement.querySelector(".tool_footer");
+      var tf = newElement.querySelector(".tool_footer");
+      var toolfooter = (<HTMLElement>tf)
       toolfooter.style.display = "block";
       newElement.id = key;
       if(!(key in this.toolConfigMapping)){
@@ -262,7 +265,7 @@ export class AppComponent implements AfterViewInit {
         this.componentRef.instance.tooltype = type;
         var children = newElement.childNodes;
         for (var i = 0; i < children.length; i++) {
-          children[i].id = newElement.id+"_toremove";
+          (<HTMLElement>children[i]).id = newElement.id+"_toremove";
         }
       }
     }
@@ -319,13 +322,13 @@ export class AppComponent implements AfterViewInit {
       "blocks": {}
     };
     for(var i = 0; i < blocks.length; i++){
-      var top = blocks[i].style.top;
-      var left = blocks[i].style.left;
-      var blockelemtag = blocks[i].querySelector(".blockelemtype");
-      var blockid = blocks[i].querySelector(".blockid");
+      var top = (<HTMLElement>blocks[i]).style.top;
+      var left = (<HTMLElement>blocks[i]).style.left;
+      var blockelemtag = (<HTMLElement>blocks[i]).querySelector(".blockelemtype");
+      var blockid = (<HTMLElement>blocks[i]).querySelector(".blockid");
       console.log(blockelemtag);
       console.log(blockid);
-      graph["blocks"][blocks[i].id] = {
+      graph["blocks"][(<HTMLElement>blocks[i]).id] = {
         "top": top,
         "left": left,
         "blockelemtag": blockelemtag.outerHTML,
@@ -335,7 +338,7 @@ export class AppComponent implements AfterViewInit {
     var Arrows = document.getElementsByClassName("arrowblock");
     var graph_arrows = []
     for(var i = 0; i < Arrows.length; i++){
-      graph_arrows.push(Arrows[i].outerHTML);
+      graph_arrows.push((<HTMLElement>Arrows[i]).outerHTML);
     }
     graph["Arrows"] = graph_arrows;
     var flowy_output = flowy.output();

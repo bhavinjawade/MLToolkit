@@ -1,20 +1,28 @@
 <div class = "main-container">
-    <div class = "title">Project Properties</div>
+    <div class = "title">
+        <span>Project Properties</span>
+        <div class = "close" (click)="closeBox();"><img src="../../assets/close.svg"/></div>
+    </div>
     <div class = "body">
         <div class = "proprow">
             <label class = "label project_name_label">Name</label>
-            <input class = "input_tag project_name"/>
+            <input id="project_name" class = "input_tag project_name" value = "{{currentProject.project_name}}"/>
         </div>
         <div class = "proprow">
             <label class = "label project_desc_label">Description</label>
-            <textarea class = "input_tag project_desc"></textarea>
+            <textarea id="project_desc" class = "input_tag project_desc">{{currentProject.project_desc}}</textarea>
         </div>
         <div class = "proprow">
             <label class = "label tags">Tags</label>
+            <input #tags id="tags" (keydown)="onKeydownEvent($event)" contenteditable="true" 
+            placeholder = "Press enter to save tag" class = "input_text" type="text"/>
+            <div id="tags_show">
+                
+            </div>
         </div>
     </div>
     <div class = "footer">
         <button class="cancel" (click)="closeBox();">Cancel</button>
-        <button class="save">Save Changes</button>
+        <button class="save" (click)="saveProject();">Save Changes</button>
     </div>
 </div>

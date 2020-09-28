@@ -1,0 +1,25 @@
+
+.container{
+    position: absolute;
+    z-index: 1000000;
+    height: 100%;
+    background-color: #f1f2f3;
+    width: 100% !important;
+    clear: both;
+    right: 0;
+    left: 0;
+    padding: 16%;
+    padding-left: 46%;
+    opacity: 0.8;
+    min-width: 100% !important;
+}
+
+.title{
+    font-family: Roboto;
+    margin-left: 3%;
+    background-color: #e2e2e2;
+    padding: 1%;
+    border-radius: 45px;
+    padding-left: 2%;
+    padding-right: 2%;
+}

@@ -101,6 +101,44 @@ def get_project(project_name):
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
+@app.route("/projects/u/<project_name>",methods=['GET','POST'])
+def update_project(project_name):
+    json_data = json.loads(str(request.data, encoding='utf-8'))
+    content = json_data["data"]
+    cursor = collection.find({'project_name':project_name})
+    project = []
+    for project in cursor:
+        project["project_desc"] = content["project_desc"]
+        project["project_name"] = content["project_name"]
+        project["project_properties"]["tag_list"] = content["project_properties"]["tag_list"]
+        collection.update(
+                                { "_id": project["_id"] },
+                                { "$set":
+                                    {
+                                        "project_desc": content["project_desc"],
+                                        "project_name": content["project_name"],
+                                        "project_properties": content["project_properties"]
+                                    },
+                                    "$currentDate":{"lastModified":True}
+                                }
+                                )
+    if(len(project) >= 0):
+        status = "200"
+    
+    response = flask.Response(json.dumps({"data": project, 
+                        "status": status_codes[status]},
+                        default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@app.route('/get_file/<project_name>/<file_name>')
+def get_image(project_name,file_name):
+    try:
+        response = send_from_directory(app.config["UPLOAD_FOLDER"] + '/' + project_name, filename=file_name, as_attachment=True)
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response;
+    except FileNotFoundError:
+        abort(404)
 
 @app.route('/execute/<project_name>',methods=['GET','POST'])
 def execute_pipeline(project_name):

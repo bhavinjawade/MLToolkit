@@ -12,19 +12,19 @@
         <div id="navigation" *ngIf="!showLandingPage && exitMainPage">
             <div id="leftside">
                 <div id="details">
-                <div id="back" (click)="showFilesMenu=true;"><img src="assets/open-menu.svg"/></div>
+                <div id="back" (click)="goHome($event);"><img src="assets/arrow.svg"/></div>
                 <div id="names">
-                    <p id="title">{{projectName}}</p>
+                    <p id="title" (click)="showProjectInfo=true;">{{projectName}}</p>
                     <p id="subtitle">Portal</p>
                 </div>
             </div>            
             </div>
-            <nav-button description="Home" class="button" (callFunction)="goHome($event)" ></nav-button>
+            <nav-button description="Files" class="button" (callFunction)="showFilesMenu=true;" ></nav-button>
             <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
             <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
             <nav-button description="Results" class="button" (callFunction)="openResultsPage($event)" ></nav-button>
             <div id="buttonsright">
-                <div id="project_info" (click)="showProjectInfo=true;" ><img class = "icon" src="assets/settings.svg"/></div>
+                <!-- <div id="project_info" (click)="showProjectInfo=true;" ><img class = "icon" src="assets/settings.svg"/></div> -->
                 <div id="publish" (click) = "runPipeline();">Run Pipeline</div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         
         <div class="input_output_toolConfig" #inputOutputAppend></div>
         <div class="botton">
-        <app-project-info-component (closeBoxEmit)="showProjectInfo=false" *ngIf="showProjectInfo"></app-project-info-component>
+        <app-project-info-component (closeBoxEmit)="showProjectInfo=false" *ngIf="showProjectInfo" [project_name] = "projectName"></app-project-info-component>
 
         </div>
 

@@ -678,7 +678,7 @@ table {
 
 .header-container{
     position: fixed;
-    height: 6%;
+    height: 5%;
     padding: 1%;
     background-color: #f1f4fc;
     border-radius: 12px;
@@ -1056,6 +1056,7 @@ table {
     padding-left: 14px;
     border-top: 2px solid #e6e6e6;
     border-right: 6px solid #217CE8;
+    box-shadow: 1px 1px 11px #e2e2e2;
 }
 
 .newProjectButton{
@@ -1085,6 +1086,8 @@ table {
 }
 
 .proj_tag{
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     margin-bottom: 2%;
     display: inline-block;
@@ -1096,6 +1099,7 @@ table {
     border-radius: 55px;
     padding-right: 5%;
     color: white;
+    padding-bottom: 2%;
 }
 
 .bold{

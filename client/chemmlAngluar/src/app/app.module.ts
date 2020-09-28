@@ -20,6 +20,7 @@ import { ResultsPageComponentComponent } from './results-page-component/results-
 import { VisualizeMainComponent } from './visualize-main/visualize-main.component';
 import { ChartsModule } from 'ng2-charts';
 import { ProjectInfoComponentComponent } from './project-info-component/project-info-component.component';
+import { LoadingComponentComponent } from './loading-component/loading-component.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -41,7 +42,8 @@ import { ProjectInfoComponentComponent } from './project-info-component/project-
     HomePageComponent,
     ResultsPageComponentComponent,
     VisualizeMainComponent,
-    ProjectInfoComponentComponent
+    ProjectInfoComponentComponent,
+    LoadingComponentComponent
   ],
   imports: [
     BrowserModule,

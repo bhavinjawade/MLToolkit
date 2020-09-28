@@ -1,31 +1,57 @@
+<app-loading-component [message]='loadingMessage' *ngIf="loading"></app-loading-component>
+<div id="navigation">
+    <div id="leftside">
+        <div id="details">
+        <div id="back" (click)="closeBox();"><img src="assets/arrow.svg"></div>
+        <div id="names">
+            <p id="title">Toolkit Toolbar</p>
+            <p id="subtitle">Portal</p>
+        </div>
+    </div>            
+    </div>
+    <nav-button description="File Name" class="button"></nav-button>
+    <nav-button description="Graph Type" class="button"></nav-button>
+    <div id="buttonsright">
+        <div id="publish" (click)="generateGraph()">Generate Graph</div>
+    </div>
+</div>
 <div class = "main_container">
-    <div class = "config_bar">
+    <!-- <div class = "config_bar">
         <div class = "filenames">{{preselected_file.file_name}}</div>
         <div class = "graph_types">Line Plot</div>
-    </div>
-    <div class = "columns_bar">
-        <div class = "title">Column Names</div>
-        <div class = "body">
-            <div class = "column_names_csv">id</div>
-            <div class = "column_names_csv">name</div>
-            <div class = "column_names_csv">score</div>
-            <div class = "column_names_csv">desc</div>
-            <div class = "column_names_csv">price</div>
+    </div> -->
+    <div class = "left_container">
+        <div>
+            <div class = "select_file">Data File</div>
+            <div class="graph_type" *ngFor="let file of csvFiles; let file_index = index;" [ngClass]="select_file==file_index ? 'selected_button' : ''" 
+            id="file_{{file_index}}'" [attr.value]="file.file_name" (click) = "selectFile(file,file_index)">{{file.file_name}}</div>
+        </div>
+        <div class = "select_graph">Graph Type</div>
+        <div class = "graph_types">
+            <div class = "graph_type" id="scatter" (click) = "selectGraphType($event)">Scatter Plot</div>
+            <div class = "graph_type" id="line" (click) = "selectGraphType($event)">Line Plot</div>
+            <div class = "graph_type" id="horizontalBar" (click) = "selectGraphType($event)">Horizontal Bar Chart</div>
+            <div class = "graph_type" id="bar" (click) = "selectGraphType($event)">Vertical Bar Chart</div>
+            <div class = "graph_type" id="doughnut" (click) = "selectGraphType($event)">Pie Chart</div>
+            <div class = "graph_type" id="polarArea" (click) = "selectGraphType($event)">Polar Area</div>
+        </div>
+        <div class = "select_axes">Graph Axes</div>
+        <div class = "columns_bar">
+            <div class = "title">Column Names</div>
+            <div class = "body" id="column_names" (drop)="drop($event)" (dragover)="allowDrop($event)">
+                <div *ngFor = "let column of column_names; let i = index; trackBy: customTB" class = "column_names_csv" id = "column{{i}}" draggable="true" (dragstart)="drag($event)">{{column}}</div>
+            </div>
+        </div>
+        <div class="xy_bar">
+            <div class = "x_column" id = "x_column" (drop)="drop($event)" (dragover)="allowDrop($event)">
+                <div class = "title" style="padding: 8%;">X Axis</div>
+            </div>
+            <div class = "y_column" id = "y_column" (drop)="drop($event)" (dragover)="allowDrop($event)">
+                <div class = "title" style="padding: 8%;">Y Axis</div>
+            </div>
         </div>
     </div>
-    <div class="xy_bar">
-        <div class = "x_column"></div>
-        <div class = "y_column"></div>
-    </div>
-    <div class="graph" style="display: block;position: relative; height:40vh; width:80vw">
-        <canvas baseChart
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
-        [options]="lineChartOptions"
-        [colors]="lineChartColors"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-        [plugins]="lineChartPlugins">
-      </canvas>    
+    <div class="graph" style="display: inline-block;position: relative; height: 77%;width: 64%;">
+        <canvas id = "chart" baseChart></canvas>    
     </div>
 </div>

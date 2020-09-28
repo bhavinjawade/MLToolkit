@@ -1,0 +1,52 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {},
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": null,
+      "name": "read_csv",
+      "outputs": {}
+    },
+    "tool_dim-reduction_1": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit_transform",
+        "outputs": {}
+      },
+      "module": "decomposition",
+      "name": "PCA",
+      "outputs": {}
+    },
+    "tool_helper-functions_3": {
+      "inputs": {},
+      "library": "chemml",
+      "method": {
+        "inputs": {},
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveCSV",
+      "outputs": {}
+    },
+    "tool_preprocessing-node_2": {
+      "inputs": {},
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit_transform",
+        "outputs": {}
+      },
+      "module": "preprocessing",
+      "name": "StandardScaler",
+      "outputs": {}
+    }
+  }
+}
