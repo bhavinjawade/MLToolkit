@@ -8,6 +8,11 @@ from flask.templating import render_template
 import flask
 from werkzeug.utils import secure_filename
 from celery_task import run_pipeline
+import pandas as pd
+from pandasql import sqldf, load_meat, load_births
+import pandasql
+
+
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/"
@@ -139,6 +144,87 @@ def get_image(project_name,file_name):
         return response;
     except FileNotFoundError:
         abort(404)
+
+@app.route('/get_query_preview/<project_name>/<csv_name>',methods=['GET','POST'])
+def get_query_preview(project_name,csv_name):
+    json_data = json.loads(str(request.data, encoding='utf-8'))
+    content = json_data["data"]
+    query = content["query"]
+    cursor = collection.find({'project_name':project_name})
+    table_names = []
+    files = []
+    for project in cursor:
+        files = list(project["files"].keys())
+        break
+    sql = pandasql.PandaSQL()
+    data_frames = []
+
+    for table_name in files:
+        if(table_name.endswith(".csv")):
+            table_names.append(table_name.split(".")[0])
+            data_frames.append(pd.read_csv("./project_files/" + project_name + "/" + table_name))
+
+    env = {""+table_names[i]: df for i, df in enumerate(data_frames)}
+    print("======>",env.keys())
+    df = sql(query, env=env)
+    csv_str = df.to_csv(index=False)
+    status = "200"
+    response = flask.Response(json.dumps({"data": csv_str,
+                "status": status_codes[status]},
+                default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response;
+
+
+@app.route('/run_sql_query/<project_name>/<csv_name>',methods=['GET','POST'])
+def run_sql_query(project_name,csv_name):
+    json_data = json.loads(str(request.data, encoding='utf-8'))
+    content = json_data["data"]
+    query = content["query"]
+    cursor = collection.find({'project_name':project_name})
+    table_names = []
+    files = []
+    for project in cursor:
+        files = list(project["files"].keys())
+        break
+    sql = pandasql.PandaSQL()
+    data_frames = []
+
+    for table_name in files:
+        if(table_name.endswith(".csv")):
+            table_names.append(table_name.split(".")[0])
+            data_frames.append(pd.read_csv("./project_files/" + project_name + "/" + table_name))
+
+    env = {""+table_names[i]: df for i, df in enumerate(data_frames)}
+    print("======>",env.keys())
+    df = sql(query, env=env)
+    p_name = csv_name + ".csv"
+    df.to_csv("./project_files/" + project_name + "/" + p_name, sep=',')
+
+    cursor = collection.find({'project_name':project_name})
+    for project in cursor:
+        project["files"][p_name] = {
+                                    "file_name": p_name,
+                                    "file_path": "./project_files/" + project_name + "/" + p_name
+                                }   
+
+        collection.update(
+            { "_id": project["_id"] },
+            { "$set":
+                {
+                    "files": project["files"]
+                },
+                "$currentDate":{"lastModified":True}
+            }
+
+            )
+    response_output = "New Table Created successfully"
+    status = "200"
+    response = flask.Response(json.dumps({"data": response_output,
+                "status": status_codes[status]},
+                default=json_util.default))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response;
 
 @app.route('/execute/<project_name>',methods=['GET','POST'])
 def execute_pipeline(project_name):

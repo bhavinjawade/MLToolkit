@@ -12,4 +12,6 @@ export abstract class API_URLS{
   static getProjectFilesWithDetails:string = API_URLS.baseURL + "/get_project_files/";
   static updateProjectInfo:string = API_URLS.baseURL + "/projects/u/"
   static getFile:string = API_URLS.baseURL + '/get_file/'
+  static runSQLQuery:string = API_URLS.baseURL + '/run_sql_query/'
+  static previewSQLQuery:string = API_URLS.baseURL + '/get_query_preview/'
 }

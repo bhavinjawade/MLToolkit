@@ -1,3 +1,4 @@
+import { QueryValueType } from '@angular/compiler/src/core';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartDataSets, ChartOptions } from 'chart.js';
@@ -21,12 +22,13 @@ export class VisualizeMainComponent implements OnInit {
   closeBox(): void {
     this.closeBoxEmit.emit()
   }
+  showSQLBox = false;
   loadingMessage = "Loading CSV to memory";
   loading = false;
   column_names = [];
   projectFiles = [];
   csvFiles = [];
-  graphType = 'horizontalBar';
+  graphType = 'scatter';
   select_file: any;
   selected_file: any;
   x_list = [];
@@ -93,6 +95,8 @@ export class VisualizeMainComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
   public lineChartPlugins = [];
+  csv_data: any;
+  csv_header: any;
   graph_data: any;
   chart: any;
   constructor(private dataServiceService: DataServiceService) { }
@@ -121,6 +125,52 @@ export class VisualizeMainComponent implements OnInit {
       result = this.color_names[Object.keys(this.color_names)[
         Math.floor(Math.random()*Object.keys(this.color_names).length)]];      
       return result; 
+  }
+
+  executeSQLQuery(query, csv_name) {
+    console.log(query, csv_name);
+    this.dataServiceService.runSQLQuery(this.project_name, query, csv_name).subscribe(result => {
+      console.log("Result: ", result)
+    });
+  }
+
+  previewSQLQuery(query, csv_name) {
+    console.log(query, csv_name);
+    this.dataServiceService.previewSQLQuery(this.project_name, query, csv_name).subscribe(result => {
+      console.log("Result: ", result["data"]);
+      var data = this.csvToJSON(result["data"]);
+      this.csv_data = data.data;
+      this.csv_header = data.headers;
+      console.log(this.csv_data, this.csv_header);
+    });
+  }
+
+  csvToJSON(csv: string) {
+    const lines: string[] = csv
+      .replace(/"(.*?)"/gm, (item) => encodeURIComponent(item))
+      .split('\n');
+    const headers: string[] = lines.shift().split(',');
+    const data: any[] = lines.map((lineString, index) => {
+      const lineObj = {};
+      const lineValues = lineString.split(',');
+  
+      headers.forEach((valueName, index) => {
+        console.log(valueName, index);
+        lineObj[valueName] = lineValues[index]
+          .replace(/%22(.*?)%22/gm, (item) => decodeURIComponent(item))
+          .trim();
+      })
+      return lineObj; 
+    }); 
+  
+    return { data, headers };
+  }
+
+  openSQLBox() {
+    if(this.showSQLBox)
+      this.showSQLBox = false;
+    else
+      this.showSQLBox = true;
   }
 
   makeChart(data) {

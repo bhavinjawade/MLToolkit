@@ -57,6 +57,28 @@ export class DataServiceService {
     );
   }
 
+  runSQLQuery(project_name: string, query: string, csv_name: string): Observable<any> {
+    var packet:any = {
+      data : {
+        "query": query 
+      }
+    }
+    return this.http.post(API_URLS.runSQLQuery + project_name + "/" + csv_name, JSON.stringify(packet)).pipe(
+      catchError(this.handleError<any>('runQuery', []))
+    );
+  }
+
+  previewSQLQuery(project_name: string, query: string, csv_name: string): Observable<any> {
+    var packet:any = {
+      data : {
+        "query": query 
+      }
+    }
+    return this.http.post(API_URLS.previewSQLQuery + project_name + "/" + csv_name, JSON.stringify(packet)).pipe(
+      catchError(this.handleError<any>('runQuery', []))
+    );
+  }
+
   updateProjectInfo(currentProject: any, project_name: string): Observable<any> {
     console.log("Sending this project", currentProject);
     var packet:any = {

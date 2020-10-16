@@ -81,7 +81,7 @@ export default {
           returned: true
         }
       ]
-    }
+    },
   ],
   nodes: [
     {

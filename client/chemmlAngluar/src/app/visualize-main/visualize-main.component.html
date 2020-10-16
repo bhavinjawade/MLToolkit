@@ -12,9 +12,41 @@
     <nav-button description="File Name" class="button"></nav-button>
     <nav-button description="Graph Type" class="button"></nav-button>
     <div id="buttonsright">
-        <div id="publish" (click)="generateGraph()">Generate Graph</div>
+        <div [ngClass]="showSQLBox ? 'clicked':'unclicked'" id="pb" (click) = "openSQLBox()">Run SQL Button</div>
+        <div id="publish" (click) = "generateGraph()">Generate Graph</div>
     </div>
 </div>
+
+<div id = "sql_box"  *ngIf="showSQLBox">
+    <div class = "sql_title">SQL Query</div>
+    <div class = "box_input">
+        <textarea #query class = "input_text_box" id = "query"></textarea>
+    </div>
+    <div class = "table_title">Table Title</div>
+    <input #table_title class = "input_text" id = "table_title"/>
+    <div class = "btnbar">
+        <div id = "publish" (click)="previewSQLQuery(query.value, table_title.value)">Preview</div>
+        <div  id = "publish" (click)="executeSQLQuery(query.value, table_title.value)">Save CSV</div>
+    </div>
+    <div class = "preview" id = "sql_preview">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th *ngFor="let header of csv_header">{{ header }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of csv_data">
+                        <td *ngFor="let header of csv_header">
+                          {{ row[header] }}
+                        </td>
+                      </tr>
+                </tbody>
+              </table>
+    </div>
+
+</div>
+
 <div class = "main_container">
     <!-- <div class = "config_bar">
         <div class = "filenames">{{preselected_file.file_name}}</div>
