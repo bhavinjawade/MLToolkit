@@ -30,7 +30,7 @@ Save Project and associated files: A project consists of the user created pipeli
 4. **Visualization:** ChemML will allow users to visualize the outputs from the pipeline so as to support easy comparison of various runs. Users can also get certain intermediate outputs from the pipeline.
 
 ## Run the code locally:
-<img src="arch.PNG" height="300">
+<img src="arch.PNG">
 
 **Requirements:**
 1. Celery
