@@ -24,7 +24,7 @@ The current implementation will support creation of user defined data flows with
 
 1. **Datasets:** Import data from CSV or chemML’s inbuilt chemical and material sciences datasets.
 Represent and Prepare: Perform PCA, factor analysis, scaling and data splitting.
-2. **Models and Model Optimization: **Train linear models, support vector machines, and neural networks for regression and classification tasks. Search for the right set of model parameters using GridSearchCV, filter models based on various metrics like MAE or R2 Score.
+2. **Models and Model Optimization:** Train linear models, support vector machines, and neural networks for regression and classification tasks. Search for the right set of model parameters using GridSearchCV, filter models based on various metrics like MAE or R2 Score.
 3. **Results:** See the output of various runs of the pipeline and compare them based on the results.
 Save Project and associated files: A project consists of the user created pipeline, associated files that the user has uploaded like research paper, datasets etc. and  the multiple runs of the pipeline along with their respective results.
 4. **Visualization:** ChemML will allow users to visualize the outputs from the pipeline so as to support easy comparison of various runs. Users can also get certain intermediate outputs from the pipeline.
