@@ -48,6 +48,7 @@ git clone https://github.com/bhavinjawade/MLToolkit.git
 **Run Angular**
 ```
 cd client/chemmlAngular
+npm build
 ng serve
 ```
 
