@@ -12,6 +12,32 @@ body, html {
     width: 25% !important;
     margin-left: 10% !important;
 }
+
+.leftarrow{
+    padding: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-family: 'Roboto';
+    position: absolute;
+    background-color: #217CE8;
+    height: 47px;
+    cursor: pointer;
+    color:white;
+}
+
+.rightarrow{
+    right: 0;
+    padding: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-family: 'Roboto';
+    position: absolute;
+    background-color: #217CE8;
+    height: 47px;
+    cursor: pointer;
+    color:white;
+}
+
 .select_file_btn{
     display:inline-block;
     border-radius: 5px;

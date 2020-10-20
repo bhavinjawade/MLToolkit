@@ -19,11 +19,13 @@
                 </div>
             </div>            
             </div>
-            <nav-button description="Files" class="button" (callFunction)="showFilesMenu=true;" ></nav-button>
             <nav-button description="New Project" class="button" (callFunction)="newProject($event)" ></nav-button>
             <nav-button description="Open Project" class="button" (callFunction)="openProject($event)" ></nav-button>
+            <nav-button description="Files" class="button" (callFunction)="showFilesMenu=true;" ></nav-button>
             <nav-button description="Results" class="button" (callFunction)="openResultsPage($event)" ></nav-button>
+            <nav-button description="Save" class="button" (callFunction)="saveGraph();" ></nav-button>
             <div id="buttonsright">
+                <div id = "saveStatus" class = "saveStatus">Project Opened</div>
                 <!-- <div id="project_info" (click)="showProjectInfo=true;" ><img class = "icon" src="assets/settings.svg"/></div> -->
                 <div id="publish" (click) = "runPipeline();">Run Pipeline</div>
             </div>

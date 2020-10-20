@@ -57,8 +57,11 @@
                             <div class="select_file_btn" onclick="document.getElementById('csv_load').click()" type="file" id="myfile" name="myfile">Select File</div>   
                             <p id="filename"></p> -->
                     </div>
-                    <div class = "paramInput" *ngIf="param.param_type[0] != 'object'">
+                    <div class = "paramInput" *ngIf="param.param_type[0] != 'object' && param.name !='file_path'">
                         <input class="input_text" (focusout) = "getParameterValue($event,param.name)" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
+                    </div>
+                    <div class = "paramInput" *ngIf="param.name =='file_path'">
+                        <input class="input_text" (focusout) = "getParameterValue($event,param.name)" value="/metric/results.csv" disabled [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
                     </div>
                 </div>
             </div>

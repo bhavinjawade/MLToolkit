@@ -8,12 +8,14 @@
         <input type="text" placeholder="Search Pipeline Toolbox">
     </div>
     <div id="subnav">
+        <div class="leftarrow" (click)="scrollSubNavLeft()"><</div>
         <div id="actions"  [ngClass]="selectedToolSet==='Data' ? 'navactive' : 'navdisabled'" class="side"   (click)="selectedToolSet = 'Data'">Data</div>
         <div id="actions" class="side" [ngClass]="selectedToolSet==='Represent' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Represent'">Represent</div>
         <div id="actions" class="side" [ngClass]="selectedToolSet==='Preprocessing' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Preprocessing'">Prepare</div>
         <div id="loggers" class="side" [ngClass]="selectedToolSet==='Model' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Model'">Model</div>
         <div id="loggers" class="side" [ngClass]="selectedToolSet==='Optimize' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Optimize'">Optimize</div>
-        <div id="loggers" class="side" [ngClass]="selectedToolSet==='Helper' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Helper'">Helper Functions</div>
+        <div id="loggers" style="padding-right: 22%;"class="side" [ngClass]="selectedToolSet==='Helper' ? 'navactive' : 'navdisabled'" (click)="selectedToolSet = 'Helper'">Helper Functions</div>
+        <div class="rightarrow" (click)="scrollSubNavRight()">></div>
     </div>
     <div class = "toolset_container">
         <div class = "toolset-holder" tooltype="Represent" [hidden]="selectedToolSet !=='Represent'">

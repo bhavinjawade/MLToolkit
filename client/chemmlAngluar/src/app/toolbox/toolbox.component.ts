@@ -28,6 +28,14 @@ export class ToolboxComponent implements OnInit {
     }
   }
 
+  scrollSubNavLeft(){
+    (<HTMLElement>document.getElementById("subnav")).scrollLeft -= 50;
+  }
+
+  scrollSubNavRight(){
+    (<HTMLElement>document.getElementById("subnav")).scrollLeft += 50;
+  }
+
   ngOnInit(): void {
   }
 

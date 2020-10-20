@@ -36,7 +36,7 @@
             <div class = "table-item-header project_icons">Duplicate Project</div>
         </div>
         <div class="table-body">
-        <div *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (click)="selectProject('project_'+i, project)" class = "project_list_item">
+        <div *ngFor="let project of renderList; let i = index"  [attr.data-index]="i" id="project_{{i}}" (dblclick)="openProject();" (click)="selectProject('project_'+i, project)" class = "project_list_item">
             <div class="table-item project_name bold">{{project.project_name}}</div>
             <div class="table-item project_desc">{{project.project_desc}}</div>
             <div class="table-item created_date">{{project.created_date.$date | timePipe}}</div>

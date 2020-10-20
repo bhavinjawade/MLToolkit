@@ -347,6 +347,8 @@ export class AppComponent implements AfterViewInit {
     this.dataServiceService.saveGraph(this.projectName,graph)
       .subscribe(response => {
         console.log("Saved Result",response);
+        let date = new Date().toLocaleString().replace(",","").replace(/:.. /," ");
+        (<HTMLElement>document.getElementById("saveStatus")).innerHTML = "Project Last Saved " + date;
       });
   }
 }
