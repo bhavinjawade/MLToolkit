@@ -1,4 +1,4 @@
-# Made@UB - Machine Learning Toolkit
+# [Made@UB](https://madeatub.buffalo.edu/news/49-machine-learning-toolkit-news) - Machine Learning Toolkit
 <img src="ub_logo.jpg" align="right"
      alt="Size Limit logo by Anton Lovchikov" width="120" height="120"
      style="border-radius:100px;">
@@ -30,7 +30,7 @@ Save Project and associated files: A project consists of the user created pipeli
 4. **Visualization:** ChemML will allow users to visualize the outputs from the pipeline so as to support easy comparison of various runs. Users can also get certain intermediate outputs from the pipeline.
 
 ## Run the code locally:
-<img src="arch.PNG" align="center" width="400">
+<img src="arch.PNG">
 
 **Requirements:**
 1. Celery
