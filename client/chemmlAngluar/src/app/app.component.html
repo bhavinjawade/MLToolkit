@@ -1,5 +1,8 @@
 <!-- <router-outlet></router-outlet> -->
-<app-landing-page (closeBoxEmit)="projectOpened();" *ngIf="showLandingPage"></app-landing-page>
+
+<app-home-page *ngIf="showHomePage"></app-home-page>
+
+<app-landing-page (closeBoxEmit)="projectOpened();" *ngIf="showLandingPage && !showHomePage"></app-landing-page>
     <div>
         <div id="header" *ngIf="!showLandingPage">
             <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>

@@ -7,6 +7,7 @@ import { InputOutputConfigComponent } from './input-output-config/input-output-c
 import { API_URLS } from './helpers/api_urls';
 import { DataServiceService } from './data-service.service';
 import { Router, Event, NavigationError, NavigationStart, NavigationEnd } from '@angular/router';
+import {Location} from '@angular/common'; 
 import { ToolboxComponentComponent } from './toolbox-component/toolbox-component.component';
 
 declare var flowy: any;
@@ -29,6 +30,8 @@ export class AppComponent implements AfterViewInit {
   projectName: any;
   showProjectInfo = false;
   showLandingPage = true;
+  
+  showHomePage = false;
   inputOutputConfigMapping = [];
   chemMLJson: any;
   showResultsPage = false;
@@ -46,14 +49,18 @@ export class AppComponent implements AfterViewInit {
 
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
               private currentProjectService: CurrentProjectService, private dataServiceService: DataServiceService,
-              private router: Router){
-
+              private router: Router, private location: Location){
+              
                 this.router.events.subscribe((event: Event) => {
                   if (event instanceof NavigationStart) {
                       console.log("ROUTER EVENT", event);
                       if((event.url) == '/portal'){
                         this.showLandingPage = true;
                         this.exitMainPage = true;
+                        this.showHomePage = false;
+                      }
+                      else if((event.url) == "/"){
+                        this.showHomePage = true;
                       }
                       // Show loading indicator
                   }
@@ -218,6 +225,7 @@ export class AppComponent implements AfterViewInit {
       console.log("projectInfo",response);
       this.loadSavedProject(response);
     });
+    this.location.replaceState('/portal/project/'+this.projectName);
   }
 
   loadSavedProject(response){
@@ -284,7 +292,8 @@ export class AppComponent implements AfterViewInit {
   goHome(event){
     this.showLandingPage = true;
     //    window.location.reload();
-
+    this.location.replaceState('/portal');
+    this.router.navigate(['/portal'])
     console.log(event);
   }
 

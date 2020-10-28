@@ -7,48 +7,45 @@
         </div>
     </div>
     <div class = "quick-intro">
-        <div class = "left-image">
-            <img class = "ml-image" src = "../../assets/mlflow.PNG"/>
-        </div>
         <div class = "right-text">
             <div class = "text-title">
-                Machine Learning Toolkit
+                <div style="display: inline-block;">ML</div> Toolkit
             </div>
             <div class = "text-subtitle">
                 Materials Data Engineering @ UB
             </div>
-            <div class = "text-info">
-                An easy-to-use GUI has been developed to reduce the time it takes to build prototypes for ML models as well as experiment with various feature extraction methods available. Further, plug-and-play-style interactions for the different blocks associated with a typical ML pipeline via a graphical representation with directed edges make the GUI intuitive to use and easy to learn.
-            </div>
-        </div>
-    </div>
-    <div class = "links">
-        <div class = "link-block about">
-            <div class = "link-block-text">
-                About
-            </div>
-            <div class = "link-block-subtext">
-                About Made at Machine Learning Toolkit
-            </div>
-        </div>
-        <div class = "link-block faq-help">
-            <div class = "link-block-text">
-                FAQ/Help
-            </div>
-            <div class = "link-block-subtext">
-                Get quick help regarding most frequent asked questions about toolkit.
-            </div>
-        </div>
-        <div (click) = "sendToPortal()" class = "link-block portal">
-            <div class = "link-block-text">
-                Get Started
-            </div>
-            <div class = "link-block-subtext">
-                Go ML Toolkit Portal
-            </div>
-        </div>
 
+            <div class = "tabs_container">
+                <div class="tab">
+                    <button class="tablinks active" (click)="openTab($event, 'About')">About</button>
+                    <button class="tablinks" (click)="openTab($event, 'Tutorials')">Tutorials</button>
+                    <button class="tablinks" (click)="openTab($event, 'Contribute')">Contribute</button>
+                </div>
+                
+                <div id="About" style = "display:block" class="tabcontent">
+                    <h3>About</h3>
+                    <p class = "tab_text">ML Toolkit provides an online web interface for designing Machine Learning (ML) models, by effectively eliminating the requirement of in-depth programming knowledge. With the new web UI for ML Toolkit the user can visualize a machine learning pipeline with an easy to use drag-and-drop option.</p>
+                    <p class = "tab_btn">Read More</p> 
+                </div>
+                
+                <div id="Tutorials" class="tabcontent">
+                    <h3>Tutorials</h3>
+                    <p class = "tab_text">Read the project docs, examples and tutorials. Also visit sckit-learn tutorials to understand ML terminologies.</p>
+                    <p class = "tab_btn">Project Tutorials</p> 
+                </div>
+                
+                <div id="Contribute" class="tabcontent">
+                    <h3>Contribute</h3>
+                    <p class = "tab_text">This is an open source project. To contribute to this project go to the github repository.</p>
+                    <a href="https://www.github.com/bhavinjawade/MLToolkit"><p class = "tab_btn">Github Repository</p></a>
+                </div>
+                </div>
+            </div>
+
+            <div class = "left-image">
+            <img class = "ml-image" src = "../../assets/graph_3.gif"/>
+            <div class = "gotobtn" (click)="sendToPortal()">Get Started</div>
+            </div>
     </div>
     <app-global-footer></app-global-footer>
-
 </div>

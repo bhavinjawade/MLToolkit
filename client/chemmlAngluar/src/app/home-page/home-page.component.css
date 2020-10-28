@@ -1,3 +1,113 @@
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: white;
+    color: #565656;
+    padding-left: 2%;
+    border-bottom: 2px solid #cccccc;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    color: #565656;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    border-radius: 0px;
+    transition: 0.3s;
+    font-size: 1.2em;
+    padding-left: 4%;
+    width: 32%;
+    padding-right: 4%;
+    font-weight: 800;
+    border-bottom: 5px solid white;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: inherit;
+    float: left;
+    border: none;
+    color: #565656;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    border-radius: 0px;
+    transition: 0.3s;
+    font-size: 1.2em;
+    padding-left: 4%;
+    width: 32%;
+    padding-right: 4%;
+    font-weight: 800;
+    border-bottom: 5px solid #217CE8;
+  }
+  
+  .tab_btn{
+    font-size: 1.5em;
+    width: fit-content;
+    border: 3px solid #0071ff;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 13px;
+    color: #0071ff;
+    font-weight: 600;
+    margin-top: 3%;
+    cursor:pointer;
+    transition: 0.5s;
+  }
+
+  .tab_btn:hover{
+    font-size: 1.5em;
+    width: fit-content;
+    border: 3px solid #0071ff;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 13px;
+    background-color: #0071ff;
+    color:white;
+    font-weight: 600;
+    margin-top: 3%;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: inherit;
+    float: left;
+    border: none;
+    color: #565656;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    border-radius: 0px;
+    transition: 0.3s;
+    font-size: 1.2em;
+    padding-left: 4%;
+    width: 32%;
+    padding-right: 4%;
+    font-weight: 800;
+    border-bottom: 5px solid #217CE8;
+  }
+
+  .tab_text{
+    font-family: 'Roboto';
+    font-size: 1.3em;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    background-color: white;
+    padding-top: 3%;
+  }
+
 .links{
     clear:both;
 }
@@ -45,6 +155,7 @@
     height: 200px;
     background-color: white;
     border: 1px solid #e2e2e2;
+    border-radius: 60px;
     padding: 1%;
     padding-top: 4%;
     padding-left: 1%;
@@ -55,34 +166,133 @@
     cursor: pointer;
 }
 
+.link-block:hover{
+    display: inline-block;
+    width: calc(85% / 3);
+    margin: 2%;
+    margin-top: 0%;
+    margin-left: 50px;
+    font-family: Roboto;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 60px;
+    padding: 1%;
+    padding-top: 4%;
+    padding-left: 1%;
+    padding-bottom: 8%;
+    text-align: -webkit-center;
+    padding-right: 1%;
+    box-shadow: 2px 0px 21px 2px #848484bd;    
+    cursor: pointer;
+}
+
+.tabs_container{
+    padding: 0%;
+    padding-right: 2%;
+    margin-top: 7%;
+    background-color: white;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 1px 2px 25px #e2e2e2;
+    padding-top: 2%;
+    width: 59em;
+}
+
+.gotobtn{
+    font-size: 1.5em;
+    width: fit-content;
+    border: 5px solid white;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 13px;
+    color: #0071ff;
+    font-weight: 600;
+    margin-top: 3%;
+    cursor:pointer;
+    transition: 0.5s;
+    position: absolute;
+    bottom: 11%;
+    right: 3%;
+    color: #0071ff;
+    background-color: white;
+}
+
+a:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.gotobtn:hover{
+    font-size: 1.5em;
+    width: fit-content;
+    border: 5px solid white;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 13px;
+    color: #0071ff;
+    font-weight: 600;
+    margin-top: 3%;
+    cursor:pointer;
+    transition: 0.5s;
+    position: absolute;
+    bottom: 11%;
+    right: 3%;
+    color: white !important;
+    background-color: #0071ff;
+}
+
+.ml-image{
+    border-radius: 80px;
+    border: 5px solid #0071ff;
+    width: 741px !important; 
+    margin: 44%;
+    margin-top: 15%;
+}
+
+.main-container{
+    background-image: url('../../assets/home_page_bkg_2.png');
+    background-size: cover;
+    background-position: center right;
+    height: 100%;
+    width: 100%;
+}
+
 .left-image{
     display: inline-block;
     float: left;
 }
 
-.ml-image{
-    width: 80%;
-    margin-left: 10%;
-}
 
 .right-text{
     display: inline-block;
-    float: right;
-    width: 49%;
+    float: left;
     padding: 2%;
     margin: 3%;
+    margin-top: 0%;
 }
 
 .text-title{
-    font-size: 3em;
-    font-family: Roboto;
+    color: #565656;
+    font-size: 6em;
+    font-family: 'Alfa Slab One', cursive;
     font-weight: 500;
 }
 
 .text-subtitle{
-    font-size: 1.5em;
-    font-family: Roboto;
+    font-size: 3.4em;
     font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #565656;
+    color: white;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 10px;
 }
 
 .text-info{

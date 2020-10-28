@@ -72,7 +72,6 @@ runPipeline(project_name: string, body: any): Observable<any> {
   }
 ```
 
-
 **Angular Components:**
 ___
 
