@@ -190,7 +190,7 @@
 .tabs_container{
     padding: 0%;
     padding-right: 2%;
-    margin-top: 7%;
+    margin-top: 4%;
     background-color: white;
     padding: 3%;
     border-radius: 10px;
@@ -253,7 +253,7 @@ h3 {
 }
 
 .ml-image{
-    width: 70% !important;
+    width: 558px !important;
     margin: 29%;
     margin-top: 15%;
 }
@@ -350,3 +350,109 @@ h3 {
     float: right;
     position: relative;
 }
+
+@media only screen and (max-width: 600px) {
+    .ub_logo {
+        width: 37% !important;
+        display: inline-block !important;
+    }
+
+    #header{
+        padding: 5% !important;
+        padding-left: 6% !important;
+        padding-right: 2% !important;
+        background-color: white !important;
+        border-bottom: 1px solid #e2e2e2 !important;
+        z-index: 1000 !important;
+    }
+
+    .made_logo
+        {
+        display: inline-block !important;
+        float: right !important;
+        margin: 0 !important;
+        margin-top: 0% !important;
+        font-family: Roboto !important;
+        font-weight: 800 !important;
+        font-size: 1.3em !important;
+        color: #393c44 !important;
+        width: 108% !important;
+        padding-left: 5% !important;
+        border-left: 2px solid #d4d4d4 !important;
+        display: none !important;
+        }
+
+
+        .main-container{
+            /* background-image: url(home_page_bkg_2.png); */
+            background-size: cover;
+            background-position: center right;
+            height: 100%;
+            background-image: none;
+            width: 100%;
+        }
+        .text-title{
+            color: #565656;
+            font-size: 4.5em;
+            font-family: 'Alfa Slab One', cursive;
+            font-weight: 500;
+        }
+
+    .text-subtitle{
+    font-size: 1.6em;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #565656;
+    color: white;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 10px;
+}
+
+.ml-image{
+    display:none;
+}
+
+.gotobtn{
+    font-size: 1.5em;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: 90%;
+    border: 5px solid white;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 13px;
+    color: #0071ff;
+    font-weight: 600;
+    margin-top: 40%;
+    margin-left: 17%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+    position: absolute;
+    bottom: 6%;
+    right: 0;
+    color: #0071ff;
+    background-color: white;
+    box-shadow: 3px 2px 12px -3px #525252;
+    margin-right: 22px;
+}
+
+.tabs_container{
+    padding: 0%;
+    padding-right: 2%;
+    margin-top: 4%;
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 1px 2px 25px #e2e2e2;
+    padding-top: 1%;
+    width: 29em;
+    text-align: justify;
+}
+
+  }
