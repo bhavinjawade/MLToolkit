@@ -11,17 +11,28 @@ from celery_task import run_pipeline
 import pandas as pd
 from pandasql import sqldf, load_meat, load_births
 import pandasql
-
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity
+)
+from flask_cors import CORS, cross_origin
+from werkzeug.security import safe_str_cmp
 
 
 app = Flask(__name__)
+app.config['JWT_SECRET_KEY'] = 'updated-at-deployment'
+jwt = JWTManager(app)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/"
 mongo = pymongo.MongoClient(app.config["MONGO_URI"])
 collection = mongo["chemml_projects"]["projects"]
+user_collection = mongo["chemml_projects"]["users"]
 app.config["UPLOAD_FOLDER"] = './project_files/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 IMAGE_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'svg'}
 DOCUMENT_EXTENSIONS = {'csv','tsv','pdf'}
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type, Authorization'
+
 
 status_codes = {
     "200": {
@@ -40,6 +51,51 @@ status_codes = {
             'ContentType': 'application/json'
             }
 }
+
+@app.route('/login', methods=['POST'])
+@cross_origin()
+def login():
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+
+    username = request.json.get('username', None)
+    password = request.json.get('password', None)
+    print(username, password)
+    if not username:
+        return jsonify({"msg": "Missing username parameter"}), 400
+    if not password:
+        return jsonify({"msg": "Missing password parameter"}), 400
+
+    cursor = user_collection.find({'username':username})
+    user = None
+    for u in cursor:
+        user = u
+        break 
+    
+    if(user == None):
+        return jsonify({"msg": "User doesnot exists"}), 401
+
+    if username != user["username"] or password != user["password"]:
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    # Identity can be any data that is json serializable
+    access_token = create_access_token(identity=username)
+    response = flask.Response(
+                    json.dumps({
+                    "access_token": access_token,
+                    "status": status_codes["200"]
+                    },default=json_util.default)
+                    )    
+    return response
+
+@app.route('/login_test/', methods=['POST'])
+@jwt_required
+def protected():
+    data = request.json.get('data', None)
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    print(current_user,flush=True)
+    return jsonify(data=data, logged_in_as=current_user), 200
 
 @app.route("/projects/n/<project_name>",methods=['GET','POST'])
 def new_project(project_name):
@@ -63,18 +119,20 @@ def new_project(project_name):
         "results": {},
         "graph": {}
         }    
-    if(collection.insert_one(dic)):
+    if(collection.insert_one(dic)): 
         status = "200"
     
     response = flask.Response(json.dumps({"data": dic,
                     "status": status_codes[status]},
                     default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+     
     return response
 
 @app.route("/projects/a/")
+@jwt_required
+@cross_origin()
 def get_projects_list():
-    cursor = collection.find({})
+    cursor = collection.find({'users':get_jwt_identity()})
     project_list = []
 
     for project in cursor:
@@ -86,12 +144,13 @@ def get_projects_list():
     response = flask.Response(json.dumps({"data": project_list, 
                         "status": status_codes[status]},
                         default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 @app.route("/projects/g/<project_name>")
+@jwt_required
+@cross_origin()
 def get_project(project_name):
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     project = []
 
     for i in cursor:
@@ -103,14 +162,16 @@ def get_project(project_name):
     response = flask.Response(json.dumps({"data": project, 
                         "status": status_codes[status]},
                         default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response
 
 @app.route("/projects/u/<project_name>",methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def update_project(project_name):
     json_data = json.loads(str(request.data, encoding='utf-8'))
     content = json_data["data"]
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     project = []
     for project in cursor:
         project["project_desc"] = content["project_desc"]
@@ -133,24 +194,28 @@ def update_project(project_name):
     response = flask.Response(json.dumps({"data": project, 
                         "status": status_codes[status]},
                         default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response
 
 @app.route('/get_file/<project_name>/<file_name>')
+@jwt_required
+@cross_origin()
 def get_image(project_name,file_name):
     try:
         response = send_from_directory(app.config["UPLOAD_FOLDER"] + '/' + project_name, filename=file_name, as_attachment=True)
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        
         return response;
     except FileNotFoundError:
         abort(404)
 
 @app.route('/get_query_preview/<project_name>/<csv_name>',methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def get_query_preview(project_name,csv_name):
     json_data = json.loads(str(request.data, encoding='utf-8'))
     content = json_data["data"]
     query = content["query"]
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     table_names = []
     files = []
     for project in cursor:
@@ -172,16 +237,18 @@ def get_query_preview(project_name,csv_name):
     response = flask.Response(json.dumps({"data": csv_str,
                 "status": status_codes[status]},
                 default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response;
 
 
 @app.route('/run_sql_query/<project_name>/<csv_name>',methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def run_sql_query(project_name,csv_name):
     json_data = json.loads(str(request.data, encoding='utf-8'))
     content = json_data["data"]
     query = content["query"]
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     table_names = []
     files = []
     for project in cursor:
@@ -201,7 +268,7 @@ def run_sql_query(project_name,csv_name):
     p_name = csv_name + ".csv"
     df.to_csv("./project_files/" + project_name + "/" + p_name, sep=',')
 
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     for project in cursor:
         project["files"][p_name] = {
                                     "file_name": p_name,
@@ -223,10 +290,12 @@ def run_sql_query(project_name,csv_name):
     response = flask.Response(json.dumps({"data": response_output,
                 "status": status_codes[status]},
                 default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response;
 
 @app.route('/execute/<project_name>',methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def execute_pipeline(project_name):
     print(project_name,flush=True)
     json_data = json.loads(str(request.data, encoding='utf-8'))
@@ -235,7 +304,7 @@ def execute_pipeline(project_name):
     json_data = content["data"]
     print(json_data)
 
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     run_number = 0
     for project in cursor:
         status = "pending"
@@ -259,7 +328,7 @@ def execute_pipeline(project_name):
 
     result = run_pipeline.delay(json_data)
     output = result.get(propagate = False)
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
   
     for project in cursor:
         status = "success"
@@ -281,16 +350,18 @@ def execute_pipeline(project_name):
     response = flask.Response(json.dumps({"data": response_output,
                     "status": status_codes[status]},
                     default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response
 
 @app.route('/save_graph/<project_name>',methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def save_graph(project_name):
     json_data = json.loads(str(request.data, encoding='utf-8'))
     content = json_data
     json_data = content["data"]
     
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     run_number = 0
     for project in cursor:
         run_number = len(project["graph"]) + 1
@@ -313,23 +384,27 @@ def save_graph(project_name):
     response = flask.Response(json.dumps({"data": response_output,
                     "status": status_codes[status]},
                     default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response
 
 @app.route('/get_results/<project_name>',methods=['GET','POST'])
+@jwt_required
+@cross_origin()
 def get_results(project_name):
     print("Get results of", project_name,flush=True)
-    cursor = collection.find({'project_name':project_name})
+    cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     for project in cursor:
         output = project["results"]
     status = "200"
     response = flask.Response(json.dumps({"data": output,
                     "status": status_codes[status]},
                     default=json_util.default))
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    
     return response
 
 @app.route('/upload_files/<project_name>', methods=['GET', 'POST','OPTIONS'])
+@jwt_required
+@cross_origin()
 def upload_file(project_name):
     print(len(request.files))
     if request.method == 'OPTIONS' or request.method == 'POST':
@@ -347,7 +422,7 @@ def upload_file(project_name):
                 os.makedirs(project_path)
                 file.save(file_path)
 
-            cursor = collection.find({'project_name':project_name})
+            cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
             
             for project in cursor:
                 print(project)
@@ -357,7 +432,7 @@ def upload_file(project_name):
                     response = flask.Response(json.dumps({"data":"File with same name already exists",
                         "status": status_codes[status]},
                         default=json_util.default))
-                    response.headers['Access-Control-Allow-Origin'] = '*'
+                    
                     return response 
                 else:
 
@@ -376,7 +451,7 @@ def upload_file(project_name):
                     #     response = flask.Response(json.dumps({"data":"Invalid File Type",
                     #         "status": status_codes[status]},
                     #         default=json_util.default))
-                    #     response.headers['Access-Control-Allow-Origin'] = '*'
+                    #     
                     #     return response 
                     project["files"][filename] = {
                                     "file_name": filename,
@@ -396,14 +471,16 @@ def upload_file(project_name):
             response = flask.Response(json.dumps({"data":os.path.join(app.config['UPLOAD_FOLDER'], filename),
                                     "status": status_codes[status]},
                                     default=json_util.default))
-            response.headers['Access-Control-Allow-Origin'] = '*'
+            
             return response 
     return "Nothing happend"
 
 @app.route('/get_project_file_names/<project_name>', methods=['GET'])
+@jwt_required
+@cross_origin()
 def get_project_files(project_name):
     if request.method == 'GET':
-        cursor = collection.find({'project_name':project_name})
+        cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
         files = []
         for project in cursor:
             files = list(project["files"].keys())
@@ -412,15 +489,17 @@ def get_project_files(project_name):
         response = flask.Response(json.dumps({"data":files,
             "status": status_codes[status]},
             default=json_util.default))
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        
         return response 
 
     return "Nothing happend"
 
 @app.route('/get_project_files/<project_name>', methods=['GET'])
+@jwt_required
+@cross_origin()
 def get_project_files_with_details(project_name):
     if request.method == 'GET':
-        cursor = collection.find({'project_name':project_name})
+        cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
         files = []
         for project in cursor:
             files = project["files"]
@@ -429,7 +508,7 @@ def get_project_files_with_details(project_name):
         response = flask.Response(json.dumps({"data":files,
             "status": status_codes[status]},
             default=json_util.default))
-        response.headers['Access-Control-Allow-Origin'] = '*'
+        
         return response 
 
     return "Nothing happend"

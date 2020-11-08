@@ -50,7 +50,7 @@ export class AppComponent implements AfterViewInit {
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
               private currentProjectService: CurrentProjectService, private dataServiceService: DataServiceService,
               private router: Router, private location: Location){
-              
+                this.login();
                 this.router.events.subscribe((event: Event) => {
                   if (event instanceof NavigationStart) {
                       console.log("ROUTER EVENT", event);
@@ -62,7 +62,6 @@ export class AppComponent implements AfterViewInit {
                       else if((event.url) == "/"){
                         this.showHomePage = true;
                       }
-                      // Show loading indicator
                   }
       
                   if (event instanceof NavigationEnd) {
@@ -70,9 +69,6 @@ export class AppComponent implements AfterViewInit {
                   }
       
                   if (event instanceof NavigationError) {
-                      // Hide loading indicator
-      
-                      // Present error to user
                       console.log(event.error);
                   }
               });
@@ -80,7 +76,6 @@ export class AppComponent implements AfterViewInit {
 
   
   ngAfterViewInit() {
-
     this.currentProjectService.chemMLJsonChange.subscribe((value) => { 
       this.chemMLJson = value;
     });  
@@ -113,7 +108,6 @@ export class AppComponent implements AfterViewInit {
       }
     });
     flowy(document.getElementById("canvas"), this.drag, this.release, this.arrowClicking, this.snapping, this.rearrange);
-    // flowy constructor parameters: canvas, grab, release, snapping, rearrange, spacing_x, spacing_y
   }
 
   reRender() {
@@ -206,18 +200,16 @@ export class AppComponent implements AfterViewInit {
         children[i].id = block.id;
       }
     }
-
     if(!first){
-    var child_id = block.id;
-    var parent_id = parent.id;
-    console.log(block);
-    console.log(parent);
-  }
-
+      var child_id = block.id;
+      var parent_id = parent.id;
+      console.log(block);
+      console.log(parent);
+    }
     return true;
   }
 
-  projectOpened(){
+  projectOpened() {
     this.showLandingPage=false; 
     this.showProjectInfo=false;
     this.dataServiceService.getProject(this.projectName)
@@ -284,6 +276,10 @@ export class AppComponent implements AfterViewInit {
     flowy.import_graph(latestGraph.saved_graph);
   }
 
+  login(){
+    this.dataServiceService.login('bhavinjawade','bhavin.codes20!');
+  }
+  
   openProject(event) {
     console.log(event); // handle button clicked here.
     this.openProjectBox = true;

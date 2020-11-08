@@ -14,4 +14,5 @@ export abstract class API_URLS{
   static getFile:string = API_URLS.baseURL + '/get_file/'
   static runSQLQuery:string = API_URLS.baseURL + '/run_sql_query/'
   static previewSQLQuery:string = API_URLS.baseURL + '/get_query_preview/'
+  static login:string = API_URLS.baseURL + '/login'
 }

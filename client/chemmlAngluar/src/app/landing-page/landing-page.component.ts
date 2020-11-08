@@ -28,7 +28,9 @@ export class LandingPageComponent implements OnInit {
   constructor(private dataServiceService: DataServiceService, private currentProjectService: CurrentProjectService) { }
 
   ngOnInit(): void {
-    this.getProjects();
+    this.dataServiceService.login('bhavinjawade','bhavin.codes20!').subscribe(response => {
+      this.getProjects();
+    });
   }
 
   getProjects(): void {
