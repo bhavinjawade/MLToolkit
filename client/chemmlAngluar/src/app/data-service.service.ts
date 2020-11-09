@@ -4,6 +4,7 @@ import { API_URLS } from './helpers/api_urls';
 import { Observable, of,  } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import * as d3 from 'd3';
+import { pack } from 'd3';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +39,10 @@ export class DataServiceService {
       username : username,
       password : password
     }
+    console.log("Packet Sent: ", packet);
     return this.http.post(API_URLS.login, JSON.parse(JSON.stringify(packet))).pipe(
     map(response => {
-      console.log(response)
+      console.log("Login Successful: ", response)
       this.access_token = response["access_token"];
       this.headers = {
         headers: new HttpHeaders({

@@ -1,0 +1,28 @@
+<div class = "container">
+    <div id = "header">
+        <img class = "ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+        <div class = "header-left">
+            <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+            <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+        </div>
+    </div>
+    <div class = "main">
+        <div class = "login_container">
+            <div class = "title">Sign In</div>
+            <div class = "inputs">
+                <label>Username</label>
+                <input class = "username input_tag" type = "text" #username placeholder="Username"/>
+                <label>Password</label>
+                <input class = "password input_tag" type = "password" #password placeholder="Password"/>
+                <div class = "submit_bottom" (click) = "login(username.value, password.value);">Log in</div>
+            </div>
+            <div class = "bottom_box">
+                <div class = "msg_title">Alpha Testing</div>
+                <div class = "msg_body">
+                    We are looking for alpha testers for MLToolkit. If you are interested to contribute email 
+                    <a href="mailto:bhavinja@buffalo.edu">Bhavin Jawade</a> or <a href="mailto:sahmed9@buffalo.edu">Saleem Ahmed</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

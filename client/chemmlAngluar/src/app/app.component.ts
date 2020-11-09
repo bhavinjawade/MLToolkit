@@ -30,7 +30,8 @@ export class AppComponent implements AfterViewInit {
   projectName: any;
   showProjectInfo = false;
   showLandingPage = true;
-  
+  showLoginPage = true;
+
   showHomePage = false;
   inputOutputConfigMapping = [];
   chemMLJson: any;
@@ -50,7 +51,6 @@ export class AppComponent implements AfterViewInit {
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
               private currentProjectService: CurrentProjectService, private dataServiceService: DataServiceService,
               private router: Router, private location: Location){
-                this.login();
                 this.router.events.subscribe((event: Event) => {
                   if (event instanceof NavigationStart) {
                       console.log("ROUTER EVENT", event);
@@ -108,6 +108,10 @@ export class AppComponent implements AfterViewInit {
       }
     });
     flowy(document.getElementById("canvas"), this.drag, this.release, this.arrowClicking, this.snapping, this.rearrange);
+  }
+
+  loggedIn(){
+    
   }
 
   reRender() {
@@ -274,10 +278,6 @@ export class AppComponent implements AfterViewInit {
       canvas_div.innerHTML += arrows[i];
     }
     flowy.import_graph(latestGraph.saved_graph);
-  }
-
-  login(){
-    this.dataServiceService.login('bhavinjawade','bhavin.codes20!');
   }
   
   openProject(event) {

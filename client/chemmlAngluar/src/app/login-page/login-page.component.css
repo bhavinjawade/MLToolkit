@@ -1,0 +1,181 @@
+.container{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#header {
+    padding: 1%  !important;
+    padding-left: 2%  !important;
+    padding-right: 2%  !important;
+    background-color: white  !important;
+    border-bottom: 1px solid #e2e2e2  !important;
+    z-index: 1000 !important;
+}
+
+.ub_logo{
+    width: 8% !important;
+    display: inline-block  !important;    
+}
+
+.made_logo{
+    display: inline-block !important;
+    float: right !important;
+    margin: 0 !important;
+    margin-top: 0% !important;
+    font-family: Roboto !important;
+    font-weight: 800 !important;
+    font-size: 1.3em !important;
+    color: #393c44 !important;
+    width: 108% !important;
+    padding-left: 5% !important;
+    border-left: 2px solid #d4d4d4 !important;
+}
+
+.nsf_logo{
+    width: 65px !important;
+    position: absolute !important;
+    top: -12px !important;
+    left: -101px !important;
+    padding-right: 10px !important;
+}
+
+.header-left{
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+
+.login_container{
+    width: 715px;
+    margin-left: 34%;
+    margin-top: 3%;
+    background-color: white;
+    border-radius: 8px;
+    border-bottom: 9px solid #247ce8;
+    box-shadow: 0px 2px 25px 2px #e2e2e2;
+}
+
+label{
+    font-size: 1.2em;
+    font-weight: 800;
+    font-family: 'Roboto';
+    display: block;
+    margin-bottom: 1%;
+    color: #484848;
+    margin-left: 1%;
+}
+
+.title{
+    padding: 3%;
+    font-size: 1.5em;
+    font-family: 'Roboto';
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #247ce8;
+    font-weight: 600;
+    border-bottom: 3px solid #247ce8;
+}
+
+.inputs{
+    padding:3%
+}
+
+.main{
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    /* left: 37%; */
+    /* top: 17%; */
+    width: 100%;
+}
+
+
+.input_tag{
+    width: 100%;
+    padding: 2%;
+    font-size: 1.2em;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-family: Roboto;
+    display: block;
+    margin-top: 1%;
+    padding-left: 4%;
+    margin-bottom: 4%;
+}
+
+.input_tag:focus{
+    width: 100%;
+    padding: 2%;
+    font-size: 1.2em;
+    text-decoration: none;
+    outline: none;
+    border: 2px solid #247ce8;
+    border-radius: 5px;
+    font-family: Roboto;
+    display: block;
+    margin-top: 1%;
+    padding-left: 4%;
+    margin-bottom: 4%;
+}
+
+.msg_title{
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1%;
+}
+
+.submit_bottom{
+    text-align: center;
+    width: 60%;
+    align-content: center;
+    padding: 1%;
+    display: block;
+    padding-left: 4%;
+    padding-right: 3%;
+    border: 3px solid #247ce8;
+    border-radius: 5px;
+    font-size: 1.3em;
+    color: #247ce8;
+    margin-left: 20%;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.submit_bottom:hover{
+    text-align: center;
+    width: 60%;
+    align-content: center;
+    padding: 1%;
+    display: block;
+    padding-left: 4%;
+    padding-right: 3%;
+    border: 3px solid #247ce8;
+    border-radius: 5px;
+    font-size: 1.3em;
+    color: white;
+    background-color:#247ce8;
+    margin-left: 20%;
+    font-weight: 600;
+}
+
+.bottom_box{
+    padding: 4%;
+    background-color: #247ce8;
+    color: white;
+}
+
+a{
+    color: white;
+    font-weight: 600;
+}
+
+.msg_body{
+    font-size: 1.3em;
+}
