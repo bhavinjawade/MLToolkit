@@ -310,7 +310,7 @@ class Parser(object):
             line = '<<<<<<< receive from:'
             line = line.rstrip("\n")
             tmp_str = '        ' + line
-            print(tmp_str)
+            print(" Printing ---->", tmp_str)
             self.logger.info(tmp_str)
 
             if len(graph_recv[id])>0:
@@ -583,7 +583,9 @@ class Wrapper(object):
 
             tmp_str = '  following order:'
             print(tmp_str)
+            print(" ----> Printing some")
             self.logger.info(tmp_str)
+
 
             for group in self.layers:
                 tmp_str = "  " + str(group)
@@ -711,6 +713,12 @@ class Wrapper(object):
             'chemml.wrapper.preprocessing':{
                 'SplitColumns.fit': ['X1', 'X2']
             },
+            'chemml.wrapper.preprocessing':{
+                'SelectTargetColumn.fit': ['X1', 'X2']
+            },
+            'chemml.wrapper.preprocessing':{
+                'Select_Columns_By_Index.fit': ['X1', 'X2']
+            },
             'chemml.chem':{
                 'tensorise_molecules': ['atoms','bonds','edges']
             },
@@ -755,6 +763,9 @@ class Wrapper(object):
         # get api
         try:
             api, api_type = get_api(name, library, module)
+
+            print("API TYPE", api, api_type)
+
         except:
             msg = "Unable to import %s from %s.%s" % (name, library, module)
             self.logger.error(msg)
@@ -764,7 +775,7 @@ class Wrapper(object):
         if name == 'train_test_split' and library == 'sklearn':
             from chemml.wrapper.sklearn_skl import train_test_split
             output_dict = train_test_split(block, self.stack)
-
+            print("Train Test Split => Call", block)
             # function outputs
             if len(block['outputs']) > 0:
                 outputs = block['outputs']

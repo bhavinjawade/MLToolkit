@@ -176,6 +176,14 @@ a{
     font-weight: 600;
 }
 
+.login_message{
+    background-color: white;
+    font-size: 1.2em;
+    padding: 3%;
+    color: red;
+    font-weight: 600;
+}
+
 .msg_body{
     font-size: 1.3em;
 }

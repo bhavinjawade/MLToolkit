@@ -32,7 +32,18 @@ export class DataServiceService {
   }
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) {
+      if(localStorage.getItem("access_token") != null && localStorage.getItem("logged_in")){
+        this.access_token = localStorage.getItem("access_token");
+        // put login verifier that validatees the access token with backend here.
+        this.headers = {
+        headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.access_token}`
+       })
+      };
+      }
+     }
 
   login(username:string, password: string): Observable<any>{
     var packet:any = {
@@ -40,17 +51,21 @@ export class DataServiceService {
       password : password
     }
     console.log("Packet Sent: ", packet);
-    return this.http.post(API_URLS.login, JSON.parse(JSON.stringify(packet))).pipe(
-    map(response => {
+    let postobject = this.http.post(API_URLS.login, JSON.parse(JSON.stringify(packet)))
+    return postobject.pipe(map(response => {
       console.log("Login Successful: ", response)
-      this.access_token = response["access_token"];
-      this.headers = {
-        headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': `Bearer ${this.access_token}`
-       })
-      };
-      localStorage.setItem('access_token', this.access_token);
+      if(response["access_token"]){
+        this.access_token = response["access_token"];
+        this.headers = {
+          headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${this.access_token}`
+        })
+        };
+        localStorage.setItem('access_token', this.access_token);
+        localStorage.setItem('logged_in', "1");
+      }
+      return response;
     }));
   }
 

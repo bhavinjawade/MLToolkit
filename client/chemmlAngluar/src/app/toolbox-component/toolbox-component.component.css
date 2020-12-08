@@ -21,6 +21,53 @@
     border-bottom-right-radius: 45px;
 }
 
+.tool_config_info {
+    margin-left: 6%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    margin-right: 6%;
+    padding: 3%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding-left: 5%;
+    display: None;
+    position: absolute;
+    top: -7%;
+    right: -72%;
+    box-shadow: 0px 2px 5px #e2e2e2;
+    width: 70%;
+    padding-top: 5%;
+    padding-left: 7%;
+    border: 1px solid #e2e2e2;
+}
+
+._row{
+    margin-bottom: 10px !important;
+}
+
+
+.info_key{
+    margin-top: 3%;
+    font-weight: 800;
+    font-family: Roboto;
+}
+
+.title{
+    font-weight: 800;
+    font-family: 'Roboto';
+    margin-bottom: 5%;
+    border-bottom: 2px solid #e2e2e2;
+    padding-bottom: 4%;
+}
+
+.info_value{
+    background-color: white;
+    padding: 3%;
+    margin-left: 2%;
+    border-radius: 3px;
+    font-family: Roboto;
+}
+
 .tool_footer:hover{
     background-color: #217CE8;
 }
@@ -125,6 +172,8 @@
     font-size: 14px;
     line-height: 21px;
     width: 233px;
+    max-height: 38px;
+    overflow: hidden;
 }
 .blockdisabled {
     background-color: #F0F2F9;

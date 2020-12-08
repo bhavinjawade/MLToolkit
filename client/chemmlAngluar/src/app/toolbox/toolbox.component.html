@@ -34,12 +34,12 @@
             <app-toolbox-component tooltype = "Model"  tool = "linear-model" title = "Linear Model" description = "Drag the button to add a Linear Model"></app-toolbox-component>
             <app-toolbox-component tooltype = "Model"  tool = "nn-model" title = "Neural Network" description = "Drag the button to add a Neural Network"></app-toolbox-component>
             <app-toolbox-component tooltype = "Model"  tool = "svm-model" title = "Support Vector Machines" description = "Drag the button to add a Support Vector Machines"></app-toolbox-component>
+            <app-toolbox-component tooltype = "Model"  tool = "ensemble-methods" title = "Ensemble Methods" description = " Ensemble-based methods for classification, regression and anomaly detection."></app-toolbox-component>
         </div>
         <div class = "toolset-holder" tooltype="Model" [hidden]="selectedToolSet !=='Optimize'">
             <app-toolbox-component tooltype = "Optimize"  tool = "model-selection" title = "Model Selection" description = "Drag the button to add a search and evaluate models"></app-toolbox-component>
             <app-toolbox-component tooltype = "Optimize"  tool = "model-metrics" title = "Model Metrics" description = "Drag the button to add a select metrics"></app-toolbox-component>
         </div>
-
         <div class = "toolset-holder" tooltype="Helper" [hidden]="selectedToolSet !=='Helper'">
             <app-toolbox-component tooltype="Helper"  tool="helper-functions" title="Saving Results" description="Drag this tool to save your results in a file"></app-toolbox-component>
         </div>

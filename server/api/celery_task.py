@@ -15,7 +15,7 @@ celery.config_from_object('celeryconfig')
 def run_pipeline(json_data):    
     print("RUNNING CELERY")
     
-    output_format = 'csv'
+    output_format = 'txt'
     isError = False
 
     x = ''.join(random.choices(string.ascii_letters + string.digits, k=5))

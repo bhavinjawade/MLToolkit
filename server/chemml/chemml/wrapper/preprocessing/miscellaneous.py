@@ -65,6 +65,175 @@ class SplitColumns(object):
             raise ValueError(msg)
         return X1, X2
 
+class SelectColumn(object):
+    """
+    This method selects a column from a pandas dataframe .
+
+    Parameters
+    ----------
+    selection : int, optional (default = -1, last column)
+        Indexing starts with 1. 
+        1 represents first column
+        -1 represents last column.
+        if positive integer, it selects the ith column from the begining.
+        if negative integer, it selects the ith column from the end.
+    """
+    def __init__(self, selection = 0):
+        self.selection = selection - 1
+
+    def fit(self, X):
+        """
+        The main function to split the input dataframe.
+
+        Parameters
+        ----------
+        X: array
+            the input array
+
+        Returns
+        -------
+        X1 : array
+            The array without the selected column
+
+        X2 : array
+            The array of selected column i
+        """
+        X = np.array(X)
+        if not isinstance(X, np.ndarray):
+            msg = 'The input `X` must be an array-like data structure.'
+            raise ValueError(msg)
+
+        # split by int
+        if isinstance(self.selection, int):
+            if self.selection >= X.shape[1]:
+                msg = 'Selected all columns, the second output data frame is None.'
+                warnings.warn(msg)
+            if self.selection > 0 :
+                X1 = np.concatenate([X[:, :self.selection],X[:, self.selection+1:]], axis = 1)
+                X2 = X[:, self.selection].reshape(-1,1)
+            elif self.selection < 0:
+                X1 = np.concatenate([X[:, :self.selection],X[:, self.selection+1:]], axis = 1)
+                X2 = X[:, self.selection].reshape(-1,1)
+            else: #but why??
+                X1 = None
+                X2 = X
+        else:
+            msg = "The input `selection` must ba an integer"
+            raise ValueError(msg)
+        print(X1[:5,:], X2[:5,:])
+        return X1, X2
+
+class SelectTargetColumn(object):
+    """
+    This method selects a column from a pandas dataframe .
+
+    Parameters
+    ----------
+    selection : int, optional (default = -1, last column)
+        Indexing starts with 1. 
+        1 represents first column
+        -1 represents last column.
+        if positive integer, it selects the ith column from the begining.
+        if negative integer, it selects the ith column from the end.
+    """
+    def __init__(self, selection = 0):
+        self.selection = selection - 1
+
+    def fit(self, X):
+        """
+        The main function to split the input dataframe.
+
+        Parameters
+        ----------
+        X: array
+            the input array
+
+        Returns
+        -------
+        X1 : array
+            The array without the selected column
+
+        X2 : array
+            The array of selected column i
+        """
+        X = np.array(X)
+        if not isinstance(X, np.ndarray):
+            msg = 'The input `X` must be an array-like data structure.'
+            raise ValueError(msg)
+
+        # split by int
+        if isinstance(self.selection, int):
+            if self.selection >= X.shape[1]:
+                msg = 'Selected all columns, the second output data frame is None.'
+                warnings.warn(msg)
+            if self.selection > 0 :
+                X1 = np.concatenate([X[:, :self.selection],X[:, self.selection+1:]], axis = 1)
+                X2 = X[:, self.selection].reshape(-1,1)
+            elif self.selection < 0:
+                X1 = np.concatenate([X[:, :self.selection],X[:, self.selection+1:]], axis = 1)
+                X2 = X[:, self.selection].reshape(-1,1)
+            else: #but why??
+                X1 = None
+                X2 = X
+        else:
+            msg = "The input `selection` must ba an integer"
+            raise ValueError(msg)
+        print(X1[:5,:], X2[:5,:])
+        return X1, X2
+
+class Select_Columns_By_Index(object):
+    """
+    This method selects a columns based given indices from a pandas dataframe .
+
+    Parameters
+    ----------
+    selection : int, optional (default = -1, last column)
+        Indexing starts with 1. 
+        1 represents first column
+        -1 represents last column.
+        Given a list of indices, select the columns from dataframe present at the index.
+        Return remaining dataframe as well.
+    """
+    def __init__(self, selection = []):
+        self.selection = [x-1 for x in selection]
+
+    def fit(self, X):
+        """
+        The main function to split the input dataframe.
+
+        Parameters
+        ----------
+        X: array
+            the input array
+
+        Returns
+        -------
+        X1 : array
+            The array without the selected columns
+
+        X2 : array
+            The array of selected columns
+        """
+        X = np.array(X)
+        _, columns = X.shape
+
+        not_selected = [x for x in range(columns) if x not in self.selection]
+
+
+        if not isinstance(X, np.ndarray):
+            msg = 'The input `X` must be an array-like data structure.'
+            raise ValueError(msg)
+
+        # split by int
+        if isinstance(self.selection, list):
+                X1 = X[:, not_selected]
+                X2 = X[:, self.selection]
+        else:
+            msg = "The input `selection` must ba an list"
+            raise ValueError(msg)
+        print(X1[:5,:], X2[:5,:])
+        return X1, X2
+
 
 class SaveCSV(object):
     """

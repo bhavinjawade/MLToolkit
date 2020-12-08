@@ -5,10 +5,10 @@ A wrapper for the sklearn.model_selection.train_test_split
 from chemml.wrapper.interfaces import evaluate_inputs
 
 def train_test_split(block, stack):
-
+    print("TRAIN_TEST_SPLIT CALLED")
     # evaluate function inputs
     inputs = evaluate_inputs(block['inputs'], stack)
-
+    print("TRAIN TEST SPLIT INPUT: ", inputs)
     # run function
     from sklearn.model_selection import train_test_split
     function_output_ = train_test_split(*inputs['args'], **inputs['kwargs'])

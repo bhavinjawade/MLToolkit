@@ -21,7 +21,6 @@ import { VisualizeMainComponent } from './visualize-main/visualize-main.componen
 import { ChartsModule } from 'ng2-charts';
 import { ProjectInfoComponentComponent } from './project-info-component/project-info-component.component';
 import { LoadingComponentComponent } from './loading-component/loading-component.component';
-import { AuthInterceptor } from './token.interceptor';
 import { LoginPageComponent } from './login-page/login-page.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

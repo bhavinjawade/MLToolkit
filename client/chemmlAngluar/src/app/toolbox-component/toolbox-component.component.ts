@@ -4,7 +4,8 @@ declare var flowy;
 @Component({
   selector: 'app-toolbox-component',
   templateUrl: './toolbox-component.component.html',
-  styleUrls: ['./toolbox-component.component.css']
+  styleUrls: ['./toolbox-component.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ToolboxComponentComponent {

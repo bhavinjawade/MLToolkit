@@ -49,7 +49,17 @@ status_codes = {
             'success':False,
             'status_code': 400,
             'ContentType': 'application/json'
-            }
+            },
+    "401": {
+            'success':False,
+            'status_code': 401,
+            'ContentType': 'application/json'
+    },
+    "402": {
+            'success':False,
+            'status_code': 402,
+            'ContentType': 'application/json'
+    }
 }
 
 @app.route('/login', methods=['POST'])
@@ -73,10 +83,18 @@ def login():
         break 
     
     if(user == None):
-        return jsonify({"msg": "User doesnot exists"}), 401
+        return flask.Response(
+                    json.dumps({
+                    "status": status_codes["402"]
+                    },default=json_util.default)
+                    ) 
 
     if username != user["username"] or password != user["password"]:
-        return jsonify({"msg": "Bad username or password"}), 401
+        return flask.Response(
+                    json.dumps({
+                    "status": status_codes["401"]
+                    },default=json_util.default)
+                    ) 
 
     # Identity can be any data that is json serializable
     access_token = create_access_token(identity=username)
@@ -88,6 +106,30 @@ def login():
                     )    
     return response
 
+@app.route('/add_user', methods=['POST'])
+@cross_origin()
+def add_user():
+    username = request.json.get('username', None)
+    password = request.json.get('password', None)
+    name = request.json.get('name', None)
+    dic = {
+        "username": username,
+        "password": password,
+        "name": name,
+        "activate": 1,
+        "email":"bhavinja@buffalo.edu"
+    }    
+    if(user_collection.insert_one(dic)): 
+        status = "200"
+    response = flask.Response(
+                    json.dumps({
+                    "Message": "User created successfully",
+                    "status": status_codes["200"]
+                    },default=json_util.default)
+                    )    
+    return response
+
+
 @app.route('/login_test/', methods=['POST'])
 @jwt_required
 def protected():
@@ -98,6 +140,7 @@ def protected():
     return jsonify(data=data, logged_in_as=current_user), 200
 
 @app.route("/projects/n/<project_name>",methods=['GET','POST'])
+@jwt_required
 def new_project(project_name):
     today = datetime.datetime.today()
     json_data = json.loads(str(request.data, encoding='utf-8'))
@@ -114,7 +157,7 @@ def new_project(project_name):
         "project_properties": {
             "tag_list": tag_list
         },
-        "users": "bhavinjawade",
+        "users": get_jwt_identity(),
         "files": {},
         "results": {},
         "graph": {}

@@ -122,6 +122,40 @@
     border-bottom-right-radius: 8px;
 }
 
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 506px;
+    background-color: #0000008f;
+    color: black;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    font-size: 1.2em;
+    z-index: 1;
+    color: white;
+    padding: 11%;
+    font-family: 'Roboto';
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+
 #proplist{
     height: 65%;
     overflow: scroll;

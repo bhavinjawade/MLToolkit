@@ -63,6 +63,63 @@ export default {
       nodes: []
     },
     {
+      name: 'SelectColumn',
+      docstring: '\n This method selects a column from a pandas dataframe.',
+      inputs: [
+        {
+          name: 'selection',
+          docstring:
+            "If positive integer, it selects the ith column from the begining. If negative integer, it selects the ith column from the end.",
+          param_type: ['int'],
+          expected_shape: null,
+          is_optional: true,
+          default_value: '1',
+          options: null
+        }
+      ],
+      outputs: [],
+      node_functions: [
+        {
+          name: '__init__',
+          docstring: 'None',
+          inputs: [],
+          outputs: []
+        },
+        {
+          name: 'fit',
+          display_name: 'split_columns',
+          docstring:
+            '\n The main function to split the input dataframe.',
+          inputs: [
+            {
+              name: 'X',
+              docstring: 'the input array',
+              param_type: ['array'],
+              expected_shape: null,
+              is_optional: false,
+              default_value: null,
+              options: null
+            }
+          ],
+          outputs: [
+            {
+              name: 'X1',
+              docstring: 'Left part of the split data matrix',
+              param_type: ['array'],
+              returned: true
+            },
+            {
+              name: 'X2',
+              docstring: 'Right part of the split data matrix',
+              param_type: ['array'],
+              returned: true
+            }
+          ]
+        }
+      ],
+      nodes: []
+    },
+    {
       name: 'TrainTestSplit',
       docstring:
         'A module to split a data matrix into train and test (or validation) samples',

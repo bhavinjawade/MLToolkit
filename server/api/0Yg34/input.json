@@ -1,0 +1,36 @@
+{
+  "nodes": {
+    "ID5": {
+      "inputs": {
+        "*args": "@ID2@features@ID1@pol",
+        "test_size": 0.2
+      },
+      "library": "sklearn",
+      "method": {},
+      "module": "model_selection",
+      "name": "train_test_split",
+      "outputs": {
+        "test1": true,
+        "test2": true,
+        "train1": true,
+        "train2": true
+      }
+    },
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./temp/Boston.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    }
+  }
+}

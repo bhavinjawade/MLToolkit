@@ -1,0 +1,196 @@
+11/26/2020 07:05:03 AM =================================================
+11/26/2020 07:05:03 AM ChemMLWrapper 0.6.0 (August 2019)
+11/26/2020 07:05:03 AM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+11/26/2020 07:05:03 AM Johannes Hachmann (hachmann@buffalo.edu)
+11/26/2020 07:05:03 AM =================================================
+11/26/2020 07:05:03 AM Thu Nov 26 07:05:03 2020
+11/26/2020 07:05:03 AM 
+11/26/2020 07:05:03 AM parsing the input dictionary ...
+
+11/26/2020 07:05:03 AM 1   ID1: read_csv (pandas)
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         nothing to receive!
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID2
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 2   ID2: StandardScaler (sklearn)
+11/26/2020 07:05:03 AM         method = fit_transform
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID1
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID3
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 3   ID3: PCA (sklearn)
+11/26/2020 07:05:03 AM         method = fit_transform
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID2
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID4
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 4   ID4: SelectColumn (chemml)
+11/26/2020 07:05:03 AM         method = fit
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID3
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 5   ID5: train_test_split (sklearn)
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID4
+11/26/2020 07:05:03 AM         ID4
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID6
+11/26/2020 07:05:03 AM         ID6
+11/26/2020 07:05:03 AM         ID7
+11/26/2020 07:05:03 AM         ID8
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 6   ID6: RandomForestRegressor (sklearn)
+11/26/2020 07:05:03 AM         method = fit
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID7
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 7   ID7: LinearRegression (sklearn)
+11/26/2020 07:05:03 AM         method = predict
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID6
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID8
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 8   ID8: mean_absolute_error (sklearn)
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID5
+11/26/2020 07:05:03 AM         ID7
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         ID9
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM 9   ID9: SaveFile (chemml)
+11/26/2020 07:05:03 AM         method = write
+11/26/2020 07:05:03 AM         <<<<<<< receive from:
+11/26/2020 07:05:03 AM         ID8
+11/26/2020 07:05:03 AM         >>>>>>> send to:
+11/26/2020 07:05:03 AM         nothing to send!
+11/26/2020 07:05:03 AM         
+11/26/2020 07:05:03 AM =================================================
+11/26/2020 07:05:03 AM * Based on the dependencies, we run nodes in the 
+11/26/2020 07:05:03 AM   following order:
+11/26/2020 07:05:03 AM   ['ID1']
+11/26/2020 07:05:03 AM   ['ID2']
+11/26/2020 07:05:03 AM   ['ID3']
+11/26/2020 07:05:03 AM   ['ID4']
+11/26/2020 07:05:03 AM   ['ID5']
+11/26/2020 07:05:03 AM   ['ID6']
+11/26/2020 07:05:03 AM   ['ID7']
+11/26/2020 07:05:03 AM   ['ID8']
+11/26/2020 07:05:03 AM   ['ID9']
+11/26/2020 07:05:03 AM * The outputs will be stored in the following 
+11/26/2020 07:05:03 AM directory: ./cliKz
+11/26/2020 07:05:03 AM 
+
+11/26/2020 07:05:03 AM ======= node ID#ID1: (read_csv, pandas)
+11/26/2020 07:05:03 AM | run ...
+
+11/26/2020 07:05:03 AM ... preparing outputs:
+11/26/2020 07:05:03 AM       name: df
+11/26/2020 07:05:03 AM       size: 60736 bytes (total: 60736 bytes)
+11/26/2020 07:05:03 AM       type: <class 'pandas.core.frame.DataFrame'>
+11/26/2020 07:05:03 AM       shape: (506, 14)
+11/26/2020 07:05:03 AM       -----
+11/26/2020 07:05:03 AM 
+
+11/26/2020 07:05:03 AM | ... done!
+11/26/2020 07:05:03 AM | execution time: 0.01s (0h 0m 0.01s)
+11/26/2020 07:05:03 AM =======
+
+
+11/26/2020 07:05:03 AM ======= node ID#ID2: (StandardScaler, sklearn)
+11/26/2020 07:05:03 AM | run ...
+
+11/26/2020 07:05:04 AM ... preparing outputs:
+11/26/2020 07:05:04 AM       name: X_new
+11/26/2020 07:05:04 AM       size: 112 bytes (total: 112 bytes)
+11/26/2020 07:05:04 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:04 AM       shape: (506, 14)
+11/26/2020 07:05:04 AM       -----
+11/26/2020 07:05:04 AM 
+
+11/26/2020 07:05:04 AM | ... done!
+11/26/2020 07:05:04 AM | execution time: 0.80s (0h 0m 0.80s)
+11/26/2020 07:05:04 AM =======
+
+
+11/26/2020 07:05:04 AM ======= node ID#ID3: (PCA, sklearn)
+11/26/2020 07:05:04 AM | run ...
+
+11/26/2020 07:05:04 AM ... preparing outputs:
+11/26/2020 07:05:04 AM       name: X_new
+11/26/2020 07:05:04 AM       size: 112 bytes (total: 112 bytes)
+11/26/2020 07:05:04 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:04 AM       shape: (506, 14)
+11/26/2020 07:05:04 AM       -----
+11/26/2020 07:05:04 AM 
+
+11/26/2020 07:05:04 AM | ... done!
+11/26/2020 07:05:04 AM | execution time: 0.15s (0h 0m 0.15s)
+11/26/2020 07:05:04 AM =======
+
+
+11/26/2020 07:05:04 AM ======= node ID#ID4: (SelectColumn, chemml)
+11/26/2020 07:05:04 AM | run ...
+
+11/26/2020 07:05:05 AM ... preparing outputs:
+11/26/2020 07:05:05 AM       name: X1
+11/26/2020 07:05:05 AM       size: 52736 bytes (total: 52736 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (506, 13)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM       name: X2
+11/26/2020 07:05:05 AM       size: 96 bytes (total: 52832 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (506,)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM 
+
+11/26/2020 07:05:05 AM | ... done!
+11/26/2020 07:05:05 AM | execution time: 0.12s (0h 0m 0.12s)
+11/26/2020 07:05:05 AM =======
+
+
+11/26/2020 07:05:05 AM ======= node ID#ID5: (train_test_split, sklearn)
+11/26/2020 07:05:05 AM | run ...
+
+11/26/2020 07:05:05 AM ... preparing outputs:
+11/26/2020 07:05:05 AM       name: train1
+11/26/2020 07:05:05 AM       size: 3328 bytes (total: 3328 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (404,)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM       name: test1
+11/26/2020 07:05:05 AM       size: 912 bytes (total: 4240 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (102,)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM       name: train2
+11/26/2020 07:05:05 AM       size: 42128 bytes (total: 46368 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (404, 13)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM       name: test2
+11/26/2020 07:05:05 AM       size: 10720 bytes (total: 57088 bytes)
+11/26/2020 07:05:05 AM       type: <class 'numpy.ndarray'>
+11/26/2020 07:05:05 AM       shape: (102, 13)
+11/26/2020 07:05:05 AM       -----
+11/26/2020 07:05:05 AM 
+
+11/26/2020 07:05:05 AM | ... done!
+11/26/2020 07:05:05 AM | execution time: 0.05s (0h 0m 0.05s)
+11/26/2020 07:05:05 AM =======
+
+
+11/26/2020 07:05:05 AM ======= node ID#ID6: (RandomForestRegressor, sklearn)
+11/26/2020 07:05:05 AM | run ...
+

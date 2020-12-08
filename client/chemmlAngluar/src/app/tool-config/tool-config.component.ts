@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import pandasReadCSV from '../helpers/jsons/pandasReadCSV';
 import chemmlDataset from '../helpers/jsons/chemmlDataset';
 import sklearnSVM from '../helpers/jsons/sklearnSvm';
@@ -10,8 +10,8 @@ import sklearnPreprocessing from '../helpers/jsons/sklearnPreprocessing';
 import chemmlDataSplitting from '../helpers/jsons/chemmlDataSplitting';
 import sklearnModelSelection from '../helpers/jsons/sklearnModelSelection';
 import sklearnModelMetrics from '../helpers/jsons/sklearnMetrics';
+import sklearnEnsemble from '../helpers/jsons/sklearnEnsemble';
 import chemmlWrapperProcessing from '../helpers/jsons/chemmlWrapperPreprocessingUI';
-
 import { CurrentProjectService } from '../current-project.service';
 import { DataServiceService } from '../data-service.service';
 
@@ -19,6 +19,7 @@ import { DataServiceService } from '../data-service.service';
   selector: 'app-tool-config',
   templateUrl: './tool-config.component.html',
   styleUrls: ['./tool-config.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ToolConfigComponent implements OnInit {
   @Input() show: boolean;
@@ -69,6 +70,10 @@ export class ToolConfigComponent implements OnInit {
     'nn-model': {
       json: kerasNNModel,
       parsing_method: 1,
+    },
+    'ensemble-methods':{
+      json: sklearnEnsemble,
+      parsing_method: 1
     },
     'dim-reduction': {
       json: sklearnDimentional,
@@ -241,6 +246,21 @@ export class ToolConfigComponent implements OnInit {
     this.show = false;
     var finalConfig = {};
     finalConfig[this.toolid] = this.nodeJson;
+    var tool_element = document.getElementById(this.toolid);
+    var tool_info = (<HTMLElement>tool_element).getElementsByClassName("tool_config_info")[0];
+    var nodeType = this.nodeJson["name"];
+    var method = this.nodeJson["method"]["name"];
+    var keys = Object.keys(this.nodeJson["inputs"]);
+    
+    (<HTMLElement>tool_info).innerHTML += `<div class = "_row"><span class = "info_key"> Method </span> <span class = "info_value">` + method + `</span></div>`;
+    
+    for (var i = 0; i < keys.length; i++) {
+      (<HTMLElement>tool_info).innerHTML += `<div class = "_row"><span class = "info_key">` + keys[i] + `</span> <span class = "info_value">` + this.nodeJson["inputs"][keys[i]] + `</span></div>`;
+    }
+    
+    (<HTMLElement>tool_element).getElementsByClassName("blocktitle")[0].innerHTML = nodeType;
+    
+    (<HTMLElement>tool_info).style.display = "block";
     console.log("FINAL CONFIG FOR NODE: ", this.toolid, finalConfig);
     console.log("Current Json", JSON.stringify(this.chemMLJson));
     this.chemMLJson.nodes[this.toolid] = this.nodeJson;

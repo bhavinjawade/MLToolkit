@@ -47,6 +47,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('canvasAppend', {static : false, read : ViewContainerRef}) canvasAppendTarget: ViewContainerRef;
   private canvasAppendRef: ComponentRef<any>;
 
+  
 
   constructor(private elementRef:ElementRef, private CFR: ComponentFactoryResolver,
               private currentProjectService: CurrentProjectService, private dataServiceService: DataServiceService,
@@ -111,7 +112,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   loggedIn(){
-    
+    this.showLoginPage = false;
+    this.showLandingPage = true;
   }
 
   reRender() {
