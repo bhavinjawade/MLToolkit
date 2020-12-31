@@ -1,0 +1,59 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "temp/wine_dataset.csv",
+        "index_col": 0
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_helper-functions_2": {
+      "inputs": {
+        "X": "@tool_csv_0@df",
+        "file_path": "/metric/result.txt"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {},
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveFile",
+      "outputs": {}
+    },
+    "tool_model-selection_1": {
+      "inputs": {
+        "*args": "@tool_csv_0@df",
+        "test_size": "0.2"
+      },
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "split2",
+        "outputs": {
+          "test1": true,
+          "train1": true
+        }
+      },
+      "module": "model_selection",
+      "name": "train_test_split",
+      "outputs": {
+        "test1": true,
+        "test2": true,
+        "train1": true,
+        "train2": true
+      }
+    }
+  }
+}

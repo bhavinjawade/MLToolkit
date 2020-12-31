@@ -87,7 +87,7 @@ export class InputOutputConfigComponent implements OnInit {
     },
     'helper-functions': {
       json: chemmlWrapperProcessing,
-      parsing_method: 1,
+      parsing_method: 2,
     }
   }
   
@@ -141,7 +141,7 @@ export class InputOutputConfigComponent implements OnInit {
           }    
       }
 
-    if(this.jsonToolTypeMap[this.childToolType]["parsing_method"]==1) {
+    if(this.jsonToolTypeMap[this.childToolType]["parsing_method"]==1 || this.jsonToolTypeMap[this.childToolType]["parsing_method"]==2) {
       console.log(this.jsonToolTypeMap[this.childToolType]["json"].nodes, this.jsonToolTypeMap[this.childToolType]["json"].nodes[child.name], child.name);
       var nodes = this.jsonToolTypeMap[this.childToolType]["json"].nodes;
       var node_functions: any;

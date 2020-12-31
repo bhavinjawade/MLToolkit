@@ -1,0 +1,205 @@
+12/31/2020 05:57:39 PM =================================================
+12/31/2020 05:57:39 PM ChemMLWrapper 0.6.0 (August 2019)
+12/31/2020 05:57:39 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+12/31/2020 05:57:39 PM Johannes Hachmann (hachmann@buffalo.edu)
+12/31/2020 05:57:39 PM =================================================
+12/31/2020 05:57:39 PM Thu Dec 31 17:57:39 2020
+12/31/2020 05:57:39 PM 
+12/31/2020 05:57:39 PM parsing the input dictionary ...
+
+12/31/2020 05:57:39 PM 1   ID1: read_csv (pandas)
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         nothing to receive!
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID4
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 2   ID4: Select_Columns_By_Index (chemml)
+12/31/2020 05:57:39 PM         method = fit
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID1
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 3   ID5: train_test_split (sklearn)
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID4
+12/31/2020 05:57:39 PM         ID4
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID6
+12/31/2020 05:57:39 PM         ID6
+12/31/2020 05:57:39 PM         ID7
+12/31/2020 05:57:39 PM         ID8
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 4   ID6: RandomForestClassifier (sklearn)
+12/31/2020 05:57:39 PM         method = fit
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID7
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 5   ID7: RandomForestClassifier (sklearn)
+12/31/2020 05:57:39 PM         method = predict
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID6
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID8
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 6   ID8: accuracy_score (sklearn)
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID5
+12/31/2020 05:57:39 PM         ID7
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         ID9
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM 7   ID9: SaveFile (chemml)
+12/31/2020 05:57:39 PM         method = write
+12/31/2020 05:57:39 PM         <<<<<<< receive from:
+12/31/2020 05:57:39 PM         ID8
+12/31/2020 05:57:39 PM         >>>>>>> send to:
+12/31/2020 05:57:39 PM         nothing to send!
+12/31/2020 05:57:39 PM         
+12/31/2020 05:57:39 PM =================================================
+12/31/2020 05:57:39 PM * Based on the dependencies, we run nodes in the 
+12/31/2020 05:57:39 PM   following order:
+12/31/2020 05:57:39 PM   ['ID1']
+12/31/2020 05:57:39 PM   ['ID4']
+12/31/2020 05:57:39 PM   ['ID5']
+12/31/2020 05:57:39 PM   ['ID6']
+12/31/2020 05:57:39 PM   ['ID7']
+12/31/2020 05:57:39 PM   ['ID8']
+12/31/2020 05:57:39 PM   ['ID9']
+12/31/2020 05:57:39 PM * The outputs will be stored in the following 
+12/31/2020 05:57:39 PM directory: ./pnVlV
+12/31/2020 05:57:39 PM 
+
+12/31/2020 05:57:39 PM ======= node ID#ID1: (read_csv, pandas)
+12/31/2020 05:57:39 PM | run ...
+
+12/31/2020 05:57:39 PM ... preparing outputs:
+12/31/2020 05:57:39 PM       name: df
+12/31/2020 05:57:39 PM       size: 19952 bytes (total: 19952 bytes)
+12/31/2020 05:57:39 PM       type: <class 'pandas.core.frame.DataFrame'>
+12/31/2020 05:57:39 PM       shape: (178, 13)
+12/31/2020 05:57:39 PM       -----
+12/31/2020 05:57:39 PM 
+
+12/31/2020 05:57:39 PM | ... done!
+12/31/2020 05:57:39 PM | execution time: 0.02s (0h 0m 0.02s)
+12/31/2020 05:57:39 PM =======
+
+
+12/31/2020 05:57:39 PM ======= node ID#ID4: (Select_Columns_By_Index, chemml)
+12/31/2020 05:57:39 PM | run ...
+
+12/31/2020 05:57:40 PM ... preparing outputs:
+12/31/2020 05:57:40 PM       name: X1
+12/31/2020 05:57:40 PM       size: 112 bytes (total: 112 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (178, 12)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM       name: X2
+12/31/2020 05:57:40 PM       size: 112 bytes (total: 224 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (178, 1)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM 
+
+12/31/2020 05:57:40 PM | ... done!
+12/31/2020 05:57:40 PM | execution time: 0.10s (0h 0m 0.10s)
+12/31/2020 05:57:40 PM =======
+
+
+12/31/2020 05:57:40 PM ======= node ID#ID5: (train_test_split, sklearn)
+12/31/2020 05:57:40 PM | run ...
+
+12/31/2020 05:57:40 PM ... preparing outputs:
+12/31/2020 05:57:40 PM       name: train1
+12/31/2020 05:57:40 PM       size: 13744 bytes (total: 13744 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (142, 12)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM       name: test1
+12/31/2020 05:57:40 PM       size: 3568 bytes (total: 17312 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (36, 12)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM       name: train2
+12/31/2020 05:57:40 PM       size: 1248 bytes (total: 18560 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (142, 1)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM       name: test2
+12/31/2020 05:57:40 PM       size: 400 bytes (total: 18960 bytes)
+12/31/2020 05:57:40 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:40 PM       shape: (36, 1)
+12/31/2020 05:57:40 PM       -----
+12/31/2020 05:57:40 PM 
+
+12/31/2020 05:57:40 PM | ... done!
+12/31/2020 05:57:40 PM | execution time: 0.15s (0h 0m 0.15s)
+12/31/2020 05:57:40 PM =======
+
+
+12/31/2020 05:57:40 PM ======= node ID#ID6: (RandomForestClassifier, sklearn)
+12/31/2020 05:57:40 PM | run ...
+
+12/31/2020 05:57:41 PM ... preparing outputs:
+12/31/2020 05:57:41 PM       name: obj
+12/31/2020 05:57:41 PM       size: 48 bytes (total: 4016 bytes)
+12/31/2020 05:57:41 PM       type: <class 'sklearn.ensemble._forest.RandomForestClassifier'>
+12/31/2020 05:57:41 PM       -----
+12/31/2020 05:57:41 PM 
+
+12/31/2020 05:57:41 PM | ... done!
+12/31/2020 05:57:41 PM | execution time: 0.90s (0h 0m 0.90s)
+12/31/2020 05:57:41 PM =======
+
+
+12/31/2020 05:57:41 PM ======= node ID#ID7: (RandomForestClassifier, sklearn)
+12/31/2020 05:57:41 PM | run ...
+
+12/31/2020 05:57:41 PM ... preparing outputs:
+12/31/2020 05:57:41 PM       name: C
+12/31/2020 05:57:41 PM       size: 384 bytes (total: 784 bytes)
+12/31/2020 05:57:41 PM       type: <class 'numpy.ndarray'>
+12/31/2020 05:57:41 PM       shape: (36,)
+12/31/2020 05:57:41 PM       -----
+12/31/2020 05:57:41 PM 
+
+12/31/2020 05:57:41 PM | ... done!
+12/31/2020 05:57:41 PM | execution time: 0.02s (0h 0m 0.02s)
+12/31/2020 05:57:41 PM =======
+
+
+12/31/2020 05:57:41 PM ======= node ID#ID8: (accuracy_score, sklearn)
+12/31/2020 05:57:41 PM | run ...
+
+12/31/2020 05:57:41 PM ... preparing outputs:
+12/31/2020 05:57:41 PM       name: result
+12/31/2020 05:57:41 PM       size: 32 bytes (total: 32 bytes)
+12/31/2020 05:57:41 PM       type: <class 'numpy.float64'>
+12/31/2020 05:57:41 PM       -----
+12/31/2020 05:57:41 PM 
+
+12/31/2020 05:57:41 PM | ... done!
+12/31/2020 05:57:41 PM | execution time: 0.02s (0h 0m 0.02s)
+12/31/2020 05:57:41 PM =======
+
+
+12/31/2020 05:57:41 PM ======= node ID#ID9: (SaveFile, chemml)
+12/31/2020 05:57:41 PM | run ...
+
+12/31/2020 05:57:41 PM 
+
+12/31/2020 05:57:41 PM | ... done!
+12/31/2020 05:57:41 PM | execution time: 0.02s (0h 0m 0.02s)
+12/31/2020 05:57:41 PM =======
+
+
+12/31/2020 05:57:41 PM Total execution time: 1.26s (0h 0m 1.26s)
+12/31/2020 05:57:41 PM 2020-12-31 17:57:41
+
+12/31/2020 05:57:41 PM =================================================

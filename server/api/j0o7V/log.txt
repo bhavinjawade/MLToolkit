@@ -1,0 +1,75 @@
+12/31/2020 05:56:15 PM =================================================
+12/31/2020 05:56:15 PM ChemMLWrapper 0.6.0 (August 2019)
+12/31/2020 05:56:15 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+12/31/2020 05:56:15 PM Johannes Hachmann (hachmann@buffalo.edu)
+12/31/2020 05:56:15 PM =================================================
+12/31/2020 05:56:15 PM Thu Dec 31 17:56:15 2020
+12/31/2020 05:56:15 PM 
+12/31/2020 05:56:15 PM parsing the input dictionary ...
+
+12/31/2020 05:56:15 PM 1   tool_csv_0: read_csv (pandas)
+12/31/2020 05:56:15 PM         method = data
+12/31/2020 05:56:15 PM         <<<<<<< receive from:
+12/31/2020 05:56:15 PM         nothing to receive!
+12/31/2020 05:56:15 PM         >>>>>>> send to:
+12/31/2020 05:56:15 PM         tool_model-selection_1
+12/31/2020 05:56:15 PM         
+12/31/2020 05:56:15 PM 2   tool_model-selection_1: train_test_split (sklearn)
+12/31/2020 05:56:15 PM         method = split2
+12/31/2020 05:56:15 PM         <<<<<<< receive from:
+12/31/2020 05:56:15 PM         tool_csv_0
+12/31/2020 05:56:15 PM         >>>>>>> send to:
+12/31/2020 05:56:15 PM         tool_helper-functions_2
+12/31/2020 05:56:15 PM         
+12/31/2020 05:56:15 PM 3   tool_helper-functions_2: SaveFile (chemml)
+12/31/2020 05:56:15 PM         method = write
+12/31/2020 05:56:15 PM         <<<<<<< receive from:
+12/31/2020 05:56:15 PM         tool_model-selection_1
+12/31/2020 05:56:15 PM         >>>>>>> send to:
+12/31/2020 05:56:15 PM         nothing to send!
+12/31/2020 05:56:15 PM         
+12/31/2020 05:56:15 PM =================================================
+12/31/2020 05:56:15 PM * Based on the dependencies, we run nodes in the 
+12/31/2020 05:56:15 PM   following order:
+12/31/2020 05:56:15 PM   ['tool_csv_0']
+12/31/2020 05:56:15 PM   ['tool_model-selection_1']
+12/31/2020 05:56:15 PM   ['tool_helper-functions_2']
+12/31/2020 05:56:15 PM * The outputs will be stored in the following 
+12/31/2020 05:56:15 PM directory: ./j0o7V
+12/31/2020 05:56:15 PM 
+
+12/31/2020 05:56:15 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+12/31/2020 05:56:15 PM | run ...
+
+12/31/2020 05:56:15 PM ... preparing outputs:
+12/31/2020 05:56:15 PM       name: df
+12/31/2020 05:56:15 PM       size: 19952 bytes (total: 19952 bytes)
+12/31/2020 05:56:15 PM       type: <class 'pandas.core.frame.DataFrame'>
+12/31/2020 05:56:15 PM       shape: (178, 13)
+12/31/2020 05:56:15 PM       -----
+12/31/2020 05:56:15 PM 
+
+12/31/2020 05:56:15 PM | ... done!
+12/31/2020 05:56:15 PM | execution time: 0.02s (0h 0m 0.02s)
+12/31/2020 05:56:15 PM =======
+
+
+12/31/2020 05:56:15 PM ======= node ID#tool_model-selection_1: (train_test_split, sklearn)
+12/31/2020 05:56:15 PM | run ...
+
+12/31/2020 05:56:15 PM ... preparing outputs:
+12/31/2020 05:56:15 PM       name: test1
+12/31/2020 05:56:15 PM       size: 4048 bytes (total: 4048 bytes)
+12/31/2020 05:56:15 PM       type: <class 'pandas.core.frame.DataFrame'>
+12/31/2020 05:56:15 PM       shape: (36, 13)
+12/31/2020 05:56:15 PM       -----
+12/31/2020 05:56:15 PM 
+
+12/31/2020 05:56:15 PM | ... done!
+12/31/2020 05:56:15 PM | execution time: 0.06s (0h 0m 0.06s)
+12/31/2020 05:56:15 PM =======
+
+
+12/31/2020 05:56:15 PM ======= node ID#tool_helper-functions_2: (SaveFile, chemml)
+12/31/2020 05:56:15 PM | run ...
+

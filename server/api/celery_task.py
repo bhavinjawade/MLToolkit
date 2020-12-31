@@ -2,7 +2,7 @@ from celery import Celery
 import time 
 from chemml.wrapper import ChemMLWrapperRun
 import random, string
-
+import os
 #Specify mongodb host and datababse to connect to
 BROKER_URL = 'mongodb://localhost:27017/jobs'
 
@@ -18,8 +18,9 @@ def run_pipeline(json_data):
     isError = False
 
     x = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
-    ChemMLWrapperRun(json_data, './' + x)
-    
+    os.mkdir('./'+x)
+    os.mkdir('./'+x+'/metric')
+    ChemMLWrapperRun(json_data, './' + x) 
     data = {
         "data_address": "./" + x + "/metric/",
         "isError": isError,
