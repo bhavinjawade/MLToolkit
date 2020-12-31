@@ -11,40 +11,47 @@
                 This project has not been executed. Click on Run Pipeline to execute your pipeline and see results.
             </div>
             <div class = "results" *ngIf="noResults==false">
-            <div class="body" *ngFor="let result of results; let i = index;" (click)="expanded=i;checkForCSV(result);">
+            <div class="body" *ngFor="let result of results; let i = index;">
                 <div class="run_row">
-                    <div class="title">
+                    <div class="row_title">
                         Result {{i+1}}
                     </div>
                     <div class="status">
-                        {{result.run_status}}
+                        {{result[0].run_status}}
                     </div>
+                    <div class = "result" *ngFor="let res of result; let j = index;" (click)="checkForCSV(res,i,j);expanded=j;result_num=i;">
+                        <div class="run_result_body">
+                            <div class = "result_header">
+                                <span class = "row_title">{{res.filename}}</span>
+                                <span class = "result_format">{{res.format}}</span>
+                            </div>
+                            <div class = "table_container" *ngIf = "res.format == 'csv' && expanded==j && result_num==i && !closeTable">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th *ngFor="let header of csv_header">{{ header }}</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of csv_data">
+                                            <td *ngFor="let header of csv_header">
+                                              {{ row[header] }}
+                                            </td>
+                                          </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <div class = "table_container" *ngIf = "res.format == 'txt' && expanded==j && result_num==i && !closeTable">
+                                {{res.result}}
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="expand_icon"></div>
                     <div class="schedule_time">
-                        {{result.scheduled_time?(result.scheduled_time.$date|date:'MMM d, y, h:mm:ss a'):"Execution Time"}}
+                        {{result[0].scheduled_time?(result[0].scheduled_time.$date|date:'MMM d, y, h:mm:ss a'):"Execution Time"}}
                     </div>
-                    <div class="run_result_body" *ngIf="expanded==i">
-                        <div class = "result_header">
-                            <span class = "title">Result format</span>
-                            <span class = "result_format">{{result.result.result_format}}</span>
-                        </div>
-                        <div class = "table_container" *ngIf = "result.result.result_format == 'csv'">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th *ngFor="let header of csv_header">{{ header }}</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let row of csv_data">
-                                        <td *ngFor="let header of csv_header">
-                                          {{ row[header] }}
-                                        </td>
-                                      </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

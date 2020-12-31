@@ -711,12 +711,8 @@ class Wrapper(object):
         """
         lame_metadata = {
             'chemml.wrapper.preprocessing':{
-                'SplitColumns.fit': ['X1', 'X2']
-            },
-            'chemml.wrapper.preprocessing':{
-                'SelectTargetColumn.fit': ['X1', 'X2']
-            },
-            'chemml.wrapper.preprocessing':{
+                'SplitColumns.fit': ['X1', 'X2'],
+                'SelectTargetColumn.fit': ['X1', 'X2'],
                 'Select_Columns_By_Index.fit': ['X1', 'X2']
             },
             'chemml.chem':{
@@ -739,6 +735,7 @@ class Wrapper(object):
             if method_name is None:
                 output_names = lame_metadata['%s.%s'%(library,module)][name]
             else:
+                print(lame_metadata)
                 output_names = lame_metadata['%s.%s'%(library,module)]['%s.%s'%(name,method_name)]
 
             # extract info from metadata

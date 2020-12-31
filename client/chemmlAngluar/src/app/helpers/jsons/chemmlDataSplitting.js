@@ -63,7 +63,7 @@ export default {
       nodes: []
     },
     {
-      name: 'SelectColumn',
+      name: 'SelectTargetColumn',
       docstring: '\n This method selects a column from a pandas dataframe.',
       inputs: [
         {
@@ -87,7 +87,7 @@ export default {
         },
         {
           name: 'fit',
-          display_name: 'split_columns',
+          display_name: 'SelectTargetColumn',
           docstring:
             '\n The main function to split the input dataframe.',
           inputs: [
@@ -104,13 +104,13 @@ export default {
           outputs: [
             {
               name: 'X1',
-              docstring: 'Left part of the split data matrix',
+              docstring: 'Remaining Columns (except the selected column)',
               param_type: ['array'],
               returned: true
             },
             {
               name: 'X2',
-              docstring: 'Right part of the split data matrix',
+              docstring: 'Selected Target Column',
               param_type: ['array'],
               returned: true
             }

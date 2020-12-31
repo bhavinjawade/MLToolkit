@@ -54,6 +54,7 @@ export class LeftFilesBarComponentComponent implements OnInit {
       for(var i = 0; i < this.filesToUpload.length; i++){
         console.log("Files Upload: ", this.filesToUpload[i]);
         this.dataServiceService.postFile(this.filesToUpload[i],this.currentProject.project_name).subscribe(event => {
+          console.log("Uploading File");
           if (event.type === HttpEventType.UploadProgress) {
             this.fileUploadProgress = Math.round(100 * event.loaded / event.total);
             console.log(this.fileUploadProgress);

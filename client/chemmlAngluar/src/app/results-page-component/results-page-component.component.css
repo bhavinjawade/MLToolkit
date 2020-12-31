@@ -8,12 +8,10 @@
     box-shadow: 0px 0px 20px 0px #5f5b5b;
     width: 50%;
     overflow: hidden;
-    height: 600px;
+    height: 760px;
     padding-bottom: 1%;
 }
-.title{
-    font-weight: 800;
-}
+
 .result_format{
     font-size: 1em;
     font-weight: 800;
@@ -28,6 +26,7 @@
 
 .table_container{
     overflow: scroll;
+    margin-top: 20px;
 }
 
 th, td{
@@ -35,7 +34,6 @@ th, td{
 }
 
 .result_header{
-    margin-bottom: 20px;
 }
 
 .run_result_body{
@@ -71,7 +69,7 @@ th, td{
     font-weight: 500;
 }
 
-.title{
+.row_title{
     font-size: 1.2em;
     font-weight: 500;
     display: inline-block;
@@ -83,12 +81,16 @@ th, td{
     padding: 2%;
     background-color: #00c100;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     padding-top: 1%;
     padding-bottom: 1%;
     border-radius: 45px;
     font-weight: 500;
     border: 3px solid #009e00;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .background{

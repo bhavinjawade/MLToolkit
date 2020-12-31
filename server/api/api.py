@@ -97,7 +97,8 @@ def login():
                     ) 
 
     # Identity can be any data that is json serializable
-    access_token = create_access_token(identity=username)
+    expires = datetime.timedelta(days=365)
+    access_token = create_access_token(identity=username, expires_delta=expires)
     response = flask.Response(
                     json.dumps({
                     "access_token": access_token,
@@ -437,19 +438,41 @@ def get_results(project_name):
     print("Get results of", project_name,flush=True)
     cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
     for project in cursor:
-        output = project["results"]
+        outputs = project["results"]
+    results = []
+    print("======>",outputs, flush=True)
+    for output in outputs:
+        output = outputs[output]
+        print(output)
+        if("data_address" in output["result"]):
+            result_folder = output["result"]["data_address"]
+            all_result = []
+            for filename in os.listdir(result_folder):
+                with open(os.path.join(result_folder, filename), 'r') as f: # open in readonly mode
+                    result = f.read().rstrip()
+                    ext = filename.split(".")[-1]
+                    all_result.append(
+                        {
+                        "result": result, 
+                        "format": ext,
+                        "run_status": output["run_status"],
+                        "scheduled_time": output["scheduled_time"],
+                        "filename": filename
+                        })
+            results.append(all_result)
     status = "200"
-    response = flask.Response(json.dumps({"data": output,
+    response = flask.Response(json.dumps({"data": results,
                     "status": status_codes[status]},
-                    default=json_util.default))
-    
+                    default=json_util.default))    
     return response
 
 @app.route('/upload_files/<project_name>', methods=['GET', 'POST','OPTIONS'])
 @jwt_required
 @cross_origin()
 def upload_file(project_name):
-    print(len(request.files))
+    print(request.data)
+    print(request.files)
+    print(request.method)
     if request.method == 'OPTIONS' or request.method == 'POST':
 
         if len(request.files) > 0:

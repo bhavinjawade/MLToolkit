@@ -102,9 +102,10 @@ export class AppComponent implements AfterViewInit {
         console.log(id,this.toolConfigMapping);
         if(id in this.toolConfigMapping){
           let toolConfigComponent = this.toolConfigMapping[id];
-          toolConfigComponent.instance.show = true;
           toolConfigComponent.instance.project_name = this.projectName;
-          console.log("Opening Tool-config of block: ", toolConfigComponent.instance.type);
+          toolConfigComponent.instance.show = true;
+          console.log("---------------->",toolConfigComponent.instance.project_name);
+          console.log("Opening Tool-config of block: ", toolConfigComponent.instance.tooltype);
         }
       }
     });
@@ -196,6 +197,7 @@ export class AppComponent implements AfterViewInit {
       this.globalCounter += 1;
       this.toolConfigMapping[block.id] = this.componentRef;
       this.componentRef.instance.toolid = block.id;
+      this.componentRef.instance.project_name = this.projectName;
 
       let type = block.id.split("_");
       type = type[type.length-2];

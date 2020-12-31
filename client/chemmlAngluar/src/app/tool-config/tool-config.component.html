@@ -61,7 +61,7 @@
                         <input class="input_text" (focusout) = "getParameterValue($event,param.name)" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
                     </div>
                     <div class = "paramInput" *ngIf="param.name =='file_path'">
-                        <input class="input_text" (focusout) = "getParameterValue($event,param.name)" value="/metric/results.csv" disabled [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
+                        <input class="input_text" (focusout) = "getParameterValue($event,param.name)" [placeholder] = "param.default_value != null ? param.default_value : 'Enter Value'" type="text" id="parameter_{{i}}" />
                     </div>
                 </div>
             </div>

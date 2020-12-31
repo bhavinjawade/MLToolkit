@@ -1,0 +1,120 @@
+{
+    "data":
+{
+  "nodes": {
+    "ID1": {
+      "name": "read_csv",
+      "library": "pandas",
+      "module": "",
+      "inputs": {
+        "filepath_or_buffer": "temp/wine_dataset.csv",
+        "index_col": 0
+      },
+      "outputs": {
+        "df": true
+      },
+      "method": {}
+    },
+    "ID4": {
+      "name": "Select_Columns_By_Index",
+      "library": "chemml",
+      "module": "wrapper.preprocessing",
+      "inputs": {
+        "selection": [13]
+      },
+      "outputs": {},
+      "method": {
+        "name": "fit",
+        "inputs": {
+          "X": "@ID1@df"
+        },
+        "outputs": {
+          "X1": true, 
+          "X2": true
+        }
+      }
+    },
+    "ID5": {
+      "name": "train_test_split",
+      "library": "sklearn",
+      "module": "model_selection",
+      "inputs": {
+        "*args": "@ID4@X1@ID4@X2",
+        "test_size": 0.2
+      },
+      "outputs": {
+        "train1": true,
+        "test1": true,
+        "train2": true,
+        "test2": true
+      },
+      "method": {}
+    },
+    "ID6": {
+      "name": "RandomForestClassifier",
+      "library": "sklearn",
+      "module": "ensemble",
+      "inputs": {
+          "max_depth": 8,
+          "random_state": 0
+      },
+      "outputs": {"obj": true},
+      "method": {
+        "name": "fit",
+        "inputs": {
+          "X": "@ID5@train1",
+          "y": "@ID5@train2"
+        },
+        "outputs": {}
+      }
+    },
+    "ID7": {
+      "name": "RandomForestClassifier",
+      "library": "sklearn",
+      "module": "ensemble",
+      "inputs": {
+        "obj": "@ID6@obj"
+      },
+      "outputs": {},
+      "method": {
+        "name": "predict",
+        "inputs": {
+          "X": "@ID5@test1"
+        },
+        "outputs": {
+          "C": true
+        }
+      }
+    },
+    "ID8": {
+      "name": "accuracy_score",
+      "library": "sklearn",
+      "module": "metrics",
+      "inputs": {
+        "y_true": "@ID5@test2",
+        "y_pred": "@ID7@C"
+      },
+      "outputs": {
+        "result": true
+      },
+      "method": {}
+    },
+    "ID9": {
+      "name": "SaveFile",
+      "library": "chemml",
+      "module": "wrapper.preprocessing",
+      "inputs": {
+        "file_path": "metric/results.txt"
+      },
+      "outputs": {},
+      "method": {
+        "name": "write",
+        "inputs": {
+          "X": "@ID8@result"
+        },
+        "outputs": {}
+      }
+    }
+  }
+}
+}

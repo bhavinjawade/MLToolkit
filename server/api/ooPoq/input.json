@@ -1,0 +1,40 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./temp/heart_disease_dataset.csv",
+        "index_col": ""
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_data-splitting_1": {
+      "inputs": {
+        "selection": "13"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_csv_0@df"
+        },
+        "name": "fit",
+        "outputs": {
+          "X1": true,
+          "X2": true
+        }
+      },
+      "module": "wrapper.preprocessing",
+      "name": "Select_Columns_By_Index",
+      "outputs": {}
+    }
+  }
+}

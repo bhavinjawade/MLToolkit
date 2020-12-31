@@ -12,6 +12,7 @@ import sklearnModelSelection from '../helpers/jsons/sklearnModelSelection'
 import sklearnModelMetrics from '../helpers/jsons/sklearnMetrics'
 import { CurrentProjectService } from '../current-project.service';
 import chemmlWrapperProcessing from '../helpers/jsons/chemmlWrapperPreprocessingUI';
+import sklearnEnsemble from '../helpers/jsons/sklearnEnsemble';
 
 @Component({
   selector: 'app-input-output-config',
@@ -59,6 +60,10 @@ export class InputOutputConfigComponent implements OnInit {
     "dim-reduction":{
       "json": sklearnDimentional,
       "parsing_method": 1
+    },    
+    'ensemble-methods':{
+      json: sklearnEnsemble,
+      parsing_method: 1
     },
     "chemml-represent":{
       "json": chemmlRepresent,
@@ -166,7 +171,7 @@ export class InputOutputConfigComponent implements OnInit {
     if(parameterName == 'data'){
       parameterName = 'df';
     }
-    if(this.parentToolType == 'mddel-selection'){
+    if(this.parentToolType == 'model-selection'){
       if (this.chemMLJson.nodes[this.parentId].name == 'train_test_split'){
         this.chemMLJson.nodes[this.parentId].outputs = {
           "test1": true,
@@ -180,7 +185,6 @@ export class InputOutputConfigComponent implements OnInit {
       this.chemMLJson.nodes[this.parentId].outputs[parameterName]= true
       }
       if(this.parentToolType == 'csv'){
-        this.chemMLJson.nodes[this.parentId].inputs['filepath_or_buffer']= "./temp/Boston.csv";
         this.chemMLJson.nodes[this.parentId].module= "";
       }
     else{
@@ -197,7 +201,12 @@ export class InputOutputConfigComponent implements OnInit {
     if(this.childToolType=='helper-functions'){
       childInputParameterName = 'X';
     }
-    this.chemMLJson.nodes[this.childId].method.inputs[childInputParameterName] = '@' + this.parentId + '@' + value;
+    if(this.jsonToolTypeMap[this.childToolType]["parsing_method"]==1) {
+      this.chemMLJson.nodes[this.childId].inputs[childInputParameterName] = '@' + this.parentId + '@' + value;
+    }
+    else{
+      this.chemMLJson.nodes[this.childId].method.inputs[childInputParameterName] = '@' + this.parentId + '@' + value;
+    }
     console.log(i,j);
     console.log(this.chemMLJson);
   }

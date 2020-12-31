@@ -176,9 +176,8 @@ class SelectTargetColumn(object):
                 X1 = None
                 X2 = X
         else:
-            msg = "The input `selection` must ba an integer"
+            msg = "The input `selection` must be an integer"
             raise ValueError(msg)
-        print(X1[:5,:], X2[:5,:])
         return X1, X2
 
 class Select_Columns_By_Index(object):
@@ -187,12 +186,14 @@ class Select_Columns_By_Index(object):
 
     Parameters
     ----------
-    selection : int, optional (default = -1, last column)
+    selection : array, required (default = -1, last column)
         Indexing starts with 1. 
         1 represents first column
         -1 represents last column.
         Given a list of indices, select the columns from dataframe present at the index.
         Return remaining dataframe as well.
+        X1: Not selected Columns
+        X2: selected Columns
     """
     def __init__(self, selection = []):
         self.selection = [x-1 for x in selection]
@@ -278,6 +279,7 @@ class SaveCSV(object):
             if there is a main directory for entire chemml wrapper project
         """
         try:
+            print("------>",type(X))
             df = pd.DataFrame(X)
         except:
             msg = 'The input `X` must be convertible to a pandas dataframe.'

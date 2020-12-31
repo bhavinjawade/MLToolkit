@@ -138,7 +138,7 @@ export class ToolConfigComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.project_name);
     console.log(this.jsonToolTypeMap, this.tooltype);
     this.toolConfigParamtersUi = this.jsonToolTypeMap[this.tooltype]['json'];
 
@@ -250,12 +250,24 @@ export class ToolConfigComponent implements OnInit {
     var tool_info = (<HTMLElement>tool_element).getElementsByClassName("tool_config_info")[0];
     var nodeType = this.nodeJson["name"];
     var method = this.nodeJson["method"]["name"];
+    if(method=="write"){
+      if(nodeType == "SaveCSV"){
+        this.nodeJson["inputs"]["file_path"] = "/metric/" + this.nodeJson["inputs"]["file_path"] + ".csv"
+      }
+      if(nodeType == "SaveFile"){
+        this.nodeJson["inputs"]["file_path"] = "/metric/" + this.nodeJson["inputs"]["file_path"] + ".txt"
+      }
+    }
     var keys = Object.keys(this.nodeJson["inputs"]);
     
     (<HTMLElement>tool_info).innerHTML += `<div class = "_row"><span class = "info_key"> Method </span> <span class = "info_value">` + method + `</span></div>`;
     
     for (var i = 0; i < keys.length; i++) {
-      (<HTMLElement>tool_info).innerHTML += `<div class = "_row"><span class = "info_key">` + keys[i] + `</span> <span class = "info_value">` + this.nodeJson["inputs"][keys[i]] + `</span></div>`;
+      var value = this.nodeJson["inputs"][keys[i]];
+      if(keys[i] == "filepath_or_buffer"){
+        value = value.split("\\")[value.split("\\").length - 1];
+      }
+      (<HTMLElement>tool_info).innerHTML += `<div class = "_row"><span class = "info_key">` + keys[i] + `</span> <span class = "info_value">` + value + `</span></div>`;
     }
     
     (<HTMLElement>tool_element).getElementsByClassName("blocktitle")[0].innerHTML = nodeType;

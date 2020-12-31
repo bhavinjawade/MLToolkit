@@ -13,6 +13,8 @@ export class ResultsPageComponentComponent implements AfterViewInit {
   @Input() project_name: any;
   results: any[] = [];
   expanded = 0;
+  closeTable = false;
+  result_num = 0;
   csv_data: any;
   noResults = false;
   csv_header: any;
@@ -26,25 +28,27 @@ export class ResultsPageComponentComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
     this.dataServiceService.getResults(this.project_name)
     .subscribe(response => {
       var results = response["data"];
-      var keys = Object.keys(results);
-      if(keys.length==0){
+      this.results = results;
+      if(this.results.length == 0){
         this.noResults = true;
       }
-      for(var i = 0; i < keys.length; i++){
-        this.results.push(results[keys[i]]);
-      }
-      console.log(this.results);
     });
   }
 
-  checkForCSV(result){
-    if(result.result.result_format == 'csv'){
+  checkForCSV(result,res,sub_res){
+    console.log(sub_res, this.expanded, this.result_num);
+    if(sub_res == this.expanded && res == this.result_num && this.closeTable==false){
+      this.closeTable = true;
+    }
+    else{
+      this.closeTable = false;
+    }
+    if(result.format == 'csv'){
       console.log("checking for CSV");
-      var data = this.csvToJSON(result.result.data);
+      var data = this.csvToJSON(result.result);
       this.csv_data = data.data;
       this.csv_header = data.headers;
       console.log(this.csv_data, this.csv_header);

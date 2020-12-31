@@ -157,9 +157,16 @@ export class DataServiceService {
   postFile(fileToUpload: File, project_name: string): Observable<any>{
     console.log(fileToUpload,project_name);
     const endpoint = API_URLS.fileUploadURL + project_name;
-    const formData: FormData = new FormData();
+    const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    return this.http.post(endpoint, formData,  this.headers);
+    var header = {
+      headers: new HttpHeaders({
+      'enctype':  'multipart/form-data',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${this.access_token}`
+     })};
+    console.log(formData);
+    return this.http.post(endpoint, formData,  header);
   }
 
   getProjectFiles(project_name: string): Observable<any> {

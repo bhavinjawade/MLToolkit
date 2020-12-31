@@ -7968,7 +7968,15 @@ export default
                             "options": null
                         }
                     ],
-                    "outputs": []
+                    "outputs": [
+                        {
+                          name: 'obj',
+                          docstring:
+                            'True/False flag to indicate reusing the same instance instead of creating a new one',
+                          param_type: ['bool'],
+                          returned: true
+                        }
+                      ]
                 },
                 {
                     "name": "get_params",
@@ -8000,33 +8008,42 @@ export default
                 {
                     "name": "predict",
                     "docstring": "\n        Predict class for X.\n\n        The predicted class of an input sample is a vote by the trees in\n        the forest, weighted by their probability estimates. That is,\n        the predicted class is the one with highest mean probability\n        estimate across the trees.\n\n        Parameters\n        ----------\n        X : {array-like, sparse matrix} of shape (n_samples, n_features)\n            The input samples. Internally, its dtype will be converted to\n            ``dtype=np.float32``. If a sparse matrix is provided, it will be\n            converted into a sparse ``csr_matrix``.\n\n        Returns\n        -------\n        y : ndarray of shape (n_samples,) or (n_samples, n_outputs)\n            The predicted classes.\n        ",
-                    "inputs": [
+                    inputs: [
                         {
-                            "name": "X",
-                            "docstring": "The input samples. Internally, its dtype will be converted to ``dtype=np.float32``. If a sparse matrix is provided, it will be converted into a sparse ``csr_matrix``.",
-                            "param_type": [
-                                "LIST_VALID_OPTIONS",
-                                "array"
-                            ],
-                            "expected_shape": "(n_samples, n_features)",
-                            "is_optional": false,
-                            "default_value": null,
-                            "options": [
-                                "array-like",
-                                "sparse matrix of shape (n_samples",
-                                "n_features)"
-                            ]
+                          name: 'X',
+                          default_value: null,
+                          param_type: ['array'],
+                          expected_shape: '(n_samples, n_features)',
+                          docstring: 'Samples.',
+                          is_optional: false,
+                          options: null
+                        },
+                        {
+                          name: 'obj',
+                          docstring:
+                            'True/False flag to indicate reusing the same instance instead of creating a new one',
+                          param_type: ['bool'],
+                          expected_shape: null,
+                          is_optional: true,
+                          default_value: false,
+                          options: null
                         }
-                    ],
+                      ]
+                    ,
                     "outputs": [
                         {
-                            "name": "y",
-                            "docstring": "The predicted classes.",
-                            "param_type": [
-                                "array"
-                            ],
-                            "returned": true
-                        }
+                            name: 'C',
+                            returned: true,
+                            param_type: ['array'],
+                            docstring: 'Predicted class label per sample.'
+                          },
+                          {
+                            name: 'obj',
+                            docstring:
+                              'True/False flag to indicate reusing the same instance instead of creating a new one',
+                            param_type: ['bool'],
+                            returned: true
+                          }
                     ]
                 },
                 {

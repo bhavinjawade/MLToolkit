@@ -1,0 +1,86 @@
+12/20/2020 11:47:52 PM =================================================
+12/20/2020 11:47:52 PM ChemMLWrapper 0.6.0 (August 2019)
+12/20/2020 11:47:52 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+12/20/2020 11:47:52 PM Johannes Hachmann (hachmann@buffalo.edu)
+12/20/2020 11:47:52 PM =================================================
+12/20/2020 11:47:52 PM Sun Dec 20 23:47:52 2020
+12/20/2020 11:47:52 PM 
+12/20/2020 11:47:52 PM parsing the input dictionary ...
+
+12/20/2020 11:47:52 PM 1   tool_csv_0: read_csv (pandas)
+12/20/2020 11:47:52 PM         method = data
+12/20/2020 11:47:52 PM         <<<<<<< receive from:
+12/20/2020 11:47:52 PM         nothing to receive!
+12/20/2020 11:47:52 PM         >>>>>>> send to:
+12/20/2020 11:47:52 PM         tool_data-splitting_1
+12/20/2020 11:47:52 PM         
+12/20/2020 11:47:52 PM 2   tool_data-splitting_1: Select_Columns_By_Index (chemml)
+12/20/2020 11:47:52 PM         method = fit
+12/20/2020 11:47:52 PM         <<<<<<< receive from:
+12/20/2020 11:47:52 PM         tool_csv_0
+12/20/2020 11:47:52 PM         >>>>>>> send to:
+12/20/2020 11:47:52 PM         tool_helper-functions_2
+12/20/2020 11:47:52 PM         
+12/20/2020 11:47:52 PM 3   tool_helper-functions_2: SaveCSV (chemml)
+12/20/2020 11:47:52 PM         method = write
+12/20/2020 11:47:52 PM         <<<<<<< receive from:
+12/20/2020 11:47:52 PM         tool_data-splitting_1
+12/20/2020 11:47:52 PM         >>>>>>> send to:
+12/20/2020 11:47:52 PM         nothing to send!
+12/20/2020 11:47:52 PM         
+12/20/2020 11:47:52 PM =================================================
+12/20/2020 11:47:52 PM * Based on the dependencies, we run nodes in the 
+12/20/2020 11:47:52 PM   following order:
+12/20/2020 11:47:52 PM   ['tool_csv_0']
+12/20/2020 11:47:52 PM   ['tool_data-splitting_1']
+12/20/2020 11:47:52 PM   ['tool_helper-functions_2']
+12/20/2020 11:47:52 PM * The outputs will be stored in the following 
+12/20/2020 11:47:52 PM directory: ./vj4JR
+12/20/2020 11:47:52 PM 
+
+12/20/2020 11:47:52 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+12/20/2020 11:47:52 PM | run ...
+
+12/20/2020 11:47:52 PM ... preparing outputs:
+12/20/2020 11:47:52 PM       name: df
+12/20/2020 11:47:52 PM       size: 33952 bytes (total: 33952 bytes)
+12/20/2020 11:47:52 PM       type: <class 'pandas.core.frame.DataFrame'>
+12/20/2020 11:47:52 PM       shape: (303, 13)
+12/20/2020 11:47:52 PM       -----
+12/20/2020 11:47:52 PM 
+
+12/20/2020 11:47:52 PM | ... done!
+12/20/2020 11:47:52 PM | execution time: 0.02s (0h 0m 0.02s)
+12/20/2020 11:47:52 PM =======
+
+
+12/20/2020 11:47:52 PM ======= node ID#tool_data-splitting_1: (Select_Columns_By_Index, chemml)
+12/20/2020 11:47:52 PM | run ...
+
+12/20/2020 11:47:52 PM ... preparing outputs:
+12/20/2020 11:47:52 PM       name: X1
+12/20/2020 11:47:52 PM       size: 112 bytes (total: 112 bytes)
+12/20/2020 11:47:52 PM       type: <class 'numpy.ndarray'>
+12/20/2020 11:47:52 PM       shape: (303, 12)
+12/20/2020 11:47:52 PM       -----
+12/20/2020 11:47:52 PM 
+
+12/20/2020 11:47:52 PM | ... done!
+12/20/2020 11:47:52 PM | execution time: 0.01s (0h 0m 0.01s)
+12/20/2020 11:47:52 PM =======
+
+
+12/20/2020 11:47:52 PM ======= node ID#tool_helper-functions_2: (SaveCSV, chemml)
+12/20/2020 11:47:52 PM | run ...
+
+12/20/2020 11:47:52 PM 
+
+12/20/2020 11:47:52 PM | ... done!
+12/20/2020 11:47:52 PM | execution time: 0.02s (0h 0m 0.02s)
+12/20/2020 11:47:52 PM =======
+
+
+12/20/2020 11:47:52 PM Total execution time: 0.05s (0h 0m 0.05s)
+12/20/2020 11:47:52 PM 2020-12-20 23:47:52
+
+12/20/2020 11:47:52 PM =================================================
