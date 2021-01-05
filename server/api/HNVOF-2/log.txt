@@ -57,3 +57,30 @@
 12/31/2020 06:27:56 PM ======= node ID#tool_model-selection_1: (train_test_split, sklearn)
 12/31/2020 06:27:56 PM | run ...
 
+12/31/2020 06:27:58 PM ... preparing outputs:
+12/31/2020 06:27:58 PM       name: test1
+12/31/2020 06:27:58 PM       size: 7336 bytes (total: 7336 bytes)
+12/31/2020 06:27:58 PM       type: <class 'pandas.core.frame.DataFrame'>
+12/31/2020 06:27:58 PM       shape: (61, 14)
+12/31/2020 06:27:58 PM       -----
+12/31/2020 06:27:58 PM 
+
+12/31/2020 06:27:58 PM | ... done!
+12/31/2020 06:27:58 PM | execution time: 1.40s (0h 0m 1.40s)
+12/31/2020 06:27:58 PM =======
+
+
+12/31/2020 06:27:58 PM ======= node ID#tool_helper-functions_2: (SaveCSV, chemml)
+12/31/2020 06:27:58 PM | run ...
+
+12/31/2020 06:27:58 PM 
+
+12/31/2020 06:27:58 PM | ... done!
+12/31/2020 06:27:58 PM | execution time: 0.20s (0h 0m 0.20s)
+12/31/2020 06:27:58 PM =======
+
+
+12/31/2020 06:27:58 PM Total execution time: 1.63s (0h 0m 1.63s)
+12/31/2020 06:27:58 PM 2020-12-31 18:27:58
+
+12/31/2020 06:27:58 PM =================================================

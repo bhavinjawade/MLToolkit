@@ -585,7 +585,7 @@
 #canvas {
     position: absolute;
     width: calc(100% - 361px);
-    height: calc(100% - 184px);
+    height: calc(100% - 277px);
     top: 184px;
     left: 361px;
     z-index: 0;

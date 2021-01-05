@@ -76,7 +76,12 @@ export class DataServiceService {
   }
 
   getCSVFile(project_name,file_name){
-    return d3.csv(API_URLS.getFile + project_name + '/' + file_name)
+    return d3.csv(API_URLS.getFile + project_name + '/' + file_name,{
+      headers: new Headers({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${this.access_token}`
+       })
+      })
   }
   
   getResults(project_name): Observable<any> {

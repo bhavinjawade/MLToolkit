@@ -247,10 +247,14 @@ def update_project(project_name):
 def get_image(project_name,file_name):
     try:
         response = send_from_directory(app.config["UPLOAD_FOLDER"] + '/' + project_name, filename=file_name, as_attachment=True)
-        
+        print(response)
         return response;
     except FileNotFoundError:
-        abort(404)
+        response = flask.Response(json.dumps({"data": "No File Fount",
+                        "status": status_codes["404"]},
+                        default=json_util.default))
+        return response
+    
 
 @app.route('/get_query_preview/<project_name>/<csv_name>',methods=['GET','POST'])
 @jwt_required
