@@ -16,13 +16,13 @@ def run_pipeline(json_data):
     print("RUNNING CELERY")
     output_format = 'txt'
     isError = False
-
-    x = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
+    
+    x = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
     os.mkdir('./'+x)
     os.mkdir('./'+x+'/metric')
     ChemMLWrapperRun(json_data, './' + x) 
     data = {
-        "data_address": "./" + x + "/metric/",
+        "data_address": "./" + x + "-2/metric/",
         "isError": isError,
         "result_format": output_format
         }

@@ -1,9 +1,0 @@
-12/20/2020 11:08:10 PM =================================================
-12/20/2020 11:08:10 PM ChemMLWrapper 0.6.0 (August 2019)
-12/20/2020 11:08:10 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
-12/20/2020 11:08:10 PM Johannes Hachmann (hachmann@buffalo.edu)
-12/20/2020 11:08:10 PM =================================================
-12/20/2020 11:08:10 PM Sun Dec 20 23:08:10 2020
-12/20/2020 11:08:10 PM 
-12/20/2020 11:08:10 PM parsing the input dictionary ...
-
