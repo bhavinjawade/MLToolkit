@@ -564,6 +564,56 @@ def get_project_files(project_name):
 
     return "Nothing happend"
 
+@app.route('/delete/<project_name>', methods=['GET'])
+@jwt_required
+@cross_origin()
+def delete_project(project_name):
+    if request.method == 'GET':
+        collection.delete_one({'project_name':project_name, 'users':get_jwt_identity()})
+        status = "200"
+        response = flask.Response(json.dumps({"data":"deleted project " + str(project_name),
+            "status": status_codes[status]},
+            default=json_util.default))
+        return response 
+    return "Nothing happend"
+
+############################### Todo ####################################
+@app.route('/duplicate/<project_name>', methods=['GET'])
+@jwt_required
+@cross_origin()
+def duplicate_project(project_name):
+    if request.method == 'GET':
+        cursor = collection.find({'project_name':project_name, 'users':get_jwt_identity()})
+        project = None
+        for p in cursor:
+            project = p
+            break
+        today = datetime.datetime.today()
+        dic = {
+            "project_name": project_name + ' Copy',
+            "project_desc": project["project_desc"],
+            "created_date": today,
+            "config": {
+                "file": "/users/chemml/file.txt"
+            },
+            "project_properties": {
+                "tag_list": project["project_properties"]["tag_list"]
+            },
+            "users": get_jwt_identity(),
+            "files": project["files"],
+            "results": project["results"],
+            "graph": project["graph"]
+            }    
+        if(collection.insert_one(dic)): 
+            status = "200"
+        
+        response = flask.Response(json.dumps({"data": dic,
+                        "status": status_codes[status]},
+                        default=json_util.default))
+        
+        return response
+############################ Todo ####################################
+
 @app.route('/get_project_files/<project_name>', methods=['GET'])
 @jwt_required
 @cross_origin()

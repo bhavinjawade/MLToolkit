@@ -90,7 +90,33 @@ export class DataServiceService {
       catchError(this.handleError<any>('getResults', []))
     );
   }
-  
+
+  deleteProject(project_name): Observable<any> {
+    console.log(this.headers);
+    this.headers = {
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': `Bearer ${this.access_token}`
+     })
+    };
+    return this.http.get(API_URLS.deleteProject + project_name, this.headers).pipe(
+      catchError(this.handleError<any>('deleteProject', []))
+    );
+  }
+
+  duplicateProject(project_name): Observable<any> {
+    console.log(this.headers);
+    this.headers = {
+      headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': `Bearer ${this.access_token}`
+     })
+    };
+    return this.http.get(API_URLS.duplicateProject + project_name, this.headers).pipe(
+      catchError(this.handleError<any>('deleteProject', []))
+    );
+  }
+
   createProject(project_name: string, project_desc: string, tagslist): Observable<any> {
     var packet:any = {
       data : project_desc,

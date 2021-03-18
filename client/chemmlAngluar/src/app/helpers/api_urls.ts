@@ -13,6 +13,8 @@ export abstract class API_URLS{
   static updateProjectInfo:string = API_URLS.baseURL + "/projects/u/"
   static getFile:string = API_URLS.baseURL + '/get_file/'
   static runSQLQuery:string = API_URLS.baseURL + '/run_sql_query/'
+  static deleteProject:string = API_URLS.baseURL + '/delete/'
+  static duplicateProject:string = API_URLS.baseURL + '/duplicate/'
   static previewSQLQuery:string = API_URLS.baseURL + '/get_query_preview/'
   static login:string = API_URLS.baseURL + '/login'
 }

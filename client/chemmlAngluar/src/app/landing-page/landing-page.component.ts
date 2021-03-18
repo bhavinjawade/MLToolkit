@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataServiceService } from '../data-service.service';
 import { CurrentProjectService } from '../current-project.service';
 import { API_URLS } from '../helpers/api_urls';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-landing-page',
@@ -28,7 +29,7 @@ export class LandingPageComponent implements OnInit {
   constructor(private dataServiceService: DataServiceService, private currentProjectService: CurrentProjectService) { }
 
   ngOnInit(): void {
-      this.getProjects();
+    this.getProjects();
   }
 
   getProjects(): void {
@@ -81,6 +82,25 @@ export class LandingPageComponent implements OnInit {
     this.showNewProjectBox = true;
     console.log("Calling URL: ", API_URLS.newProject);
   }
+
+  deleteProject(element_id, project){
+    var project_name = project["project_name"]
+    this.dataServiceService.deleteProject(project_name)
+    .subscribe(Response => {
+      console.log(Response);
+      this.getProjects();
+    });
+  }
+
+  duplicateProject(element_id, project){
+    var project_name = project["project_name"]
+    this.dataServiceService.duplicateProject(project_name)
+    .subscribe(Response => {
+      console.log(Response);
+      this.getProjects();
+    });
+  }
+
 
   goHome(event): void{
 

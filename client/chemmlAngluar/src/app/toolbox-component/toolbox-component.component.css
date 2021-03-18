@@ -98,6 +98,9 @@
     height: 97px;
     padding-top: 1%;
     width: 7%;
+    background-image: url(../../assets/grabme.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: #ffffff;
     padding: 2%;
     padding-top: 10%;

@@ -3,10 +3,44 @@
     margin-left: 10% !important;
 }
 
+.dropdown-content:before {
+    position: absolute;
+    top: -7px;
+    right: 29px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid green;
+    border-left: 7px solid transparent;
+    border-bottom-color: yellow;
+    content: '';
+}
+
+.dropdown-content:after {
+    position: absolute;
+    top: -6px;
+    right: 30px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid green;
+    border-left: 6px solid transparent;
+    content: '';
+}
+.dropdown-content {
+    position: absolute;
+    right: 13.3%;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 1%;
+    box-shadow: 0px 2px 5px #e2e2;
+}
+
 .saveStatus{
     display: inline-block;
     vertical-align: middle;
-    margin-top: 6%;
+    margin-top: 2%;
     padding-right: 0%;
     color: #8b8b8b;
     font-family: 'Roboto';
@@ -223,9 +257,14 @@
     border: 2px solid #217CE8;
 }
 
+.info-icon {
+    width: 22% !important;
+}
+
 #buttonsright {
     float: right;
     margin-top: 15px;
+    width: 16%;
 }
 
 #leftcard {
@@ -582,6 +621,14 @@
 #closecard img {
     margin-top: 15px
 }
+
+#information {
+    display: inline-block;
+    margin-right: -30%;
+    position: relative;
+}
+
+
 #canvas {
     position: absolute;
     width: calc(100% - 361px);

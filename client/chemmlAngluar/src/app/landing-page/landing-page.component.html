@@ -32,7 +32,6 @@
             <div class = "table-item-header project_author">Author</div>
             <div class = "table-item-header project_tags">Tags</div>
             <div class = "table-item-header project_icons">Delete</div>
-            <div class = "table-item-header project_icons">Open in new tab</div>
             <div class = "table-item-header project_icons">Duplicate Project</div>
         </div>
         <div class="table-body">
@@ -44,14 +43,17 @@
             <div class=" table-item project_tags">
                 <div class="proj_tag" *ngFor="let proj_tag of project.project_properties.tag_list">{{proj_tag}}</div>
             </div>
-            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/bin.svg"/> </div>
-            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/tab.svg"/> </div>
-            <div class="table-item project_icons"> <img class = "row_icon" src="../assets/copy.svg"/> </div>
+            <div class="table-item project_icons"> 
+                <img class = "row_icon" src="../assets/bin.svg" (click)="deleteProject('project_'+i, project)"/> 
+            </div>
+            <div class="table-item project_icons"> 
+                <img class = "row_icon" src="../assets/copy.svg" (click)="duplicateProject('project_'+i, project)"/> 
+            </div>
         </div>
         </div>
         </div>
     </div>
     <app-global-footer></app-global-footer>
 </div>
-<app-new-project-box (closeBoxEmit)="showNewProjectBox=false;" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
+<app-new-project-box (closeBoxEmit)="showNewProjectBox=false;getProjects();" id="new_project_box" *ngIf="showNewProjectBox"></app-new-project-box>
 <app-open-project (closeBoxEmit)="openProjectBox=false;" id="new_project_box" *ngIf="openProjectBox"></app-open-project>

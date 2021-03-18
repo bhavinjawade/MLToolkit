@@ -28,9 +28,17 @@
             <nav-button description="Results" class="button" (callFunction)="openResultsPage($event)" ></nav-button>
             <nav-button description="Save" class="button" (callFunction)="saveGraph();" ></nav-button>
             <div id="buttonsright">
+                <div id = "information" (click)="showInfoBox = !showInfoBox"><img class = "icon info-icon" src="assets/info.svg"/></div>
                 <div id = "saveStatus" class = "saveStatus">Project Opened</div>
                 <!-- <div id="project_info" (click)="showProjectInfo=true;" ><img class = "icon" src="assets/settings.svg"/></div> -->
                 <div id="publish" (click) = "runPipeline();">Run Pipeline</div>
+            </div>
+            <div *ngIf = "showInfoBox" class = "info-content dropdown-content" id = "#info-content">
+                <div style="font-weight:800; margin-bottom: 2%;">Connecting blocks</div>
+                <ul>
+                    <li>Drag a block from the menu to attach with an existing block in pipeline.</li>
+                    <li>Custom Arrow: Select the footer of the input block and the header of the output block to create an arrow</li>
+                </ul>
             </div>
         </div>
         <div id="canvas" #canvasAppend [ngClass] = "!showLandingPage ? 'show_canvas': 'not_show_canvas'"></div>

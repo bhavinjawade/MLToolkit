@@ -21,6 +21,7 @@ declare var flowy: any;
 export class AppComponent implements AfterViewInit {
   render: any;
   title = 'chemmlAngluar';
+  showInfoBox = false;
   globalCounter: any;
   toolConfigMapping = [];
   showNewProjectBox = false;
@@ -96,7 +97,7 @@ export class AppComponent implements AfterViewInit {
       id = id.split("_")[0] + "_" + id.split("_")[1] + "_" + id.split("_")[2];
       let classes = evt.target.classList;
       let isTool = false
-      if(id.substring(0,4) == 'tool' && classes.contains('grabme')){
+      if(id.substring(0,4) == 'tool' && (classes.contains('grabme') || classes.contains('grabme_dots'))){
         isTool = true
         console.log(evt.target);
         console.log(id,this.toolConfigMapping);

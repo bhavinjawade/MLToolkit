@@ -302,6 +302,7 @@
     border-radius: 5px;    
     background-color: white;
     margin: 1%;
+    overflow: hidden;
 }
 
 .filenames{
@@ -489,6 +490,7 @@
     clear: both;
     margin: 0 !important;
     height: 362px;
+    padding-bottom: 17%;
     overflow: scroll;
 }
 

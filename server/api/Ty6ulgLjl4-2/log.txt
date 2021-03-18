@@ -1,0 +1,205 @@
+03/17/2021 11:32:46 PM =================================================
+03/17/2021 11:32:46 PM ChemMLWrapper 0.6.0 (August 2019)
+03/17/2021 11:32:46 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+03/17/2021 11:32:46 PM Johannes Hachmann (hachmann@buffalo.edu)
+03/17/2021 11:32:46 PM =================================================
+03/17/2021 11:32:46 PM Wed Mar 17 23:32:46 2021
+03/17/2021 11:32:46 PM 
+03/17/2021 11:32:46 PM parsing the input dictionary ...
+
+03/17/2021 11:32:46 PM 1   ID1: read_csv (pandas)
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         nothing to receive!
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID4
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 2   ID4: Select_Columns_By_Index (chemml)
+03/17/2021 11:32:46 PM         method = fit
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID1
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 3   ID5: train_test_split (sklearn)
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID4
+03/17/2021 11:32:46 PM         ID4
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID6
+03/17/2021 11:32:46 PM         ID6
+03/17/2021 11:32:46 PM         ID7
+03/17/2021 11:32:46 PM         ID8
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 4   ID6: RandomForestClassifier (sklearn)
+03/17/2021 11:32:46 PM         method = fit
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID7
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 5   ID7: RandomForestClassifier (sklearn)
+03/17/2021 11:32:46 PM         method = predict
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID6
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID8
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 6   ID8: accuracy_score (sklearn)
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID5
+03/17/2021 11:32:46 PM         ID7
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         ID9
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM 7   ID9: SaveFile (chemml)
+03/17/2021 11:32:46 PM         method = write
+03/17/2021 11:32:46 PM         <<<<<<< receive from:
+03/17/2021 11:32:46 PM         ID8
+03/17/2021 11:32:46 PM         >>>>>>> send to:
+03/17/2021 11:32:46 PM         nothing to send!
+03/17/2021 11:32:46 PM         
+03/17/2021 11:32:46 PM =================================================
+03/17/2021 11:32:46 PM * Based on the dependencies, we run nodes in the 
+03/17/2021 11:32:46 PM   following order:
+03/17/2021 11:32:46 PM   ['ID1']
+03/17/2021 11:32:46 PM   ['ID4']
+03/17/2021 11:32:46 PM   ['ID5']
+03/17/2021 11:32:46 PM   ['ID6']
+03/17/2021 11:32:46 PM   ['ID7']
+03/17/2021 11:32:46 PM   ['ID8']
+03/17/2021 11:32:46 PM   ['ID9']
+03/17/2021 11:32:46 PM * The outputs will be stored in the following 
+03/17/2021 11:32:46 PM directory: ./Ty6ulgLjl4-2
+03/17/2021 11:32:46 PM 
+
+03/17/2021 11:32:46 PM ======= node ID#ID1: (read_csv, pandas)
+03/17/2021 11:32:46 PM | run ...
+
+03/17/2021 11:32:47 PM ... preparing outputs:
+03/17/2021 11:32:47 PM       name: df
+03/17/2021 11:32:47 PM       size: 19952 bytes (total: 19952 bytes)
+03/17/2021 11:32:47 PM       type: <class 'pandas.core.frame.DataFrame'>
+03/17/2021 11:32:47 PM       shape: (178, 13)
+03/17/2021 11:32:47 PM       -----
+03/17/2021 11:32:47 PM 
+
+03/17/2021 11:32:47 PM | ... done!
+03/17/2021 11:32:47 PM | execution time: 0.09s (0h 0m 0.09s)
+03/17/2021 11:32:47 PM =======
+
+
+03/17/2021 11:32:47 PM ======= node ID#ID4: (Select_Columns_By_Index, chemml)
+03/17/2021 11:32:47 PM | run ...
+
+03/17/2021 11:32:47 PM ... preparing outputs:
+03/17/2021 11:32:47 PM       name: X1
+03/17/2021 11:32:47 PM       size: 120 bytes (total: 120 bytes)
+03/17/2021 11:32:47 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:47 PM       shape: (178, 12)
+03/17/2021 11:32:47 PM       -----
+03/17/2021 11:32:47 PM       name: X2
+03/17/2021 11:32:47 PM       size: 120 bytes (total: 240 bytes)
+03/17/2021 11:32:47 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:47 PM       shape: (178, 1)
+03/17/2021 11:32:47 PM       -----
+03/17/2021 11:32:47 PM 
+
+03/17/2021 11:32:47 PM | ... done!
+03/17/2021 11:32:47 PM | execution time: 0.62s (0h 0m 0.62s)
+03/17/2021 11:32:47 PM =======
+
+
+03/17/2021 11:32:47 PM ======= node ID#ID5: (train_test_split, sklearn)
+03/17/2021 11:32:47 PM | run ...
+
+03/17/2021 11:32:49 PM ... preparing outputs:
+03/17/2021 11:32:49 PM       name: train1
+03/17/2021 11:32:49 PM       size: 13752 bytes (total: 13752 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:49 PM       shape: (142, 12)
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM       name: test1
+03/17/2021 11:32:49 PM       size: 3576 bytes (total: 17328 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:49 PM       shape: (36, 12)
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM       name: train2
+03/17/2021 11:32:49 PM       size: 1256 bytes (total: 18584 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:49 PM       shape: (142, 1)
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM       name: test2
+03/17/2021 11:32:49 PM       size: 408 bytes (total: 18992 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:49 PM       shape: (36, 1)
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM 
+
+03/17/2021 11:32:49 PM | ... done!
+03/17/2021 11:32:49 PM | execution time: 1.70s (0h 0m 1.70s)
+03/17/2021 11:32:49 PM =======
+
+
+03/17/2021 11:32:49 PM ======= node ID#ID6: (RandomForestClassifier, sklearn)
+03/17/2021 11:32:49 PM | run ...
+
+03/17/2021 11:32:49 PM ... preparing outputs:
+03/17/2021 11:32:49 PM       name: obj
+03/17/2021 11:32:49 PM       size: 48 bytes (total: 4032 bytes)
+03/17/2021 11:32:49 PM       type: <class 'sklearn.ensemble._forest.RandomForestClassifier'>
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM 
+
+03/17/2021 11:32:49 PM | ... done!
+03/17/2021 11:32:49 PM | execution time: 0.56s (0h 0m 0.56s)
+03/17/2021 11:32:49 PM =======
+
+
+03/17/2021 11:32:49 PM ======= node ID#ID7: (RandomForestClassifier, sklearn)
+03/17/2021 11:32:49 PM | run ...
+
+03/17/2021 11:32:49 PM ... preparing outputs:
+03/17/2021 11:32:49 PM       name: C
+03/17/2021 11:32:49 PM       size: 392 bytes (total: 800 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.ndarray'>
+03/17/2021 11:32:49 PM       shape: (36,)
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM 
+
+03/17/2021 11:32:49 PM | ... done!
+03/17/2021 11:32:49 PM | execution time: 0.02s (0h 0m 0.02s)
+03/17/2021 11:32:49 PM =======
+
+
+03/17/2021 11:32:49 PM ======= node ID#ID8: (accuracy_score, sklearn)
+03/17/2021 11:32:49 PM | run ...
+
+03/17/2021 11:32:49 PM ... preparing outputs:
+03/17/2021 11:32:49 PM       name: result
+03/17/2021 11:32:49 PM       size: 32 bytes (total: 32 bytes)
+03/17/2021 11:32:49 PM       type: <class 'numpy.float64'>
+03/17/2021 11:32:49 PM       -----
+03/17/2021 11:32:49 PM 
+
+03/17/2021 11:32:49 PM | ... done!
+03/17/2021 11:32:49 PM | execution time: 0.01s (0h 0m 0.01s)
+03/17/2021 11:32:49 PM =======
+
+
+03/17/2021 11:32:49 PM ======= node ID#ID9: (SaveFile, chemml)
+03/17/2021 11:32:49 PM | run ...
+
+03/17/2021 11:32:49 PM 
+
+03/17/2021 11:32:49 PM | ... done!
+03/17/2021 11:32:49 PM | execution time: 0.01s (0h 0m 0.01s)
+03/17/2021 11:32:49 PM =======
+
+
+03/17/2021 11:32:49 PM Total execution time: 3.04s (0h 0m 3.04s)
+03/17/2021 11:32:49 PM 2021-03-17 23:32:49
+
+03/17/2021 11:32:49 PM =================================================

@@ -11,10 +11,10 @@ https://github.com/bhavinjawade/ChemML_Web_UI
 2. Activating environment and setting up flask API. The api code package requirements are written in requirements.txt
 
 ```
-conda activate ./my_chemml_env
+conda activate ./anaconda3/envs/my_chemml_env
 cd server
 cd api
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 
 ```
 
@@ -40,7 +40,7 @@ python api.py &
 If MongoDB and celery are installed, then run:
 
 ```
-celery -A celery_task worker --loglevel=info --pool=eventlet
+celery -A celery_task worker --loglevel=info --pool=eventlet &
 ```
 
 To install celery:
@@ -78,6 +78,7 @@ Create production build of angular project.
 ```
 cd client
 cd chemmlAngular
+npm install
 ng build --prod
 ```
 
