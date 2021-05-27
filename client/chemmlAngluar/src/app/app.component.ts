@@ -179,7 +179,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   rearrange = () => {
-    return true;
+    return false;
   }
 
   snapping = (block,first,parent) => {
