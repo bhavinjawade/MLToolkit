@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 8000 --host 0.0.0.0 --disableHostCheck",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -45,7 +45,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
-    "lite-server": "^2.5.4",
+    "lite-server": "^2.6.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

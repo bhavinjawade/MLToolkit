@@ -1,0 +1,36 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./project_files/TrialProject/airtravel.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_helper-functions_1": {
+      "inputs": {
+        "file_path": "./metric/test.csv"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_csv_0@df"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveCSV",
+      "outputs": {}
+    }
+  }
+}

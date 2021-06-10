@@ -12,7 +12,7 @@
             </div>
             <div class = "results" *ngIf="noResults==false">
             <div class="body" *ngFor="let result of results; let i = index;">
-                <div class="run_row">
+                <div class="run_row" *ngIf="result?.length > 0">
                     <div class="row_title">
                         Result {{i+1}}
                     </div>

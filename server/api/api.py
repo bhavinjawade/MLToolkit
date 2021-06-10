@@ -107,6 +107,14 @@ def login():
                     )    
     return response
 
+jwt_blocklist = []
+
+@app.route('/logout', methods=["DELETE"])
+@jwt_required
+def logout():
+    # TO IMPLEMENT
+    return
+
 @app.route('/add_user', methods=['POST'])
 @cross_origin()
 def add_user():
@@ -451,18 +459,20 @@ def get_results(project_name):
         if("data_address" in output["result"]):
             result_folder = output["result"]["data_address"]
             all_result = []
-            for filename in os.listdir(result_folder):
-                with open(os.path.join(result_folder, filename), 'r') as f: # open in readonly mode
-                    result = f.read().rstrip()
-                    ext = filename.split(".")[-1]
-                    all_result.append(
-                        {
-                        "result": result, 
-                        "format": ext,
-                        "run_status": output["run_status"],
-                        "scheduled_time": output["scheduled_time"],
-                        "filename": filename
-                        })
+            if (os.path.isdir(result_folder)):
+                for filename in os.listdir(result_folder):
+                    if (os.path.isfile(result_folder + "/" + filename)):
+                        with open(os.path.join(result_folder, filename), 'r') as f: # open in readonly mode
+                            result = f.read().rstrip()
+                            ext = filename.split(".")[-1]
+                            all_result.append(
+                                {
+                                "result": result, 
+                                "format": ext,
+                                "run_status": output["run_status"],
+                                "scheduled_time": output["scheduled_time"],
+                                "filename": filename
+                                })
             results.append(all_result)
     status = "200"
     response = flask.Response(json.dumps({"data": results,

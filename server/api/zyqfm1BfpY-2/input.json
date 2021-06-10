@@ -1,0 +1,70 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./project_files/TestProject-TD/wine_dataset.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_dim-reduction_2": {
+      "inputs": {
+        "X": "@tool_preprocessing-node_1@X_new",
+        "y": "@tool_preprocessing-node_1@X_new"
+      },
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true
+        }
+      },
+      "module": "decomposition",
+      "name": "PCA",
+      "outputs": {}
+    },
+    "tool_helper-functions_3": {
+      "inputs": {
+        "file_path": "/metric/output.csv"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_dim-reduction_2@X_new"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveCSV",
+      "outputs": {}
+    },
+    "tool_preprocessing-node_1": {
+      "inputs": {
+        "X": "@tool_csv_0@df",
+        "y": "@tool_csv_0@df"
+      },
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true
+        }
+      },
+      "module": "preprocessing",
+      "name": "StandardScaler",
+      "outputs": {}
+    }
+  }
+}

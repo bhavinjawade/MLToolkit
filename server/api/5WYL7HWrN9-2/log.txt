@@ -1,0 +1,38 @@
+06/10/2021 02:40:26 PM =================================================
+06/10/2021 02:40:26 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 02:40:26 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 02:40:26 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 02:40:26 PM =================================================
+06/10/2021 02:40:26 PM Thu Jun 10 14:40:26 2021
+06/10/2021 02:40:26 PM 
+06/10/2021 02:40:26 PM parsing the input dictionary ...
+
+06/10/2021 02:40:26 PM 1   ID1: read_csv (pandas)
+06/10/2021 02:40:26 PM         <<<<<<< receive from:
+06/10/2021 02:40:26 PM         nothing to receive!
+06/10/2021 02:40:26 PM         >>>>>>> send to:
+06/10/2021 02:40:26 PM         nothing to send!
+06/10/2021 02:40:26 PM         
+06/10/2021 02:40:26 PM =================================================
+06/10/2021 02:40:26 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 02:40:26 PM   following order:
+06/10/2021 02:40:26 PM   []
+06/10/2021 02:40:26 PM   ['ID1']
+06/10/2021 02:40:26 PM * The outputs will be stored in the following 
+06/10/2021 02:40:26 PM directory: ./5WYL7HWrN9-2
+06/10/2021 02:40:26 PM 
+
+06/10/2021 02:40:26 PM ======= node ID#ID1: (read_csv, pandas)
+06/10/2021 02:40:26 PM | run ...
+
+06/10/2021 02:40:26 PM 
+
+06/10/2021 02:40:26 PM | ... done!
+06/10/2021 02:40:26 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 02:40:26 PM =======
+
+
+06/10/2021 02:40:26 PM Total execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 02:40:26 PM 2021-06-10 14:40:26
+
+06/10/2021 02:40:26 PM =================================================

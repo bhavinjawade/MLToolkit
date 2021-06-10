@@ -1,0 +1,53 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./project_files/Airways Project/airtravel.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_helper-functions_4": {
+      "inputs": {
+        "file_path": "./metric/try.csv"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_preprocessing-node_3@obj"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveCSV",
+      "outputs": {}
+    },
+    "tool_preprocessing-node_3": {
+      "inputs": {
+        "X": "@tool_csv_0@df",
+        "obj": "@tool_csv_0@df"
+      },
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit",
+        "outputs": {
+          "obj": true
+        }
+      },
+      "module": "preprocessing",
+      "name": "MaxAbsScaler",
+      "outputs": {}
+    }
+  }
+}

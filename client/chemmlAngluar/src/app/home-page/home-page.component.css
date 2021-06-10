@@ -259,7 +259,7 @@ h3 {
 }
 
 .main-container{
-    background-image: url('../../assets/home_page_bkg_2.png');
+    background-image: url('/mltoolkit/assets//home_page_bkg_2.png');
     background-size: cover;
     background-position: center right;
     height: 100%;

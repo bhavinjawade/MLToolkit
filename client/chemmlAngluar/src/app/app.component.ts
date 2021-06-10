@@ -118,6 +118,30 @@ export class AppComponent implements AfterViewInit {
     this.showLandingPage = true;
   }
 
+  myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!(event.target == document.getElementById("dropbtn"))) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  logout(){
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("logged_in");
+    window.location.reload()
+  }
+
   reRender() {
     this.elementRef.nativeElement.addEventListener('click', (evt) => {
       let id = evt.target.id

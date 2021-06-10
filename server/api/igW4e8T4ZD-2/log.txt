@@ -1,0 +1,118 @@
+06/10/2021 01:43:38 PM =================================================
+06/10/2021 01:43:38 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 01:43:38 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 01:43:38 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 01:43:38 PM =================================================
+06/10/2021 01:43:38 PM Thu Jun 10 13:43:38 2021
+06/10/2021 01:43:38 PM 
+06/10/2021 01:43:38 PM parsing the input dictionary ...
+
+06/10/2021 01:43:38 PM 1   ID1: read_csv (pandas)
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         nothing to receive!
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID4
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 2   ID4: Select_Columns_By_Index (chemml)
+06/10/2021 01:43:38 PM         method = fit
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID1
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 3   ID5: train_test_split (sklearn)
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID4
+06/10/2021 01:43:38 PM         ID4
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID6
+06/10/2021 01:43:38 PM         ID6
+06/10/2021 01:43:38 PM         ID7
+06/10/2021 01:43:38 PM         ID8
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 4   ID6: RandomForestClassifier (sklearn)
+06/10/2021 01:43:38 PM         method = fit
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID7
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 5   ID7: RandomForestClassifier (sklearn)
+06/10/2021 01:43:38 PM         method = predict
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID6
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID8
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 6   ID8: accuracy_score (sklearn)
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID7
+06/10/2021 01:43:38 PM         ID5
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         ID9
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM 7   ID9: SaveFile (chemml)
+06/10/2021 01:43:38 PM         method = write
+06/10/2021 01:43:38 PM         <<<<<<< receive from:
+06/10/2021 01:43:38 PM         ID8
+06/10/2021 01:43:38 PM         >>>>>>> send to:
+06/10/2021 01:43:38 PM         nothing to send!
+06/10/2021 01:43:38 PM         
+06/10/2021 01:43:38 PM =================================================
+06/10/2021 01:43:38 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 01:43:38 PM   following order:
+06/10/2021 01:43:38 PM   ['ID1']
+06/10/2021 01:43:38 PM   ['ID4']
+06/10/2021 01:43:38 PM   ['ID5']
+06/10/2021 01:43:38 PM   ['ID6']
+06/10/2021 01:43:38 PM   ['ID7']
+06/10/2021 01:43:38 PM   ['ID8']
+06/10/2021 01:43:38 PM   ['ID9']
+06/10/2021 01:43:38 PM * The outputs will be stored in the following 
+06/10/2021 01:43:38 PM directory: ./igW4e8T4ZD-2
+06/10/2021 01:43:38 PM 
+
+06/10/2021 01:43:38 PM ======= node ID#ID1: (read_csv, pandas)
+06/10/2021 01:43:38 PM | run ...
+
+06/10/2021 01:43:38 PM ... preparing outputs:
+06/10/2021 01:43:38 PM       name: df
+06/10/2021 01:43:38 PM       size: 19952 bytes (total: 19952 bytes)
+06/10/2021 01:43:38 PM       type: <class 'pandas.core.frame.DataFrame'>
+06/10/2021 01:43:38 PM       shape: (178, 13)
+06/10/2021 01:43:38 PM       -----
+06/10/2021 01:43:38 PM 
+
+06/10/2021 01:43:38 PM | ... done!
+06/10/2021 01:43:38 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 01:43:38 PM =======
+
+
+06/10/2021 01:43:38 PM ======= node ID#ID4: (Select_Columns_By_Index, chemml)
+06/10/2021 01:43:38 PM | run ...
+
+06/10/2021 01:43:38 PM ... preparing outputs:
+06/10/2021 01:43:38 PM       name: X1
+06/10/2021 01:43:38 PM       size: 120 bytes (total: 120 bytes)
+06/10/2021 01:43:38 PM       type: <class 'numpy.ndarray'>
+06/10/2021 01:43:38 PM       shape: (178, 12)
+06/10/2021 01:43:38 PM       -----
+06/10/2021 01:43:38 PM       name: X2
+06/10/2021 01:43:38 PM       size: 120 bytes (total: 240 bytes)
+06/10/2021 01:43:38 PM       type: <class 'numpy.ndarray'>
+06/10/2021 01:43:38 PM       shape: (178, 1)
+06/10/2021 01:43:38 PM       -----
+06/10/2021 01:43:38 PM 
+
+06/10/2021 01:43:38 PM | ... done!
+06/10/2021 01:43:38 PM | execution time: 0.14s (0h 0m 0.14s)
+06/10/2021 01:43:38 PM =======
+
+
+06/10/2021 01:43:38 PM ======= node ID#ID5: (train_test_split, sklearn)
+06/10/2021 01:43:38 PM | run ...
+
+06/10/2021 01:43:38 PM Unable to import train_test_split from sklearn.model_selection

@@ -252,10 +252,10 @@ export class ToolConfigComponent implements OnInit {
     var method = this.nodeJson["method"]["name"];
     if(method=="write"){
       if(nodeType == "SaveCSV"){
-        this.nodeJson["inputs"]["file_path"] = "/metric/" + this.nodeJson["inputs"]["file_path"] + ".csv"
+        this.nodeJson["inputs"]["file_path"] = "./metric/" + this.nodeJson["inputs"]["file_path"] + ".csv"
       }
       if(nodeType == "SaveFile"){
-        this.nodeJson["inputs"]["file_path"] = "/metric/" + this.nodeJson["inputs"]["file_path"] + ".txt"
+        this.nodeJson["inputs"]["file_path"] = "./metric/" + this.nodeJson["inputs"]["file_path"] + ".txt"
       }
     }
     var keys = Object.keys(this.nodeJson["inputs"]);

@@ -284,6 +284,7 @@ export class VisualizeMainComponent implements OnInit {
   }
 
   drop(ev) {
+    console.log("drop", ev)
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var nodeCopy = document.getElementById(data).cloneNode(true);

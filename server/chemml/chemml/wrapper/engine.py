@@ -710,10 +710,11 @@ class Wrapper(object):
 
         """
         lame_metadata = {
+
             'chemml.wrapper.preprocessing':{
+                'Select_Columns_By_Index.fit': ['X1', 'X2'],
                 'SplitColumns.fit': ['X1', 'X2'],
                 'SelectTargetColumn.fit': ['X1', 'X2'],
-                'Select_Columns_By_Index.fit': ['X1', 'X2']
             },
             'chemml.chem':{
                 'tensorise_molecules': ['atoms','bonds','edges']

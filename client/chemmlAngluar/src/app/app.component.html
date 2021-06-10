@@ -5,10 +5,16 @@
 <app-landing-page (closeBoxEmit)="projectOpened();" *ngIf="showLandingPage && !showHomePage && !showLoginPage"></app-landing-page>
     <div>
         <div id="header" *ngIf="!showLandingPage">
-            <img class="ub_logo" src="../../assets/University_at_Buffalo_logo.svg.png"/>
+            <img class="ub_logo" src="/mltoolkit/assets//University_at_Buffalo_logo.svg.png"/>
             <div class = "header-left">
-                <img class="nsf_logo" src="../../assets/nsf_logo.png"/>
+                <img class="nsf_logo" src="/mltoolkit/assets//nsf_logo.png"/>
                 <p class="made_logo"> MaDE@UB Machine Learning Toolkit </p>
+                <div class="dropdown">
+                    <img (click)="myFunction()" id = "dropbtn" class="dropbtn" src="/mltoolkit/assets/menu.svg"/>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a (click)="logout()">Logout</a>
+                    </div>
+                  </div>     
             </div>
         </div>
         <app-left-files-bar-component (emitter)="closeFilesMenu($event)" *ngIf="showFilesMenu" [currentProject] = "currentProject" [show]="showFilesMenu"></app-left-files-bar-component>

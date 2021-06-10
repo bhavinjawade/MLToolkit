@@ -1,0 +1,62 @@
+06/10/2021 01:48:38 PM =================================================
+06/10/2021 01:48:38 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 01:48:38 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 01:48:38 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 01:48:38 PM =================================================
+06/10/2021 01:48:38 PM Thu Jun 10 13:48:38 2021
+06/10/2021 01:48:38 PM 
+06/10/2021 01:48:38 PM parsing the input dictionary ...
+
+06/10/2021 01:48:38 PM 1   tool_csv_0: read_csv (pandas)
+06/10/2021 01:48:38 PM         method = data
+06/10/2021 01:48:38 PM         <<<<<<< receive from:
+06/10/2021 01:48:38 PM         nothing to receive!
+06/10/2021 01:48:38 PM         >>>>>>> send to:
+06/10/2021 01:48:38 PM         tool_helper-functions_1
+06/10/2021 01:48:38 PM         
+06/10/2021 01:48:38 PM 2   tool_helper-functions_1: SaveCSV (chemml)
+06/10/2021 01:48:38 PM         method = write
+06/10/2021 01:48:38 PM         <<<<<<< receive from:
+06/10/2021 01:48:38 PM         tool_csv_0
+06/10/2021 01:48:38 PM         >>>>>>> send to:
+06/10/2021 01:48:38 PM         nothing to send!
+06/10/2021 01:48:38 PM         
+06/10/2021 01:48:38 PM =================================================
+06/10/2021 01:48:38 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 01:48:38 PM   following order:
+06/10/2021 01:48:38 PM   ['tool_csv_0']
+06/10/2021 01:48:38 PM   ['tool_helper-functions_1']
+06/10/2021 01:48:38 PM * The outputs will be stored in the following 
+06/10/2021 01:48:38 PM directory: ./qukuLmgUK5-2
+06/10/2021 01:48:38 PM 
+
+06/10/2021 01:48:38 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+06/10/2021 01:48:38 PM | run ...
+
+06/10/2021 01:48:38 PM ... preparing outputs:
+06/10/2021 01:48:38 PM       name: df
+06/10/2021 01:48:38 PM       size: 1152 bytes (total: 1152 bytes)
+06/10/2021 01:48:38 PM       type: <class 'pandas.core.frame.DataFrame'>
+06/10/2021 01:48:38 PM       shape: (12, 4)
+06/10/2021 01:48:38 PM       -----
+06/10/2021 01:48:38 PM 
+
+06/10/2021 01:48:38 PM | ... done!
+06/10/2021 01:48:38 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 01:48:38 PM =======
+
+
+06/10/2021 01:48:38 PM ======= node ID#tool_helper-functions_1: (SaveCSV, chemml)
+06/10/2021 01:48:38 PM | run ...
+
+06/10/2021 01:48:39 PM 
+
+06/10/2021 01:48:39 PM | ... done!
+06/10/2021 01:48:39 PM | execution time: 0.02s (0h 0m 0.02s)
+06/10/2021 01:48:39 PM =======
+
+
+06/10/2021 01:48:39 PM Total execution time: 0.04s (0h 0m 0.04s)
+06/10/2021 01:48:39 PM 2021-06-10 13:48:39
+
+06/10/2021 01:48:39 PM =================================================

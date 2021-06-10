@@ -1,5 +1,5 @@
 export abstract class API_URLS{
-  static baseURL:string = "http://localhost:5000";
+  static baseURL:string = "https://madeatub.buffalo.edu/mltoolkit_api";
   static newProject:string = API_URLS.baseURL + "/projects/n/" //API_URLS.baseURL + "/api/v1/newProject";
   static getProjects:string = API_URLS.baseURL + "/projects/a/";
   static openProject:string = API_URLS.baseURL + "/api/v1/openProject";

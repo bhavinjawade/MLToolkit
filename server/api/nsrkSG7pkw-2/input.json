@@ -1,0 +1,55 @@
+{
+  "nodes": {
+    "tool_csv_0": {
+      "inputs": {
+        "filepath_or_buffer": "./project_files/DemoProject/airtravel.csv"
+      },
+      "library": "pandas",
+      "method": {
+        "inputs": {},
+        "name": "data",
+        "outputs": {}
+      },
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    },
+    "tool_dim-reduction_1": {
+      "inputs": {
+        "X": "@tool_csv_0@df",
+        "n_components": "5",
+        "obj": "@tool_csv_0@df",
+        "y": "@tool_csv_0@df"
+      },
+      "library": "sklearn",
+      "method": {
+        "inputs": {},
+        "name": "fit_transform",
+        "outputs": {
+          "X_new": true
+        }
+      },
+      "module": "decomposition",
+      "name": "PCA",
+      "outputs": {}
+    },
+    "tool_helper-functions_2": {
+      "inputs": {
+        "file_path": "./metric/test.csv"
+      },
+      "library": "chemml",
+      "method": {
+        "inputs": {
+          "X": "@tool_dim-reduction_1@X_new"
+        },
+        "name": "write",
+        "outputs": {}
+      },
+      "module": "wrapper.preprocessing",
+      "name": "SaveCSV",
+      "outputs": {}
+    }
+  }
+}

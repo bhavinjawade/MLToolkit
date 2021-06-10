@@ -1,0 +1,97 @@
+06/10/2021 03:17:41 PM =================================================
+06/10/2021 03:17:41 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 03:17:41 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 03:17:41 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 03:17:41 PM =================================================
+06/10/2021 03:17:41 PM Thu Jun 10 15:17:41 2021
+06/10/2021 03:17:41 PM 
+06/10/2021 03:17:41 PM parsing the input dictionary ...
+
+06/10/2021 03:17:41 PM 1   ID1: read_csv (pandas)
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         nothing to receive!
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID4
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 2   ID4: Select_Columns_By_Index (chemml)
+06/10/2021 03:17:41 PM         method = fit
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID1
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 3   ID5: train_test_split (sklearn)
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID4
+06/10/2021 03:17:41 PM         ID4
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID6
+06/10/2021 03:17:41 PM         ID6
+06/10/2021 03:17:41 PM         ID7
+06/10/2021 03:17:41 PM         ID8
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 4   ID6: RandomForestClassifier (sklearn)
+06/10/2021 03:17:41 PM         method = fit
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID7
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 5   ID7: RandomForestClassifier (sklearn)
+06/10/2021 03:17:41 PM         method = predict
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID6
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID8
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 6   ID8: accuracy_score (sklearn)
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID7
+06/10/2021 03:17:41 PM         ID5
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         ID9
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM 7   ID9: SaveFile (chemml)
+06/10/2021 03:17:41 PM         method = write
+06/10/2021 03:17:41 PM         <<<<<<< receive from:
+06/10/2021 03:17:41 PM         ID8
+06/10/2021 03:17:41 PM         >>>>>>> send to:
+06/10/2021 03:17:41 PM         nothing to send!
+06/10/2021 03:17:41 PM         
+06/10/2021 03:17:41 PM =================================================
+06/10/2021 03:17:41 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 03:17:41 PM   following order:
+06/10/2021 03:17:41 PM   ['ID1']
+06/10/2021 03:17:41 PM   ['ID4']
+06/10/2021 03:17:41 PM   ['ID5']
+06/10/2021 03:17:41 PM   ['ID6']
+06/10/2021 03:17:41 PM   ['ID7']
+06/10/2021 03:17:41 PM   ['ID8']
+06/10/2021 03:17:41 PM   ['ID9']
+06/10/2021 03:17:41 PM * The outputs will be stored in the following 
+06/10/2021 03:17:41 PM directory: ./rl2qGmvTJg-2
+06/10/2021 03:17:41 PM 
+
+06/10/2021 03:17:41 PM ======= node ID#ID1: (read_csv, pandas)
+06/10/2021 03:17:41 PM | run ...
+
+06/10/2021 03:17:41 PM ... preparing outputs:
+06/10/2021 03:17:41 PM       name: df
+06/10/2021 03:17:41 PM       size: 33960 bytes (total: 33960 bytes)
+06/10/2021 03:17:41 PM       type: <class 'pandas.core.frame.DataFrame'>
+06/10/2021 03:17:41 PM       shape: (303, 13)
+06/10/2021 03:17:41 PM       -----
+06/10/2021 03:17:41 PM 
+
+06/10/2021 03:17:41 PM | ... done!
+06/10/2021 03:17:41 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 03:17:41 PM =======
+
+
+06/10/2021 03:17:41 PM ======= node ID#ID4: (Select_Columns_By_Index, chemml)
+06/10/2021 03:17:41 PM | run ...
+
+06/10/2021 03:17:41 PM Unable to import Select_Columns_By_Index from chemml.wrapper.preprocessing

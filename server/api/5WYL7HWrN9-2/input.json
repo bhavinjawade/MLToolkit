@@ -1,0 +1,17 @@
+{
+  "nodes": {
+    "ID1": {
+      "inputs": {
+        "filepath_or_buffer": "./project_files/TrialProject/airtravel.csv",
+        "index_col": 0
+      },
+      "library": "pandas",
+      "method": {},
+      "module": "",
+      "name": "read_csv",
+      "outputs": {
+        "df": true
+      }
+    }
+  }
+}

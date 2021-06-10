@@ -1,0 +1,71 @@
+06/10/2021 02:53:26 PM =================================================
+06/10/2021 02:53:26 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 02:53:26 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 02:53:26 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 02:53:26 PM =================================================
+06/10/2021 02:53:26 PM Thu Jun 10 14:53:26 2021
+06/10/2021 02:53:26 PM 
+06/10/2021 02:53:26 PM parsing the input dictionary ...
+
+06/10/2021 02:53:26 PM 1   tool_csv_0: read_csv (pandas)
+06/10/2021 02:53:26 PM         method = data
+06/10/2021 02:53:26 PM         <<<<<<< receive from:
+06/10/2021 02:53:26 PM         nothing to receive!
+06/10/2021 02:53:26 PM         >>>>>>> send to:
+06/10/2021 02:53:26 PM         tool_preprocessing-node_1
+06/10/2021 02:53:26 PM         tool_preprocessing-node_1
+06/10/2021 02:53:26 PM         
+06/10/2021 02:53:26 PM 2   tool_preprocessing-node_1: StandardScaler (sklearn)
+06/10/2021 02:53:26 PM         method = fit_transform
+06/10/2021 02:53:26 PM         <<<<<<< receive from:
+06/10/2021 02:53:26 PM         tool_csv_0
+06/10/2021 02:53:26 PM         tool_csv_0
+06/10/2021 02:53:26 PM         >>>>>>> send to:
+06/10/2021 02:53:26 PM         tool_dim-reduction_2
+06/10/2021 02:53:26 PM         tool_dim-reduction_2
+06/10/2021 02:53:26 PM         
+06/10/2021 02:53:26 PM 3   tool_dim-reduction_2: PCA (sklearn)
+06/10/2021 02:53:26 PM         method = fit_transform
+06/10/2021 02:53:26 PM         <<<<<<< receive from:
+06/10/2021 02:53:26 PM         tool_preprocessing-node_1
+06/10/2021 02:53:26 PM         tool_preprocessing-node_1
+06/10/2021 02:53:26 PM         >>>>>>> send to:
+06/10/2021 02:53:26 PM         tool_helper-functions_3
+06/10/2021 02:53:26 PM         
+06/10/2021 02:53:26 PM 4   tool_helper-functions_3: SaveCSV (chemml)
+06/10/2021 02:53:26 PM         method = write
+06/10/2021 02:53:26 PM         <<<<<<< receive from:
+06/10/2021 02:53:26 PM         tool_dim-reduction_2
+06/10/2021 02:53:26 PM         >>>>>>> send to:
+06/10/2021 02:53:26 PM         nothing to send!
+06/10/2021 02:53:26 PM         
+06/10/2021 02:53:26 PM =================================================
+06/10/2021 02:53:26 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 02:53:26 PM   following order:
+06/10/2021 02:53:26 PM   ['tool_csv_0']
+06/10/2021 02:53:26 PM   ['tool_preprocessing-node_1']
+06/10/2021 02:53:26 PM   ['tool_dim-reduction_2']
+06/10/2021 02:53:26 PM   ['tool_helper-functions_3']
+06/10/2021 02:53:26 PM * The outputs will be stored in the following 
+06/10/2021 02:53:26 PM directory: ./zyqfm1BfpY-2
+06/10/2021 02:53:26 PM 
+
+06/10/2021 02:53:26 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+06/10/2021 02:53:26 PM | run ...
+
+06/10/2021 02:53:26 PM ... preparing outputs:
+06/10/2021 02:53:26 PM       name: df
+06/10/2021 02:53:26 PM       size: 20088 bytes (total: 20088 bytes)
+06/10/2021 02:53:26 PM       type: <class 'pandas.core.frame.DataFrame'>
+06/10/2021 02:53:26 PM       shape: (178, 14)
+06/10/2021 02:53:26 PM       -----
+06/10/2021 02:53:26 PM 
+
+06/10/2021 02:53:26 PM | ... done!
+06/10/2021 02:53:26 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 02:53:26 PM =======
+
+
+06/10/2021 02:53:26 PM ======= node ID#tool_preprocessing-node_1: (StandardScaler, sklearn)
+06/10/2021 02:53:26 PM | run ...
+

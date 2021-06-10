@@ -1,0 +1,29 @@
+06/10/2021 12:51:46 PM =================================================
+06/10/2021 12:51:46 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 12:51:46 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 12:51:46 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 12:51:46 PM =================================================
+06/10/2021 12:51:46 PM Thu Jun 10 12:51:46 2021
+06/10/2021 12:51:46 PM 
+06/10/2021 12:51:46 PM parsing the input dictionary ...
+
+06/10/2021 12:51:46 PM 1   tool_csv_0: read_csv (pandas)
+06/10/2021 12:51:46 PM         method = data
+06/10/2021 12:51:46 PM         <<<<<<< receive from:
+06/10/2021 12:51:46 PM         nothing to receive!
+06/10/2021 12:51:46 PM         >>>>>>> send to:
+06/10/2021 12:51:46 PM         nothing to send!
+06/10/2021 12:51:46 PM         
+06/10/2021 12:51:46 PM =================================================
+06/10/2021 12:51:46 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 12:51:46 PM   following order:
+06/10/2021 12:51:46 PM   []
+06/10/2021 12:51:46 PM   ['tool_csv_0']
+06/10/2021 12:51:46 PM * The outputs will be stored in the following 
+06/10/2021 12:51:46 PM directory: ./oYw8O80OM8-2
+06/10/2021 12:51:46 PM 
+
+06/10/2021 12:51:46 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+06/10/2021 12:51:46 PM | run ...
+
+06/10/2021 12:51:46 PM Unable to import read_csv from pandas.None

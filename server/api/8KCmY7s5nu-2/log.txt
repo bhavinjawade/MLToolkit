@@ -1,0 +1,61 @@
+06/10/2021 02:45:04 PM =================================================
+06/10/2021 02:45:04 PM ChemMLWrapper 0.6.0 (August 2019)
+06/10/2021 02:45:04 PM Mojtaba Haghighatlari (mojtabah@buffalo.edu)
+06/10/2021 02:45:04 PM Johannes Hachmann (hachmann@buffalo.edu)
+06/10/2021 02:45:04 PM =================================================
+06/10/2021 02:45:04 PM Thu Jun 10 14:45:04 2021
+06/10/2021 02:45:04 PM 
+06/10/2021 02:45:04 PM parsing the input dictionary ...
+
+06/10/2021 02:45:04 PM 1   tool_csv_0: read_csv (pandas)
+06/10/2021 02:45:04 PM         method = data
+06/10/2021 02:45:04 PM         <<<<<<< receive from:
+06/10/2021 02:45:04 PM         nothing to receive!
+06/10/2021 02:45:04 PM         >>>>>>> send to:
+06/10/2021 02:45:04 PM         tool_preprocessing-node_3
+06/10/2021 02:45:04 PM         tool_preprocessing-node_3
+06/10/2021 02:45:04 PM         
+06/10/2021 02:45:04 PM 2   tool_preprocessing-node_3: MaxAbsScaler (sklearn)
+06/10/2021 02:45:04 PM         method = fit
+06/10/2021 02:45:04 PM         <<<<<<< receive from:
+06/10/2021 02:45:04 PM         tool_csv_0
+06/10/2021 02:45:04 PM         tool_csv_0
+06/10/2021 02:45:04 PM         >>>>>>> send to:
+06/10/2021 02:45:04 PM         tool_helper-functions_4
+06/10/2021 02:45:04 PM         
+06/10/2021 02:45:04 PM 3   tool_helper-functions_4: SaveCSV (chemml)
+06/10/2021 02:45:04 PM         method = write
+06/10/2021 02:45:04 PM         <<<<<<< receive from:
+06/10/2021 02:45:04 PM         tool_preprocessing-node_3
+06/10/2021 02:45:04 PM         >>>>>>> send to:
+06/10/2021 02:45:04 PM         nothing to send!
+06/10/2021 02:45:04 PM         
+06/10/2021 02:45:04 PM =================================================
+06/10/2021 02:45:04 PM * Based on the dependencies, we run nodes in the 
+06/10/2021 02:45:04 PM   following order:
+06/10/2021 02:45:04 PM   ['tool_csv_0']
+06/10/2021 02:45:04 PM   ['tool_preprocessing-node_3']
+06/10/2021 02:45:04 PM   ['tool_helper-functions_4']
+06/10/2021 02:45:04 PM * The outputs will be stored in the following 
+06/10/2021 02:45:04 PM directory: ./8KCmY7s5nu-2
+06/10/2021 02:45:04 PM 
+
+06/10/2021 02:45:04 PM ======= node ID#tool_csv_0: (read_csv, pandas)
+06/10/2021 02:45:04 PM | run ...
+
+06/10/2021 02:45:04 PM ... preparing outputs:
+06/10/2021 02:45:04 PM       name: df
+06/10/2021 02:45:04 PM       size: 1160 bytes (total: 1160 bytes)
+06/10/2021 02:45:04 PM       type: <class 'pandas.core.frame.DataFrame'>
+06/10/2021 02:45:04 PM       shape: (12, 4)
+06/10/2021 02:45:04 PM       -----
+06/10/2021 02:45:04 PM 
+
+06/10/2021 02:45:04 PM | ... done!
+06/10/2021 02:45:04 PM | execution time: 0.01s (0h 0m 0.01s)
+06/10/2021 02:45:04 PM =======
+
+
+06/10/2021 02:45:04 PM ======= node ID#tool_preprocessing-node_3: (MaxAbsScaler, sklearn)
+06/10/2021 02:45:04 PM | run ...
+
